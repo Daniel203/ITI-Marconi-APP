@@ -2,16 +2,21 @@ import 'dart:convert';
 
 import 'package:dartz/dartz.dart';
 import 'package:http/http.dart' as http;
+import 'package:injectable/injectable.dart';
 import 'package:intl/intl.dart';
 
 import '../../domain/auth/auth_failure.dart';
 import '../../domain/user_data/cv_api_failures.dart';
-import 'i_classeviva_api.dart';
+import '../../domain/user_data/i_classeviva_api.dart';
 
 // TODO: in futuro implementare dio_http_cache
 
+@prod
+@lazySingleton
+@RegisterAs(IClasseVivaApi)
 class ClasseVivaApiRepository extends IClasseVivaApi {
   String _token;
+  String _id;
   final String _baseApiUrl = "https://web.spaggiari.eu/rest/v1";
 
   static final ClasseVivaApiRepository _singleton =
@@ -28,6 +33,7 @@ class ClasseVivaApiRepository extends IClasseVivaApi {
     String userCVId,
     String userCVPassword,
   }) async {
+    print("sing in in classeviva api singleton requested");
     final String url = "$_baseApiUrl/auth/login/";
     final Map<String, String> headers = {
       "User-Agent": "zorro/1.0",
@@ -36,11 +42,18 @@ class ClasseVivaApiRepository extends IClasseVivaApi {
     };
     final String values = jsonEncode({'uid': userCVId, 'pass': userCVPassword});
 
+    print("values : ${values.toString()}");
+
     final response = await http.post(url, headers: headers, body: values);
+
+    print("response : ${response.statusCode.toString()}");
+    print("body: ${json.decode(response.body).toString()}");
+
 
     switch (response.statusCode) {
       case 200:
         final body = json.decode(response.body);
+        _id = userCVId;
         _token = body['token'].toString();
         return right(unit);
         break;
@@ -60,11 +73,13 @@ class ClasseVivaApiRepository extends IClasseVivaApi {
   }
 
   Future<Either<CVApiFailure, dynamic>> _request(List args) async {
-    final buffer = StringBuffer("$_baseApiUrl/students/$id");
+    print("_request in ClasseVivaApi");
+    final buffer = StringBuffer("$_baseApiUrl/students/$_id");
     for (final arg in args) {
       buffer.write("/$arg");
     }
     final String url = buffer.toString();
+    print("URL IN _REQUEST::::::::::::::::::::::: ${url.toString()}");
     final Map<String, String> headers = {
       "User-Agent": "zorro/1.0",
       "Z-Dev-Apikey": "+zorro+",
@@ -125,5 +140,13 @@ class ClasseVivaApiRepository extends IClasseVivaApi {
   @override
   Future<Either<CVApiFailure, dynamic>> grades() async {
     return _request(['grades']);
+  }
+
+  @override
+  Future<Either<CVApiFailure, dynamic>> user() async {
+    if (_id != null) {
+      return _request(['card']);
+    }
+    return left(const CVApiFailure.serverError());
   }
 }

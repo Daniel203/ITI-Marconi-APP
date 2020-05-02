@@ -1,6 +1,7 @@
 import 'package:moor_flutter/moor_flutter.dart';
-import 'circular_dto.dart' as dto;
+
 import '../../../domain/user_data/noticeboard/circular.dart' as dom;
+import 'circular_dto.dart' as dto;
 
 part 'noticeboard_database.g.dart';
 

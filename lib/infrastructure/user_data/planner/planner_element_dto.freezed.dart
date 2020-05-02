@@ -7,9 +7,25 @@ part of 'planner_element_dto.dart';
 // FreezedGenerator
 // **************************************************************************
 
-T _$identity<T>(T value) => value;
 PlannerElementDto _$PlannerElementDtoFromJson(Map<String, dynamic> json) {
   return _PlannerElementDto.fromJson(json);
+}
+
+mixin _$PlannerElementDto {
+  String get authorName;
+  DateTime get evtDatetimeBegin;
+  DateTime get evtDatetimeEnd;
+  String get notes;
+  String get evtCode;
+
+  PlannerElementDto copyWith(
+      {String authorName,
+      DateTime evtDatetimeBegin,
+      DateTime evtDatetimeEnd,
+      String notes,
+      String evtCode});
+
+  Map<String, dynamic> toJson();
 }
 
 class _$PlannerElementDtoTearOff {
@@ -31,109 +47,7 @@ class _$PlannerElementDtoTearOff {
   }
 }
 
-// ignore: unused_element
 const $PlannerElementDto = _$PlannerElementDtoTearOff();
-
-mixin _$PlannerElementDto {
-  String get authorName;
-  DateTime get evtDatetimeBegin;
-  DateTime get evtDatetimeEnd;
-  String get notes;
-  String get evtCode;
-
-  Map<String, dynamic> toJson();
-  $PlannerElementDtoCopyWith<PlannerElementDto> get copyWith;
-}
-
-abstract class $PlannerElementDtoCopyWith<$Res> {
-  factory $PlannerElementDtoCopyWith(
-          PlannerElementDto value, $Res Function(PlannerElementDto) then) =
-      _$PlannerElementDtoCopyWithImpl<$Res>;
-  $Res call(
-      {String authorName,
-      DateTime evtDatetimeBegin,
-      DateTime evtDatetimeEnd,
-      String notes,
-      String evtCode});
-}
-
-class _$PlannerElementDtoCopyWithImpl<$Res>
-    implements $PlannerElementDtoCopyWith<$Res> {
-  _$PlannerElementDtoCopyWithImpl(this._value, this._then);
-
-  final PlannerElementDto _value;
-  // ignore: unused_field
-  final $Res Function(PlannerElementDto) _then;
-
-  @override
-  $Res call({
-    Object authorName = freezed,
-    Object evtDatetimeBegin = freezed,
-    Object evtDatetimeEnd = freezed,
-    Object notes = freezed,
-    Object evtCode = freezed,
-  }) {
-    return _then(_value.copyWith(
-      authorName:
-          authorName == freezed ? _value.authorName : authorName as String,
-      evtDatetimeBegin: evtDatetimeBegin == freezed
-          ? _value.evtDatetimeBegin
-          : evtDatetimeBegin as DateTime,
-      evtDatetimeEnd: evtDatetimeEnd == freezed
-          ? _value.evtDatetimeEnd
-          : evtDatetimeEnd as DateTime,
-      notes: notes == freezed ? _value.notes : notes as String,
-      evtCode: evtCode == freezed ? _value.evtCode : evtCode as String,
-    ));
-  }
-}
-
-abstract class _$PlannerElementDtoCopyWith<$Res>
-    implements $PlannerElementDtoCopyWith<$Res> {
-  factory _$PlannerElementDtoCopyWith(
-          _PlannerElementDto value, $Res Function(_PlannerElementDto) then) =
-      __$PlannerElementDtoCopyWithImpl<$Res>;
-  @override
-  $Res call(
-      {String authorName,
-      DateTime evtDatetimeBegin,
-      DateTime evtDatetimeEnd,
-      String notes,
-      String evtCode});
-}
-
-class __$PlannerElementDtoCopyWithImpl<$Res>
-    extends _$PlannerElementDtoCopyWithImpl<$Res>
-    implements _$PlannerElementDtoCopyWith<$Res> {
-  __$PlannerElementDtoCopyWithImpl(
-      _PlannerElementDto _value, $Res Function(_PlannerElementDto) _then)
-      : super(_value, (v) => _then(v as _PlannerElementDto));
-
-  @override
-  _PlannerElementDto get _value => super._value as _PlannerElementDto;
-
-  @override
-  $Res call({
-    Object authorName = freezed,
-    Object evtDatetimeBegin = freezed,
-    Object evtDatetimeEnd = freezed,
-    Object notes = freezed,
-    Object evtCode = freezed,
-  }) {
-    return _then(_PlannerElementDto(
-      authorName:
-          authorName == freezed ? _value.authorName : authorName as String,
-      evtDatetimeBegin: evtDatetimeBegin == freezed
-          ? _value.evtDatetimeBegin
-          : evtDatetimeBegin as DateTime,
-      evtDatetimeEnd: evtDatetimeEnd == freezed
-          ? _value.evtDatetimeEnd
-          : evtDatetimeEnd as DateTime,
-      notes: notes == freezed ? _value.notes : notes as String,
-      evtCode: evtCode == freezed ? _value.evtCode : evtCode as String,
-    ));
-  }
-}
 
 @JsonSerializable()
 class _$_PlannerElementDto implements _PlannerElementDto {
@@ -197,8 +111,26 @@ class _$_PlannerElementDto implements _PlannerElementDto {
       const DeepCollectionEquality().hash(evtCode);
 
   @override
-  _$PlannerElementDtoCopyWith<_PlannerElementDto> get copyWith =>
-      __$PlannerElementDtoCopyWithImpl<_PlannerElementDto>(this, _$identity);
+  _$_PlannerElementDto copyWith({
+    Object authorName = freezed,
+    Object evtDatetimeBegin = freezed,
+    Object evtDatetimeEnd = freezed,
+    Object notes = freezed,
+    Object evtCode = freezed,
+  }) {
+    return _$_PlannerElementDto(
+      authorName:
+          authorName == freezed ? this.authorName : authorName as String,
+      evtDatetimeBegin: evtDatetimeBegin == freezed
+          ? this.evtDatetimeBegin
+          : evtDatetimeBegin as DateTime,
+      evtDatetimeEnd: evtDatetimeEnd == freezed
+          ? this.evtDatetimeEnd
+          : evtDatetimeEnd as DateTime,
+      notes: notes == freezed ? this.notes : notes as String,
+      evtCode: evtCode == freezed ? this.evtCode : evtCode as String,
+    );
+  }
 
   @override
   Map<String, dynamic> toJson() {
@@ -227,6 +159,12 @@ abstract class _PlannerElementDto implements PlannerElementDto {
   String get notes;
   @override
   String get evtCode;
+
   @override
-  _$PlannerElementDtoCopyWith<_PlannerElementDto> get copyWith;
+  _PlannerElementDto copyWith(
+      {String authorName,
+      DateTime evtDatetimeBegin,
+      DateTime evtDatetimeEnd,
+      String notes,
+      String evtCode});
 }

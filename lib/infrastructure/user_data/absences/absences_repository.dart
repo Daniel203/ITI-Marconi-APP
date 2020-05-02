@@ -1,4 +1,5 @@
 import 'package:dartz/dartz.dart';
+import 'package:injectable/injectable.dart';
 import 'package:kt_dart/kt.dart';
 
 import '../../../domain/user_data/absences/absence.dart';
@@ -7,6 +8,9 @@ import '../../../domain/user_data/cv_api_failures.dart';
 import '../../core/classeviva_api.dart';
 import 'absence_dto.dart';
 
+@prod
+@lazySingleton
+@RegisterAs(IAbsencesRepository)
 class AbsencesRepository implements IAbsencesRepository {
   Either<CVApiFailure, dynamic> _data;
   List<Absence> _absencesData;

@@ -1,12 +1,16 @@
 import 'package:dartz/dartz.dart';
+import 'package:injectable/injectable.dart';
 import 'package:kt_dart/kt.dart';
-import 'package:marconi_app/infrastructure/core/classeviva_api.dart';
 
 import '../../../domain/user_data/cv_api_failures.dart';
 import '../../../domain/user_data/grades/grade.dart';
 import '../../../domain/user_data/grades/i_grades_repository.dart';
+import '../../core/classeviva_api.dart';
 import 'grade_dto.dart';
 
+@prod
+@lazySingleton
+@RegisterAs(IGradesRepository)
 class GradesRepository implements IGradesRepository {
   Either<CVApiFailure, dynamic> _data;
   List<Grade> _gradesData;

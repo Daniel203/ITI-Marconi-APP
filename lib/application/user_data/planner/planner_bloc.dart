@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:injectable/injectable.dart';
 import 'package:kt_dart/collection.dart';
 import 'package:meta/meta.dart';
 
@@ -14,6 +15,7 @@ part 'planner_bloc.freezed.dart';
 part 'planner_event.dart';
 part 'planner_state.dart';
 
+@injectable
 class PlannerBloc extends Bloc<PlannerEvent, PlannerState> {
   final IPlannerRepository _plannerRepository;
 

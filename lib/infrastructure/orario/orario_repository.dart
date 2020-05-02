@@ -3,13 +3,16 @@ import 'dart:convert';
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:dio_http_cache/dio_http_cache.dart';
+import 'package:injectable/injectable.dart';
 import 'package:kt_dart/collection.dart';
 
 import '../../domain/orario/i_orario_repository.dart';
 import '../../domain/orario/orario_failure.dart';
 import '../../domain/orario/orario_ora.dart';
 
-// TODO: injections
+@prod
+@lazySingleton
+@RegisterAs(IOrarioRepository)
 class OrarioRepository implements IOrarioRepository {
   final String className;
 

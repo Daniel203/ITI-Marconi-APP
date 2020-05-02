@@ -4,6 +4,7 @@ import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
 import 'package:flutter/foundation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:injectable/injectable.dart';
 import 'package:kt_dart/collection.dart';
 import 'package:meta/meta.dart';
 
@@ -15,6 +16,7 @@ part 'absences_bloc.freezed.dart';
 part 'absences_event.dart';
 part 'absences_state.dart';
 
+@injectable
 class AbsencesBloc extends Bloc<AbsencesEvent, AbsencesState> {
   final IAbsencesRepository _absencesRepository;
 

@@ -7,7 +7,52 @@ part of 'absences_bloc.dart';
 // FreezedGenerator
 // **************************************************************************
 
-T _$identity<T>(T value) => value;
+mixin _$AbsencesEvent {
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result getSmallWidget(),
+    @required Result getFullWidget(),
+    @required Result getOnlyAbsences(),
+    @required Result getOnlySimpleLates(),
+    @required Result getOnlyCompleteLates(),
+    @required
+        Result absencesReceived(
+            Either<CVApiFailure, KtList<Absence>> failureOrAbsences),
+  });
+
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result getSmallWidget(),
+    Result getFullWidget(),
+    Result getOnlyAbsences(),
+    Result getOnlySimpleLates(),
+    Result getOnlyCompleteLates(),
+    Result absencesReceived(
+        Either<CVApiFailure, KtList<Absence>> failureOrAbsences),
+    @required Result orElse(),
+  });
+
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result getSmallWidget(_getSmallWidget value),
+    @required Result getFullWidget(_getFullWidget value),
+    @required Result getOnlyAbsences(_getOnlyAbsences value),
+    @required Result getOnlySimpleLates(_getOnlySimpleLates value),
+    @required Result getOnlyCompleteLates(_getOnlyCompleteLates value),
+    @required Result absencesReceived(_AbsencesReceived value),
+  });
+
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result getSmallWidget(_getSmallWidget value),
+    Result getFullWidget(_getFullWidget value),
+    Result getOnlyAbsences(_getOnlyAbsences value),
+    Result getOnlySimpleLates(_getOnlySimpleLates value),
+    Result getOnlyCompleteLates(_getOnlyCompleteLates value),
+    Result absencesReceived(_AbsencesReceived value),
+    @required Result orElse(),
+  });
+}
 
 class _$AbsencesEventTearOff {
   const _$AbsencesEventTearOff();
@@ -40,84 +85,7 @@ class _$AbsencesEventTearOff {
   }
 }
 
-// ignore: unused_element
 const $AbsencesEvent = _$AbsencesEventTearOff();
-
-mixin _$AbsencesEvent {
-  @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result getSmallWidget(),
-    @required Result getFullWidget(),
-    @required Result getOnlyAbsences(),
-    @required Result getOnlySimpleLates(),
-    @required Result getOnlyCompleteLates(),
-    @required
-        Result absencesReceived(
-            Either<CVApiFailure, KtList<Absence>> failureOrAbsences),
-  });
-  @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result getSmallWidget(),
-    Result getFullWidget(),
-    Result getOnlyAbsences(),
-    Result getOnlySimpleLates(),
-    Result getOnlyCompleteLates(),
-    Result absencesReceived(
-        Either<CVApiFailure, KtList<Absence>> failureOrAbsences),
-    @required Result orElse(),
-  });
-  @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result getSmallWidget(_getSmallWidget value),
-    @required Result getFullWidget(_getFullWidget value),
-    @required Result getOnlyAbsences(_getOnlyAbsences value),
-    @required Result getOnlySimpleLates(_getOnlySimpleLates value),
-    @required Result getOnlyCompleteLates(_getOnlyCompleteLates value),
-    @required Result absencesReceived(_AbsencesReceived value),
-  });
-  @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result getSmallWidget(_getSmallWidget value),
-    Result getFullWidget(_getFullWidget value),
-    Result getOnlyAbsences(_getOnlyAbsences value),
-    Result getOnlySimpleLates(_getOnlySimpleLates value),
-    Result getOnlyCompleteLates(_getOnlyCompleteLates value),
-    Result absencesReceived(_AbsencesReceived value),
-    @required Result orElse(),
-  });
-}
-
-abstract class $AbsencesEventCopyWith<$Res> {
-  factory $AbsencesEventCopyWith(
-          AbsencesEvent value, $Res Function(AbsencesEvent) then) =
-      _$AbsencesEventCopyWithImpl<$Res>;
-}
-
-class _$AbsencesEventCopyWithImpl<$Res>
-    implements $AbsencesEventCopyWith<$Res> {
-  _$AbsencesEventCopyWithImpl(this._value, this._then);
-
-  final AbsencesEvent _value;
-  // ignore: unused_field
-  final $Res Function(AbsencesEvent) _then;
-}
-
-abstract class _$getSmallWidgetCopyWith<$Res> {
-  factory _$getSmallWidgetCopyWith(
-          _getSmallWidget value, $Res Function(_getSmallWidget) then) =
-      __$getSmallWidgetCopyWithImpl<$Res>;
-}
-
-class __$getSmallWidgetCopyWithImpl<$Res>
-    extends _$AbsencesEventCopyWithImpl<$Res>
-    implements _$getSmallWidgetCopyWith<$Res> {
-  __$getSmallWidgetCopyWithImpl(
-      _getSmallWidget _value, $Res Function(_getSmallWidget) _then)
-      : super(_value, (v) => _then(v as _getSmallWidget));
-
-  @override
-  _getSmallWidget get _value => super._value as _getSmallWidget;
-}
 
 class _$_getSmallWidget
     with DiagnosticableTreeMixin
@@ -226,23 +194,6 @@ abstract class _getSmallWidget implements AbsencesEvent {
   const factory _getSmallWidget() = _$_getSmallWidget;
 }
 
-abstract class _$getFullWidgetCopyWith<$Res> {
-  factory _$getFullWidgetCopyWith(
-          _getFullWidget value, $Res Function(_getFullWidget) then) =
-      __$getFullWidgetCopyWithImpl<$Res>;
-}
-
-class __$getFullWidgetCopyWithImpl<$Res>
-    extends _$AbsencesEventCopyWithImpl<$Res>
-    implements _$getFullWidgetCopyWith<$Res> {
-  __$getFullWidgetCopyWithImpl(
-      _getFullWidget _value, $Res Function(_getFullWidget) _then)
-      : super(_value, (v) => _then(v as _getFullWidget));
-
-  @override
-  _getFullWidget get _value => super._value as _getFullWidget;
-}
-
 class _$_getFullWidget with DiagnosticableTreeMixin implements _getFullWidget {
   const _$_getFullWidget();
 
@@ -345,23 +296,6 @@ class _$_getFullWidget with DiagnosticableTreeMixin implements _getFullWidget {
 
 abstract class _getFullWidget implements AbsencesEvent {
   const factory _getFullWidget() = _$_getFullWidget;
-}
-
-abstract class _$getOnlyAbsencesCopyWith<$Res> {
-  factory _$getOnlyAbsencesCopyWith(
-          _getOnlyAbsences value, $Res Function(_getOnlyAbsences) then) =
-      __$getOnlyAbsencesCopyWithImpl<$Res>;
-}
-
-class __$getOnlyAbsencesCopyWithImpl<$Res>
-    extends _$AbsencesEventCopyWithImpl<$Res>
-    implements _$getOnlyAbsencesCopyWith<$Res> {
-  __$getOnlyAbsencesCopyWithImpl(
-      _getOnlyAbsences _value, $Res Function(_getOnlyAbsences) _then)
-      : super(_value, (v) => _then(v as _getOnlyAbsences));
-
-  @override
-  _getOnlyAbsences get _value => super._value as _getOnlyAbsences;
 }
 
 class _$_getOnlyAbsences
@@ -471,23 +405,6 @@ abstract class _getOnlyAbsences implements AbsencesEvent {
   const factory _getOnlyAbsences() = _$_getOnlyAbsences;
 }
 
-abstract class _$getOnlySimpleLatesCopyWith<$Res> {
-  factory _$getOnlySimpleLatesCopyWith(
-          _getOnlySimpleLates value, $Res Function(_getOnlySimpleLates) then) =
-      __$getOnlySimpleLatesCopyWithImpl<$Res>;
-}
-
-class __$getOnlySimpleLatesCopyWithImpl<$Res>
-    extends _$AbsencesEventCopyWithImpl<$Res>
-    implements _$getOnlySimpleLatesCopyWith<$Res> {
-  __$getOnlySimpleLatesCopyWithImpl(
-      _getOnlySimpleLates _value, $Res Function(_getOnlySimpleLates) _then)
-      : super(_value, (v) => _then(v as _getOnlySimpleLates));
-
-  @override
-  _getOnlySimpleLates get _value => super._value as _getOnlySimpleLates;
-}
-
 class _$_getOnlySimpleLates
     with DiagnosticableTreeMixin
     implements _getOnlySimpleLates {
@@ -593,23 +510,6 @@ class _$_getOnlySimpleLates
 
 abstract class _getOnlySimpleLates implements AbsencesEvent {
   const factory _getOnlySimpleLates() = _$_getOnlySimpleLates;
-}
-
-abstract class _$getOnlyCompleteLatesCopyWith<$Res> {
-  factory _$getOnlyCompleteLatesCopyWith(_getOnlyCompleteLates value,
-          $Res Function(_getOnlyCompleteLates) then) =
-      __$getOnlyCompleteLatesCopyWithImpl<$Res>;
-}
-
-class __$getOnlyCompleteLatesCopyWithImpl<$Res>
-    extends _$AbsencesEventCopyWithImpl<$Res>
-    implements _$getOnlyCompleteLatesCopyWith<$Res> {
-  __$getOnlyCompleteLatesCopyWithImpl(
-      _getOnlyCompleteLates _value, $Res Function(_getOnlyCompleteLates) _then)
-      : super(_value, (v) => _then(v as _getOnlyCompleteLates));
-
-  @override
-  _getOnlyCompleteLates get _value => super._value as _getOnlyCompleteLates;
 }
 
 class _$_getOnlyCompleteLates
@@ -719,35 +619,6 @@ abstract class _getOnlyCompleteLates implements AbsencesEvent {
   const factory _getOnlyCompleteLates() = _$_getOnlyCompleteLates;
 }
 
-abstract class _$AbsencesReceivedCopyWith<$Res> {
-  factory _$AbsencesReceivedCopyWith(
-          _AbsencesReceived value, $Res Function(_AbsencesReceived) then) =
-      __$AbsencesReceivedCopyWithImpl<$Res>;
-  $Res call({Either<CVApiFailure, KtList<Absence>> failureOrAbsences});
-}
-
-class __$AbsencesReceivedCopyWithImpl<$Res>
-    extends _$AbsencesEventCopyWithImpl<$Res>
-    implements _$AbsencesReceivedCopyWith<$Res> {
-  __$AbsencesReceivedCopyWithImpl(
-      _AbsencesReceived _value, $Res Function(_AbsencesReceived) _then)
-      : super(_value, (v) => _then(v as _AbsencesReceived));
-
-  @override
-  _AbsencesReceived get _value => super._value as _AbsencesReceived;
-
-  @override
-  $Res call({
-    Object failureOrAbsences = freezed,
-  }) {
-    return _then(_AbsencesReceived(
-      failureOrAbsences == freezed
-          ? _value.failureOrAbsences
-          : failureOrAbsences as Either<CVApiFailure, KtList<Absence>>,
-    ));
-  }
-}
-
 class _$_AbsencesReceived
     with DiagnosticableTreeMixin
     implements _AbsencesReceived {
@@ -785,8 +656,15 @@ class _$_AbsencesReceived
       const DeepCollectionEquality().hash(failureOrAbsences);
 
   @override
-  _$AbsencesReceivedCopyWith<_AbsencesReceived> get copyWith =>
-      __$AbsencesReceivedCopyWithImpl<_AbsencesReceived>(this, _$identity);
+  _$_AbsencesReceived copyWith({
+    Object failureOrAbsences = freezed,
+  }) {
+    return _$_AbsencesReceived(
+      failureOrAbsences == freezed
+          ? this.failureOrAbsences
+          : failureOrAbsences as Either<CVApiFailure, KtList<Absence>>,
+    );
+  }
 
   @override
   @optionalTypeArgs
@@ -872,7 +750,45 @@ abstract class _AbsencesReceived implements AbsencesEvent {
       _$_AbsencesReceived;
 
   Either<CVApiFailure, KtList<Absence>> get failureOrAbsences;
-  _$AbsencesReceivedCopyWith<_AbsencesReceived> get copyWith;
+
+  _AbsencesReceived copyWith(
+      {Either<CVApiFailure, KtList<Absence>> failureOrAbsences});
+}
+
+mixin _$AbsencesState {
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result initial(),
+    @required Result loadInProgress(),
+    @required Result loadSuccess(KtList<Absence> absences),
+    @required Result loadFailure(CVApiFailure cvApiFailure),
+  });
+
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result initial(),
+    Result loadInProgress(),
+    Result loadSuccess(KtList<Absence> absences),
+    Result loadFailure(CVApiFailure cvApiFailure),
+    @required Result orElse(),
+  });
+
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result initial(Initial value),
+    @required Result loadInProgress(LoadInProgress value),
+    @required Result loadSuccess(LoadSuccess value),
+    @required Result loadFailure(LoadFailure value),
+  });
+
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result initial(Initial value),
+    Result loadInProgress(LoadInProgress value),
+    Result loadSuccess(LoadSuccess value),
+    Result loadFailure(LoadFailure value),
+    @required Result orElse(),
+  });
 }
 
 class _$AbsencesStateTearOff {
@@ -899,70 +815,7 @@ class _$AbsencesStateTearOff {
   }
 }
 
-// ignore: unused_element
 const $AbsencesState = _$AbsencesStateTearOff();
-
-mixin _$AbsencesState {
-  @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result initial(),
-    @required Result loadInProgress(),
-    @required Result loadSuccess(KtList<Absence> absences),
-    @required Result loadFailure(CVApiFailure cvApiFailure),
-  });
-  @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result initial(),
-    Result loadInProgress(),
-    Result loadSuccess(KtList<Absence> absences),
-    Result loadFailure(CVApiFailure cvApiFailure),
-    @required Result orElse(),
-  });
-  @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result initial(Initial value),
-    @required Result loadInProgress(LoadInProgress value),
-    @required Result loadSuccess(LoadSuccess value),
-    @required Result loadFailure(LoadFailure value),
-  });
-  @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result initial(Initial value),
-    Result loadInProgress(LoadInProgress value),
-    Result loadSuccess(LoadSuccess value),
-    Result loadFailure(LoadFailure value),
-    @required Result orElse(),
-  });
-}
-
-abstract class $AbsencesStateCopyWith<$Res> {
-  factory $AbsencesStateCopyWith(
-          AbsencesState value, $Res Function(AbsencesState) then) =
-      _$AbsencesStateCopyWithImpl<$Res>;
-}
-
-class _$AbsencesStateCopyWithImpl<$Res>
-    implements $AbsencesStateCopyWith<$Res> {
-  _$AbsencesStateCopyWithImpl(this._value, this._then);
-
-  final AbsencesState _value;
-  // ignore: unused_field
-  final $Res Function(AbsencesState) _then;
-}
-
-abstract class $InitialCopyWith<$Res> {
-  factory $InitialCopyWith(Initial value, $Res Function(Initial) then) =
-      _$InitialCopyWithImpl<$Res>;
-}
-
-class _$InitialCopyWithImpl<$Res> extends _$AbsencesStateCopyWithImpl<$Res>
-    implements $InitialCopyWith<$Res> {
-  _$InitialCopyWithImpl(Initial _value, $Res Function(Initial) _then)
-      : super(_value, (v) => _then(v as Initial));
-
-  @override
-  Initial get _value => super._value as Initial;
-}
 
 class _$Initial with DiagnosticableTreeMixin implements Initial {
   const _$Initial();
@@ -1051,23 +904,6 @@ class _$Initial with DiagnosticableTreeMixin implements Initial {
 
 abstract class Initial implements AbsencesState {
   const factory Initial() = _$Initial;
-}
-
-abstract class $LoadInProgressCopyWith<$Res> {
-  factory $LoadInProgressCopyWith(
-          LoadInProgress value, $Res Function(LoadInProgress) then) =
-      _$LoadInProgressCopyWithImpl<$Res>;
-}
-
-class _$LoadInProgressCopyWithImpl<$Res>
-    extends _$AbsencesStateCopyWithImpl<$Res>
-    implements $LoadInProgressCopyWith<$Res> {
-  _$LoadInProgressCopyWithImpl(
-      LoadInProgress _value, $Res Function(LoadInProgress) _then)
-      : super(_value, (v) => _then(v as LoadInProgress));
-
-  @override
-  LoadInProgress get _value => super._value as LoadInProgress;
 }
 
 class _$LoadInProgress with DiagnosticableTreeMixin implements LoadInProgress {
@@ -1160,32 +996,6 @@ abstract class LoadInProgress implements AbsencesState {
   const factory LoadInProgress() = _$LoadInProgress;
 }
 
-abstract class $LoadSuccessCopyWith<$Res> {
-  factory $LoadSuccessCopyWith(
-          LoadSuccess value, $Res Function(LoadSuccess) then) =
-      _$LoadSuccessCopyWithImpl<$Res>;
-  $Res call({KtList<Absence> absences});
-}
-
-class _$LoadSuccessCopyWithImpl<$Res> extends _$AbsencesStateCopyWithImpl<$Res>
-    implements $LoadSuccessCopyWith<$Res> {
-  _$LoadSuccessCopyWithImpl(
-      LoadSuccess _value, $Res Function(LoadSuccess) _then)
-      : super(_value, (v) => _then(v as LoadSuccess));
-
-  @override
-  LoadSuccess get _value => super._value as LoadSuccess;
-
-  @override
-  $Res call({
-    Object absences = freezed,
-  }) {
-    return _then(LoadSuccess(
-      absences == freezed ? _value.absences : absences as KtList<Absence>,
-    ));
-  }
-}
-
 class _$LoadSuccess with DiagnosticableTreeMixin implements LoadSuccess {
   const _$LoadSuccess(this.absences) : assert(absences != null);
 
@@ -1219,8 +1029,13 @@ class _$LoadSuccess with DiagnosticableTreeMixin implements LoadSuccess {
       runtimeType.hashCode ^ const DeepCollectionEquality().hash(absences);
 
   @override
-  $LoadSuccessCopyWith<LoadSuccess> get copyWith =>
-      _$LoadSuccessCopyWithImpl<LoadSuccess>(this, _$identity);
+  _$LoadSuccess copyWith({
+    Object absences = freezed,
+  }) {
+    return _$LoadSuccess(
+      absences == freezed ? this.absences : absences as KtList<Absence>,
+    );
+  }
 
   @override
   @optionalTypeArgs
@@ -1289,47 +1104,8 @@ abstract class LoadSuccess implements AbsencesState {
   const factory LoadSuccess(KtList<Absence> absences) = _$LoadSuccess;
 
   KtList<Absence> get absences;
-  $LoadSuccessCopyWith<LoadSuccess> get copyWith;
-}
 
-abstract class $LoadFailureCopyWith<$Res> {
-  factory $LoadFailureCopyWith(
-          LoadFailure value, $Res Function(LoadFailure) then) =
-      _$LoadFailureCopyWithImpl<$Res>;
-  $Res call({CVApiFailure cvApiFailure});
-
-  $CVApiFailureCopyWith<$Res> get cvApiFailure;
-}
-
-class _$LoadFailureCopyWithImpl<$Res> extends _$AbsencesStateCopyWithImpl<$Res>
-    implements $LoadFailureCopyWith<$Res> {
-  _$LoadFailureCopyWithImpl(
-      LoadFailure _value, $Res Function(LoadFailure) _then)
-      : super(_value, (v) => _then(v as LoadFailure));
-
-  @override
-  LoadFailure get _value => super._value as LoadFailure;
-
-  @override
-  $Res call({
-    Object cvApiFailure = freezed,
-  }) {
-    return _then(LoadFailure(
-      cvApiFailure == freezed
-          ? _value.cvApiFailure
-          : cvApiFailure as CVApiFailure,
-    ));
-  }
-
-  @override
-  $CVApiFailureCopyWith<$Res> get cvApiFailure {
-    if (_value.cvApiFailure == null) {
-      return null;
-    }
-    return $CVApiFailureCopyWith<$Res>(_value.cvApiFailure, (value) {
-      return _then(_value.copyWith(cvApiFailure: value));
-    });
-  }
+  LoadSuccess copyWith({KtList<Absence> absences});
 }
 
 class _$LoadFailure with DiagnosticableTreeMixin implements LoadFailure {
@@ -1365,8 +1141,15 @@ class _$LoadFailure with DiagnosticableTreeMixin implements LoadFailure {
       runtimeType.hashCode ^ const DeepCollectionEquality().hash(cvApiFailure);
 
   @override
-  $LoadFailureCopyWith<LoadFailure> get copyWith =>
-      _$LoadFailureCopyWithImpl<LoadFailure>(this, _$identity);
+  _$LoadFailure copyWith({
+    Object cvApiFailure = freezed,
+  }) {
+    return _$LoadFailure(
+      cvApiFailure == freezed
+          ? this.cvApiFailure
+          : cvApiFailure as CVApiFailure,
+    );
+  }
 
   @override
   @optionalTypeArgs
@@ -1435,5 +1218,6 @@ abstract class LoadFailure implements AbsencesState {
   const factory LoadFailure(CVApiFailure cvApiFailure) = _$LoadFailure;
 
   CVApiFailure get cvApiFailure;
-  $LoadFailureCopyWith<LoadFailure> get copyWith;
+
+  LoadFailure copyWith({CVApiFailure cvApiFailure});
 }

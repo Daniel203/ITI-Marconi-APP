@@ -4,6 +4,7 @@ import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
 import 'package:flutter/foundation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:injectable/injectable.dart';
 import 'package:kt_dart/collection.dart';
 
 import '../../domain/orario/i_orario_repository.dart';
@@ -14,6 +15,7 @@ part 'orario_bloc.freezed.dart';
 part 'orario_event.dart';
 part 'orario_state.dart';
 
+@injectable
 class OrarioBloc extends Bloc<OrarioEvent, OrarioState> {
   final IOrarioRepository _orarioRepository;
 

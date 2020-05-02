@@ -7,51 +7,29 @@ part of 'sign_in_form_bloc.dart';
 // FreezedGenerator
 // **************************************************************************
 
-T _$identity<T>(T value) => value;
-
-class _$SignInFormEventTearOff {
-  const _$SignInFormEventTearOff();
-
-  UserCVIdChanged userCVIdChanged(String userCVId) {
-    return UserCVIdChanged(
-      userCVId,
-    );
-  }
-
-  UserCVPasswordChanged userCVPasswordChanged(String userCVPassword) {
-    return UserCVPasswordChanged(
-      userCVPassword,
-    );
-  }
-
-  SignInWithIdAndPassword signInWithIdAndPassword() {
-    return const SignInWithIdAndPassword();
-  }
-}
-
-// ignore: unused_element
-const $SignInFormEvent = _$SignInFormEventTearOff();
-
 mixin _$SignInFormEvent {
   @optionalTypeArgs
   Result when<Result extends Object>({
-    @required Result userCVIdChanged(String userCVId),
-    @required Result userCVPasswordChanged(String userCVPassword),
+    @required Result userCVIdChanged(String userCVIdStr),
+    @required Result userCVPasswordChanged(String userCVPasswordStr),
     @required Result signInWithIdAndPassword(),
   });
+
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
-    Result userCVIdChanged(String userCVId),
-    Result userCVPasswordChanged(String userCVPassword),
+    Result userCVIdChanged(String userCVIdStr),
+    Result userCVPasswordChanged(String userCVPasswordStr),
     Result signInWithIdAndPassword(),
     @required Result orElse(),
   });
+
   @optionalTypeArgs
   Result map<Result extends Object>({
     @required Result userCVIdChanged(UserCVIdChanged value),
     @required Result userCVPasswordChanged(UserCVPasswordChanged value),
     @required Result signInWithIdAndPassword(SignInWithIdAndPassword value),
   });
+
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
     Result userCVIdChanged(UserCVIdChanged value),
@@ -61,59 +39,39 @@ mixin _$SignInFormEvent {
   });
 }
 
-abstract class $SignInFormEventCopyWith<$Res> {
-  factory $SignInFormEventCopyWith(
-          SignInFormEvent value, $Res Function(SignInFormEvent) then) =
-      _$SignInFormEventCopyWithImpl<$Res>;
-}
+class _$SignInFormEventTearOff {
+  const _$SignInFormEventTearOff();
 
-class _$SignInFormEventCopyWithImpl<$Res>
-    implements $SignInFormEventCopyWith<$Res> {
-  _$SignInFormEventCopyWithImpl(this._value, this._then);
+  UserCVIdChanged userCVIdChanged(String userCVIdStr) {
+    return UserCVIdChanged(
+      userCVIdStr,
+    );
+  }
 
-  final SignInFormEvent _value;
-  // ignore: unused_field
-  final $Res Function(SignInFormEvent) _then;
-}
+  UserCVPasswordChanged userCVPasswordChanged(String userCVPasswordStr) {
+    return UserCVPasswordChanged(
+      userCVPasswordStr,
+    );
+  }
 
-abstract class $UserCVIdChangedCopyWith<$Res> {
-  factory $UserCVIdChangedCopyWith(
-          UserCVIdChanged value, $Res Function(UserCVIdChanged) then) =
-      _$UserCVIdChangedCopyWithImpl<$Res>;
-  $Res call({String userCVId});
-}
-
-class _$UserCVIdChangedCopyWithImpl<$Res>
-    extends _$SignInFormEventCopyWithImpl<$Res>
-    implements $UserCVIdChangedCopyWith<$Res> {
-  _$UserCVIdChangedCopyWithImpl(
-      UserCVIdChanged _value, $Res Function(UserCVIdChanged) _then)
-      : super(_value, (v) => _then(v as UserCVIdChanged));
-
-  @override
-  UserCVIdChanged get _value => super._value as UserCVIdChanged;
-
-  @override
-  $Res call({
-    Object userCVId = freezed,
-  }) {
-    return _then(UserCVIdChanged(
-      userCVId == freezed ? _value.userCVId : userCVId as String,
-    ));
+  SignInWithIdAndPassword signInWithIdAndPassword() {
+    return const SignInWithIdAndPassword();
   }
 }
+
+const $SignInFormEvent = _$SignInFormEventTearOff();
 
 class _$UserCVIdChanged
     with DiagnosticableTreeMixin
     implements UserCVIdChanged {
-  const _$UserCVIdChanged(this.userCVId) : assert(userCVId != null);
+  const _$UserCVIdChanged(this.userCVIdStr) : assert(userCVIdStr != null);
 
   @override
-  final String userCVId;
+  final String userCVIdStr;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'SignInFormEvent.userCVIdChanged(userCVId: $userCVId)';
+    return 'SignInFormEvent.userCVIdChanged(userCVIdStr: $userCVIdStr)';
   }
 
   @override
@@ -121,50 +79,55 @@ class _$UserCVIdChanged
     super.debugFillProperties(properties);
     properties
       ..add(DiagnosticsProperty('type', 'SignInFormEvent.userCVIdChanged'))
-      ..add(DiagnosticsProperty('userCVId', userCVId));
+      ..add(DiagnosticsProperty('userCVIdStr', userCVIdStr));
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is UserCVIdChanged &&
-            (identical(other.userCVId, userCVId) ||
+            (identical(other.userCVIdStr, userCVIdStr) ||
                 const DeepCollectionEquality()
-                    .equals(other.userCVId, userCVId)));
+                    .equals(other.userCVIdStr, userCVIdStr)));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(userCVId);
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(userCVIdStr);
 
   @override
-  $UserCVIdChangedCopyWith<UserCVIdChanged> get copyWith =>
-      _$UserCVIdChangedCopyWithImpl<UserCVIdChanged>(this, _$identity);
+  _$UserCVIdChanged copyWith({
+    Object userCVIdStr = freezed,
+  }) {
+    return _$UserCVIdChanged(
+      userCVIdStr == freezed ? this.userCVIdStr : userCVIdStr as String,
+    );
+  }
 
   @override
   @optionalTypeArgs
   Result when<Result extends Object>({
-    @required Result userCVIdChanged(String userCVId),
-    @required Result userCVPasswordChanged(String userCVPassword),
+    @required Result userCVIdChanged(String userCVIdStr),
+    @required Result userCVPasswordChanged(String userCVPasswordStr),
     @required Result signInWithIdAndPassword(),
   }) {
     assert(userCVIdChanged != null);
     assert(userCVPasswordChanged != null);
     assert(signInWithIdAndPassword != null);
-    return userCVIdChanged(userCVId);
+    return userCVIdChanged(userCVIdStr);
   }
 
   @override
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
-    Result userCVIdChanged(String userCVId),
-    Result userCVPasswordChanged(String userCVPassword),
+    Result userCVIdChanged(String userCVIdStr),
+    Result userCVPasswordChanged(String userCVPasswordStr),
     Result signInWithIdAndPassword(),
     @required Result orElse(),
   }) {
     assert(orElse != null);
     if (userCVIdChanged != null) {
-      return userCVIdChanged(userCVId);
+      return userCVIdChanged(userCVIdStr);
     }
     return orElse();
   }
@@ -199,53 +162,25 @@ class _$UserCVIdChanged
 }
 
 abstract class UserCVIdChanged implements SignInFormEvent {
-  const factory UserCVIdChanged(String userCVId) = _$UserCVIdChanged;
+  const factory UserCVIdChanged(String userCVIdStr) = _$UserCVIdChanged;
 
-  String get userCVId;
-  $UserCVIdChangedCopyWith<UserCVIdChanged> get copyWith;
-}
+  String get userCVIdStr;
 
-abstract class $UserCVPasswordChangedCopyWith<$Res> {
-  factory $UserCVPasswordChangedCopyWith(UserCVPasswordChanged value,
-          $Res Function(UserCVPasswordChanged) then) =
-      _$UserCVPasswordChangedCopyWithImpl<$Res>;
-  $Res call({String userCVPassword});
-}
-
-class _$UserCVPasswordChangedCopyWithImpl<$Res>
-    extends _$SignInFormEventCopyWithImpl<$Res>
-    implements $UserCVPasswordChangedCopyWith<$Res> {
-  _$UserCVPasswordChangedCopyWithImpl(
-      UserCVPasswordChanged _value, $Res Function(UserCVPasswordChanged) _then)
-      : super(_value, (v) => _then(v as UserCVPasswordChanged));
-
-  @override
-  UserCVPasswordChanged get _value => super._value as UserCVPasswordChanged;
-
-  @override
-  $Res call({
-    Object userCVPassword = freezed,
-  }) {
-    return _then(UserCVPasswordChanged(
-      userCVPassword == freezed
-          ? _value.userCVPassword
-          : userCVPassword as String,
-    ));
-  }
+  UserCVIdChanged copyWith({String userCVIdStr});
 }
 
 class _$UserCVPasswordChanged
     with DiagnosticableTreeMixin
     implements UserCVPasswordChanged {
-  const _$UserCVPasswordChanged(this.userCVPassword)
-      : assert(userCVPassword != null);
+  const _$UserCVPasswordChanged(this.userCVPasswordStr)
+      : assert(userCVPasswordStr != null);
 
   @override
-  final String userCVPassword;
+  final String userCVPasswordStr;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'SignInFormEvent.userCVPasswordChanged(userCVPassword: $userCVPassword)';
+    return 'SignInFormEvent.userCVPasswordChanged(userCVPasswordStr: $userCVPasswordStr)';
   }
 
   @override
@@ -254,52 +189,58 @@ class _$UserCVPasswordChanged
     properties
       ..add(
           DiagnosticsProperty('type', 'SignInFormEvent.userCVPasswordChanged'))
-      ..add(DiagnosticsProperty('userCVPassword', userCVPassword));
+      ..add(DiagnosticsProperty('userCVPasswordStr', userCVPasswordStr));
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is UserCVPasswordChanged &&
-            (identical(other.userCVPassword, userCVPassword) ||
+            (identical(other.userCVPasswordStr, userCVPasswordStr) ||
                 const DeepCollectionEquality()
-                    .equals(other.userCVPassword, userCVPassword)));
+                    .equals(other.userCVPasswordStr, userCVPasswordStr)));
   }
 
   @override
   int get hashCode =>
       runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(userCVPassword);
+      const DeepCollectionEquality().hash(userCVPasswordStr);
 
   @override
-  $UserCVPasswordChangedCopyWith<UserCVPasswordChanged> get copyWith =>
-      _$UserCVPasswordChangedCopyWithImpl<UserCVPasswordChanged>(
-          this, _$identity);
+  _$UserCVPasswordChanged copyWith({
+    Object userCVPasswordStr = freezed,
+  }) {
+    return _$UserCVPasswordChanged(
+      userCVPasswordStr == freezed
+          ? this.userCVPasswordStr
+          : userCVPasswordStr as String,
+    );
+  }
 
   @override
   @optionalTypeArgs
   Result when<Result extends Object>({
-    @required Result userCVIdChanged(String userCVId),
-    @required Result userCVPasswordChanged(String userCVPassword),
+    @required Result userCVIdChanged(String userCVIdStr),
+    @required Result userCVPasswordChanged(String userCVPasswordStr),
     @required Result signInWithIdAndPassword(),
   }) {
     assert(userCVIdChanged != null);
     assert(userCVPasswordChanged != null);
     assert(signInWithIdAndPassword != null);
-    return userCVPasswordChanged(userCVPassword);
+    return userCVPasswordChanged(userCVPasswordStr);
   }
 
   @override
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
-    Result userCVIdChanged(String userCVId),
-    Result userCVPasswordChanged(String userCVPassword),
+    Result userCVIdChanged(String userCVIdStr),
+    Result userCVPasswordChanged(String userCVPasswordStr),
     Result signInWithIdAndPassword(),
     @required Result orElse(),
   }) {
     assert(orElse != null);
     if (userCVPasswordChanged != null) {
-      return userCVPasswordChanged(userCVPassword);
+      return userCVPasswordChanged(userCVPasswordStr);
     }
     return orElse();
   }
@@ -334,28 +275,12 @@ class _$UserCVPasswordChanged
 }
 
 abstract class UserCVPasswordChanged implements SignInFormEvent {
-  const factory UserCVPasswordChanged(String userCVPassword) =
+  const factory UserCVPasswordChanged(String userCVPasswordStr) =
       _$UserCVPasswordChanged;
 
-  String get userCVPassword;
-  $UserCVPasswordChangedCopyWith<UserCVPasswordChanged> get copyWith;
-}
+  String get userCVPasswordStr;
 
-abstract class $SignInWithIdAndPasswordCopyWith<$Res> {
-  factory $SignInWithIdAndPasswordCopyWith(SignInWithIdAndPassword value,
-          $Res Function(SignInWithIdAndPassword) then) =
-      _$SignInWithIdAndPasswordCopyWithImpl<$Res>;
-}
-
-class _$SignInWithIdAndPasswordCopyWithImpl<$Res>
-    extends _$SignInFormEventCopyWithImpl<$Res>
-    implements $SignInWithIdAndPasswordCopyWith<$Res> {
-  _$SignInWithIdAndPasswordCopyWithImpl(SignInWithIdAndPassword _value,
-      $Res Function(SignInWithIdAndPassword) _then)
-      : super(_value, (v) => _then(v as SignInWithIdAndPassword));
-
-  @override
-  SignInWithIdAndPassword get _value => super._value as SignInWithIdAndPassword;
+  UserCVPasswordChanged copyWith({String userCVPasswordStr});
 }
 
 class _$SignInWithIdAndPassword
@@ -387,8 +312,8 @@ class _$SignInWithIdAndPassword
   @override
   @optionalTypeArgs
   Result when<Result extends Object>({
-    @required Result userCVIdChanged(String userCVId),
-    @required Result userCVPasswordChanged(String userCVPassword),
+    @required Result userCVIdChanged(String userCVIdStr),
+    @required Result userCVPasswordChanged(String userCVPasswordStr),
     @required Result signInWithIdAndPassword(),
   }) {
     assert(userCVIdChanged != null);
@@ -400,8 +325,8 @@ class _$SignInWithIdAndPassword
   @override
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
-    Result userCVIdChanged(String userCVId),
-    Result userCVPasswordChanged(String userCVPassword),
+    Result userCVIdChanged(String userCVIdStr),
+    Result userCVPasswordChanged(String userCVPasswordStr),
     Result signInWithIdAndPassword(),
     @required Result orElse(),
   }) {
@@ -445,6 +370,21 @@ abstract class SignInWithIdAndPassword implements SignInFormEvent {
   const factory SignInWithIdAndPassword() = _$SignInWithIdAndPassword;
 }
 
+mixin _$SignInFormState {
+  UserCVId get userCVId;
+  UserCVPassword get userCVPassword;
+  bool get showErrorMessage;
+  bool get isSubmitting;
+  Option<Either<AuthFailure, Unit>> get authFailureOrSuccessOption;
+
+  SignInFormState copyWith(
+      {UserCVId userCVId,
+      UserCVPassword userCVPassword,
+      bool showErrorMessage,
+      bool isSubmitting,
+      Option<Either<AuthFailure, Unit>> authFailureOrSuccessOption});
+}
+
 class _$SignInFormStateTearOff {
   const _$SignInFormStateTearOff();
 
@@ -464,112 +404,7 @@ class _$SignInFormStateTearOff {
   }
 }
 
-// ignore: unused_element
 const $SignInFormState = _$SignInFormStateTearOff();
-
-mixin _$SignInFormState {
-  UserCVId get userCVId;
-  UserCVPassword get userCVPassword;
-  bool get showErrorMessage;
-  bool get isSubmitting;
-  Option<Either<AuthFailure, Unit>> get authFailureOrSuccessOption;
-
-  $SignInFormStateCopyWith<SignInFormState> get copyWith;
-}
-
-abstract class $SignInFormStateCopyWith<$Res> {
-  factory $SignInFormStateCopyWith(
-          SignInFormState value, $Res Function(SignInFormState) then) =
-      _$SignInFormStateCopyWithImpl<$Res>;
-  $Res call(
-      {UserCVId userCVId,
-      UserCVPassword userCVPassword,
-      bool showErrorMessage,
-      bool isSubmitting,
-      Option<Either<AuthFailure, Unit>> authFailureOrSuccessOption});
-}
-
-class _$SignInFormStateCopyWithImpl<$Res>
-    implements $SignInFormStateCopyWith<$Res> {
-  _$SignInFormStateCopyWithImpl(this._value, this._then);
-
-  final SignInFormState _value;
-  // ignore: unused_field
-  final $Res Function(SignInFormState) _then;
-
-  @override
-  $Res call({
-    Object userCVId = freezed,
-    Object userCVPassword = freezed,
-    Object showErrorMessage = freezed,
-    Object isSubmitting = freezed,
-    Object authFailureOrSuccessOption = freezed,
-  }) {
-    return _then(_value.copyWith(
-      userCVId: userCVId == freezed ? _value.userCVId : userCVId as UserCVId,
-      userCVPassword: userCVPassword == freezed
-          ? _value.userCVPassword
-          : userCVPassword as UserCVPassword,
-      showErrorMessage: showErrorMessage == freezed
-          ? _value.showErrorMessage
-          : showErrorMessage as bool,
-      isSubmitting:
-          isSubmitting == freezed ? _value.isSubmitting : isSubmitting as bool,
-      authFailureOrSuccessOption: authFailureOrSuccessOption == freezed
-          ? _value.authFailureOrSuccessOption
-          : authFailureOrSuccessOption as Option<Either<AuthFailure, Unit>>,
-    ));
-  }
-}
-
-abstract class _$SignInFormStateCopyWith<$Res>
-    implements $SignInFormStateCopyWith<$Res> {
-  factory _$SignInFormStateCopyWith(
-          _SignInFormState value, $Res Function(_SignInFormState) then) =
-      __$SignInFormStateCopyWithImpl<$Res>;
-  @override
-  $Res call(
-      {UserCVId userCVId,
-      UserCVPassword userCVPassword,
-      bool showErrorMessage,
-      bool isSubmitting,
-      Option<Either<AuthFailure, Unit>> authFailureOrSuccessOption});
-}
-
-class __$SignInFormStateCopyWithImpl<$Res>
-    extends _$SignInFormStateCopyWithImpl<$Res>
-    implements _$SignInFormStateCopyWith<$Res> {
-  __$SignInFormStateCopyWithImpl(
-      _SignInFormState _value, $Res Function(_SignInFormState) _then)
-      : super(_value, (v) => _then(v as _SignInFormState));
-
-  @override
-  _SignInFormState get _value => super._value as _SignInFormState;
-
-  @override
-  $Res call({
-    Object userCVId = freezed,
-    Object userCVPassword = freezed,
-    Object showErrorMessage = freezed,
-    Object isSubmitting = freezed,
-    Object authFailureOrSuccessOption = freezed,
-  }) {
-    return _then(_SignInFormState(
-      userCVId: userCVId == freezed ? _value.userCVId : userCVId as UserCVId,
-      userCVPassword: userCVPassword == freezed
-          ? _value.userCVPassword
-          : userCVPassword as UserCVPassword,
-      showErrorMessage: showErrorMessage == freezed
-          ? _value.showErrorMessage
-          : showErrorMessage as bool,
-      isSubmitting:
-          isSubmitting == freezed ? _value.isSubmitting : isSubmitting as bool,
-      authFailureOrSuccessOption: authFailureOrSuccessOption == freezed
-          ? _value.authFailureOrSuccessOption
-          : authFailureOrSuccessOption as Option<Either<AuthFailure, Unit>>,
-    ));
-  }
-}
 
 class _$_SignInFormState
     with DiagnosticableTreeMixin
@@ -648,8 +483,28 @@ class _$_SignInFormState
       const DeepCollectionEquality().hash(authFailureOrSuccessOption);
 
   @override
-  _$SignInFormStateCopyWith<_SignInFormState> get copyWith =>
-      __$SignInFormStateCopyWithImpl<_SignInFormState>(this, _$identity);
+  _$_SignInFormState copyWith({
+    Object userCVId = freezed,
+    Object userCVPassword = freezed,
+    Object showErrorMessage = freezed,
+    Object isSubmitting = freezed,
+    Object authFailureOrSuccessOption = freezed,
+  }) {
+    return _$_SignInFormState(
+      userCVId: userCVId == freezed ? this.userCVId : userCVId as UserCVId,
+      userCVPassword: userCVPassword == freezed
+          ? this.userCVPassword
+          : userCVPassword as UserCVPassword,
+      showErrorMessage: showErrorMessage == freezed
+          ? this.showErrorMessage
+          : showErrorMessage as bool,
+      isSubmitting:
+          isSubmitting == freezed ? this.isSubmitting : isSubmitting as bool,
+      authFailureOrSuccessOption: authFailureOrSuccessOption == freezed
+          ? this.authFailureOrSuccessOption
+          : authFailureOrSuccessOption as Option<Either<AuthFailure, Unit>>,
+    );
+  }
 }
 
 abstract class _SignInFormState implements SignInFormState {
@@ -676,6 +531,12 @@ abstract class _SignInFormState implements SignInFormState {
   bool get isSubmitting;
   @override
   Option<Either<AuthFailure, Unit>> get authFailureOrSuccessOption;
+
   @override
-  _$SignInFormStateCopyWith<_SignInFormState> get copyWith;
+  _SignInFormState copyWith(
+      {UserCVId userCVId,
+      UserCVPassword userCVPassword,
+      bool showErrorMessage,
+      bool isSubmitting,
+      Option<Either<AuthFailure, Unit>> authFailureOrSuccessOption});
 }

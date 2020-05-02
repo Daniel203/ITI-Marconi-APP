@@ -1,18 +1,27 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
-import 'package:marconi_app/infrastructure/core/classeviva_api.dart';
+import 'package:injectable/injectable.dart';
 
 import '../../domain/auth/auth_failure.dart';
 import '../../domain/auth/i_auth_facade.dart';
 import '../../domain/auth/user.dart';
 import '../../domain/auth/value_objects.dart';
+import '../../domain/user_data/cv_api_failures.dart';
+import '../core/classeviva_api.dart';
+import 'user_dto.dart';
 
+@prod
+@lazySingleton
+@RegisterAs(IAuthFacade)
 class AuthFacade extends IAuthFacade {
   @override
-  Future<Option<User>> getSignedUser() {
-    // TODO: implement getSignedUser
-    return null;
+  Future<Either<CVApiFailure, User>> getSignedUser() async {
+    final user = await ClasseVivaApiRepository().user();
+    return user.fold(
+      (f) => left(f),
+      (value) => right(UserDto.fromJson(value as Map<String, dynamic>).toDomain()),
+    );
   }
 
   @override

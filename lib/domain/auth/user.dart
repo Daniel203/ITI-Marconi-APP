@@ -6,6 +6,8 @@ part 'user.freezed.dart';
 @freezed 
 abstract class User with _$User {
   const factory User({
-    @required UserCVId userCVId,
+    @required String id,
+    @required String firstName,
+    @required String lastName,
   }) = _User;
 }

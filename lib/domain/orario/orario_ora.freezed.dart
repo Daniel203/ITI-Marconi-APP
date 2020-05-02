@@ -7,9 +7,21 @@ part of 'orario_ora.dart';
 // FreezedGenerator
 // **************************************************************************
 
-T _$identity<T>(T value) => value;
 OrarioOra _$OrarioOraFromJson(Map<String, dynamic> json) {
   return _OrarioOra.fromJson(json);
+}
+
+mixin _$OrarioOra {
+  String get prof;
+  String get materia;
+  String get aula;
+  int get giorno;
+  int get ora;
+
+  OrarioOra copyWith(
+      {String prof, String materia, String aula, int giorno, int ora});
+
+  Map<String, dynamic> toJson();
 }
 
 class _$OrarioOraTearOff {
@@ -31,84 +43,7 @@ class _$OrarioOraTearOff {
   }
 }
 
-// ignore: unused_element
 const $OrarioOra = _$OrarioOraTearOff();
-
-mixin _$OrarioOra {
-  String get prof;
-  String get materia;
-  String get aula;
-  int get giorno;
-  int get ora;
-
-  Map<String, dynamic> toJson();
-  $OrarioOraCopyWith<OrarioOra> get copyWith;
-}
-
-abstract class $OrarioOraCopyWith<$Res> {
-  factory $OrarioOraCopyWith(OrarioOra value, $Res Function(OrarioOra) then) =
-      _$OrarioOraCopyWithImpl<$Res>;
-  $Res call({String prof, String materia, String aula, int giorno, int ora});
-}
-
-class _$OrarioOraCopyWithImpl<$Res> implements $OrarioOraCopyWith<$Res> {
-  _$OrarioOraCopyWithImpl(this._value, this._then);
-
-  final OrarioOra _value;
-  // ignore: unused_field
-  final $Res Function(OrarioOra) _then;
-
-  @override
-  $Res call({
-    Object prof = freezed,
-    Object materia = freezed,
-    Object aula = freezed,
-    Object giorno = freezed,
-    Object ora = freezed,
-  }) {
-    return _then(_value.copyWith(
-      prof: prof == freezed ? _value.prof : prof as String,
-      materia: materia == freezed ? _value.materia : materia as String,
-      aula: aula == freezed ? _value.aula : aula as String,
-      giorno: giorno == freezed ? _value.giorno : giorno as int,
-      ora: ora == freezed ? _value.ora : ora as int,
-    ));
-  }
-}
-
-abstract class _$OrarioOraCopyWith<$Res> implements $OrarioOraCopyWith<$Res> {
-  factory _$OrarioOraCopyWith(
-          _OrarioOra value, $Res Function(_OrarioOra) then) =
-      __$OrarioOraCopyWithImpl<$Res>;
-  @override
-  $Res call({String prof, String materia, String aula, int giorno, int ora});
-}
-
-class __$OrarioOraCopyWithImpl<$Res> extends _$OrarioOraCopyWithImpl<$Res>
-    implements _$OrarioOraCopyWith<$Res> {
-  __$OrarioOraCopyWithImpl(_OrarioOra _value, $Res Function(_OrarioOra) _then)
-      : super(_value, (v) => _then(v as _OrarioOra));
-
-  @override
-  _OrarioOra get _value => super._value as _OrarioOra;
-
-  @override
-  $Res call({
-    Object prof = freezed,
-    Object materia = freezed,
-    Object aula = freezed,
-    Object giorno = freezed,
-    Object ora = freezed,
-  }) {
-    return _then(_OrarioOra(
-      prof: prof == freezed ? _value.prof : prof as String,
-      materia: materia == freezed ? _value.materia : materia as String,
-      aula: aula == freezed ? _value.aula : aula as String,
-      giorno: giorno == freezed ? _value.giorno : giorno as int,
-      ora: ora == freezed ? _value.ora : ora as int,
-    ));
-  }
-}
 
 @JsonSerializable()
 class _$_OrarioOra implements _OrarioOra {
@@ -170,8 +105,21 @@ class _$_OrarioOra implements _OrarioOra {
       const DeepCollectionEquality().hash(ora);
 
   @override
-  _$OrarioOraCopyWith<_OrarioOra> get copyWith =>
-      __$OrarioOraCopyWithImpl<_OrarioOra>(this, _$identity);
+  _$_OrarioOra copyWith({
+    Object prof = freezed,
+    Object materia = freezed,
+    Object aula = freezed,
+    Object giorno = freezed,
+    Object ora = freezed,
+  }) {
+    return _$_OrarioOra(
+      prof: prof == freezed ? this.prof : prof as String,
+      materia: materia == freezed ? this.materia : materia as String,
+      aula: aula == freezed ? this.aula : aula as String,
+      giorno: giorno == freezed ? this.giorno : giorno as int,
+      ora: ora == freezed ? this.ora : ora as int,
+    );
+  }
 
   @override
   Map<String, dynamic> toJson() {
@@ -200,6 +148,8 @@ abstract class _OrarioOra implements OrarioOra {
   int get giorno;
   @override
   int get ora;
+
   @override
-  _$OrarioOraCopyWith<_OrarioOra> get copyWith;
+  _OrarioOra copyWith(
+      {String prof, String materia, String aula, int giorno, int ora});
 }

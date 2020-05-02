@@ -7,109 +7,98 @@ part of 'user.dart';
 // FreezedGenerator
 // **************************************************************************
 
-T _$identity<T>(T value) => value;
+mixin _$User {
+  String get id;
+  String get firstName;
+  String get lastName;
+
+  User copyWith({String id, String firstName, String lastName});
+}
 
 class _$UserTearOff {
   const _$UserTearOff();
 
-  _User call({@required UserCVId userCVId}) {
+  _User call(
+      {@required String id,
+      @required String firstName,
+      @required String lastName}) {
     return _User(
-      userCVId: userCVId,
+      id: id,
+      firstName: firstName,
+      lastName: lastName,
     );
   }
 }
 
-// ignore: unused_element
 const $User = _$UserTearOff();
 
-mixin _$User {
-  UserCVId get userCVId;
-
-  $UserCopyWith<User> get copyWith;
-}
-
-abstract class $UserCopyWith<$Res> {
-  factory $UserCopyWith(User value, $Res Function(User) then) =
-      _$UserCopyWithImpl<$Res>;
-  $Res call({UserCVId userCVId});
-}
-
-class _$UserCopyWithImpl<$Res> implements $UserCopyWith<$Res> {
-  _$UserCopyWithImpl(this._value, this._then);
-
-  final User _value;
-  // ignore: unused_field
-  final $Res Function(User) _then;
-
-  @override
-  $Res call({
-    Object userCVId = freezed,
-  }) {
-    return _then(_value.copyWith(
-      userCVId: userCVId == freezed ? _value.userCVId : userCVId as UserCVId,
-    ));
-  }
-}
-
-abstract class _$UserCopyWith<$Res> implements $UserCopyWith<$Res> {
-  factory _$UserCopyWith(_User value, $Res Function(_User) then) =
-      __$UserCopyWithImpl<$Res>;
-  @override
-  $Res call({UserCVId userCVId});
-}
-
-class __$UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res>
-    implements _$UserCopyWith<$Res> {
-  __$UserCopyWithImpl(_User _value, $Res Function(_User) _then)
-      : super(_value, (v) => _then(v as _User));
-
-  @override
-  _User get _value => super._value as _User;
-
-  @override
-  $Res call({
-    Object userCVId = freezed,
-  }) {
-    return _then(_User(
-      userCVId: userCVId == freezed ? _value.userCVId : userCVId as UserCVId,
-    ));
-  }
-}
-
 class _$_User implements _User {
-  const _$_User({@required this.userCVId}) : assert(userCVId != null);
+  const _$_User(
+      {@required this.id, @required this.firstName, @required this.lastName})
+      : assert(id != null),
+        assert(firstName != null),
+        assert(lastName != null);
 
   @override
-  final UserCVId userCVId;
+  final String id;
+  @override
+  final String firstName;
+  @override
+  final String lastName;
 
   @override
   String toString() {
-    return 'User(userCVId: $userCVId)';
+    return 'User(id: $id, firstName: $firstName, lastName: $lastName)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is _User &&
-            (identical(other.userCVId, userCVId) ||
+            (identical(other.id, id) ||
+                const DeepCollectionEquality().equals(other.id, id)) &&
+            (identical(other.firstName, firstName) ||
                 const DeepCollectionEquality()
-                    .equals(other.userCVId, userCVId)));
+                    .equals(other.firstName, firstName)) &&
+            (identical(other.lastName, lastName) ||
+                const DeepCollectionEquality()
+                    .equals(other.lastName, lastName)));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(userCVId);
+      runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(id) ^
+      const DeepCollectionEquality().hash(firstName) ^
+      const DeepCollectionEquality().hash(lastName);
 
   @override
-  _$UserCopyWith<_User> get copyWith =>
-      __$UserCopyWithImpl<_User>(this, _$identity);
+  _$_User copyWith({
+    Object id = freezed,
+    Object firstName = freezed,
+    Object lastName = freezed,
+  }) {
+    return _$_User(
+      id: id == freezed ? this.id : id as String,
+      firstName: firstName == freezed ? this.firstName : firstName as String,
+      lastName: lastName == freezed ? this.lastName : lastName as String,
+    );
+  }
 }
 
 abstract class _User implements User {
-  const factory _User({@required UserCVId userCVId}) = _$_User;
+  const factory _User(
+      {@required String id,
+      @required String firstName,
+      @required String lastName}) = _$_User;
 
   @override
-  UserCVId get userCVId;
+  String get id;
   @override
-  _$UserCopyWith<_User> get copyWith;
+  String get firstName;
+  @override
+  String get lastName;
+
+  @override
+  _User copyWith({String id, String firstName, String lastName});
 }

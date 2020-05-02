@@ -7,9 +7,27 @@ part of 'circular_dto.dart';
 // FreezedGenerator
 // **************************************************************************
 
-T _$identity<T>(T value) => value;
 CircularDto _$CircularDtoFromJson(Map<String, dynamic> json) {
   return _CircularDto.fromJson(json);
+}
+
+mixin _$CircularDto {
+  String get filename;
+  String get pubId;
+  String get cntTitle;
+  String get pubDT;
+  bool get cntStatus;
+  bool get isFavourite;
+
+  CircularDto copyWith(
+      {String filename,
+      String pubId,
+      String cntTitle,
+      String pubDT,
+      bool cntStatus,
+      bool isFavourite});
+
+  Map<String, dynamic> toJson();
 }
 
 class _$CircularDtoTearOff {
@@ -33,106 +51,7 @@ class _$CircularDtoTearOff {
   }
 }
 
-// ignore: unused_element
 const $CircularDto = _$CircularDtoTearOff();
-
-mixin _$CircularDto {
-  String get filename;
-  String get pubId;
-  String get cntTitle;
-  String get pubDT;
-  bool get cntStatus;
-  bool get isFavourite;
-
-  Map<String, dynamic> toJson();
-  $CircularDtoCopyWith<CircularDto> get copyWith;
-}
-
-abstract class $CircularDtoCopyWith<$Res> {
-  factory $CircularDtoCopyWith(
-          CircularDto value, $Res Function(CircularDto) then) =
-      _$CircularDtoCopyWithImpl<$Res>;
-  $Res call(
-      {String filename,
-      String pubId,
-      String cntTitle,
-      String pubDT,
-      bool cntStatus,
-      bool isFavourite});
-}
-
-class _$CircularDtoCopyWithImpl<$Res> implements $CircularDtoCopyWith<$Res> {
-  _$CircularDtoCopyWithImpl(this._value, this._then);
-
-  final CircularDto _value;
-  // ignore: unused_field
-  final $Res Function(CircularDto) _then;
-
-  @override
-  $Res call({
-    Object filename = freezed,
-    Object pubId = freezed,
-    Object cntTitle = freezed,
-    Object pubDT = freezed,
-    Object cntStatus = freezed,
-    Object isFavourite = freezed,
-  }) {
-    return _then(_value.copyWith(
-      filename: filename == freezed ? _value.filename : filename as String,
-      pubId: pubId == freezed ? _value.pubId : pubId as String,
-      cntTitle: cntTitle == freezed ? _value.cntTitle : cntTitle as String,
-      pubDT: pubDT == freezed ? _value.pubDT : pubDT as String,
-      cntStatus: cntStatus == freezed ? _value.cntStatus : cntStatus as bool,
-      isFavourite:
-          isFavourite == freezed ? _value.isFavourite : isFavourite as bool,
-    ));
-  }
-}
-
-abstract class _$CircularDtoCopyWith<$Res>
-    implements $CircularDtoCopyWith<$Res> {
-  factory _$CircularDtoCopyWith(
-          _CircularDto value, $Res Function(_CircularDto) then) =
-      __$CircularDtoCopyWithImpl<$Res>;
-  @override
-  $Res call(
-      {String filename,
-      String pubId,
-      String cntTitle,
-      String pubDT,
-      bool cntStatus,
-      bool isFavourite});
-}
-
-class __$CircularDtoCopyWithImpl<$Res> extends _$CircularDtoCopyWithImpl<$Res>
-    implements _$CircularDtoCopyWith<$Res> {
-  __$CircularDtoCopyWithImpl(
-      _CircularDto _value, $Res Function(_CircularDto) _then)
-      : super(_value, (v) => _then(v as _CircularDto));
-
-  @override
-  _CircularDto get _value => super._value as _CircularDto;
-
-  @override
-  $Res call({
-    Object filename = freezed,
-    Object pubId = freezed,
-    Object cntTitle = freezed,
-    Object pubDT = freezed,
-    Object cntStatus = freezed,
-    Object isFavourite = freezed,
-  }) {
-    return _then(_CircularDto(
-      filename: filename == freezed ? _value.filename : filename as String,
-      pubId: pubId == freezed ? _value.pubId : pubId as String,
-      cntTitle: cntTitle == freezed ? _value.cntTitle : cntTitle as String,
-      pubDT: pubDT == freezed ? _value.pubDT : pubDT as String,
-      cntStatus: cntStatus == freezed ? _value.cntStatus : cntStatus as bool,
-      isFavourite:
-          isFavourite == freezed ? _value.isFavourite : isFavourite as bool,
-    ));
-  }
-}
 
 @JsonSerializable()
 class _$_CircularDto implements _CircularDto {
@@ -147,8 +66,7 @@ class _$_CircularDto implements _CircularDto {
         assert(pubId != null),
         assert(cntTitle != null),
         assert(pubDT != null),
-        assert(cntStatus != null),
-        assert(isFavourite != null);
+        assert(cntStatus != null);
 
   factory _$_CircularDto.fromJson(Map<String, dynamic> json) =>
       _$_$_CircularDtoFromJson(json);
@@ -205,8 +123,24 @@ class _$_CircularDto implements _CircularDto {
       const DeepCollectionEquality().hash(isFavourite);
 
   @override
-  _$CircularDtoCopyWith<_CircularDto> get copyWith =>
-      __$CircularDtoCopyWithImpl<_CircularDto>(this, _$identity);
+  _$_CircularDto copyWith({
+    Object filename = freezed,
+    Object pubId = freezed,
+    Object cntTitle = freezed,
+    Object pubDT = freezed,
+    Object cntStatus = freezed,
+    Object isFavourite = freezed,
+  }) {
+    return _$_CircularDto(
+      filename: filename == freezed ? this.filename : filename as String,
+      pubId: pubId == freezed ? this.pubId : pubId as String,
+      cntTitle: cntTitle == freezed ? this.cntTitle : cntTitle as String,
+      pubDT: pubDT == freezed ? this.pubDT : pubDT as String,
+      cntStatus: cntStatus == freezed ? this.cntStatus : cntStatus as bool,
+      isFavourite:
+          isFavourite == freezed ? this.isFavourite : isFavourite as bool,
+    );
+  }
 
   @override
   Map<String, dynamic> toJson() {
@@ -238,6 +172,13 @@ abstract class _CircularDto implements CircularDto {
   bool get cntStatus;
   @override
   bool get isFavourite;
+
   @override
-  _$CircularDtoCopyWith<_CircularDto> get copyWith;
+  _CircularDto copyWith(
+      {String filename,
+      String pubId,
+      String cntTitle,
+      String pubDT,
+      bool cntStatus,
+      bool isFavourite});
 }

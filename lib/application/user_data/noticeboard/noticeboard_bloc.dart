@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:injectable/injectable.dart';
 import 'package:kt_dart/collection.dart';
 
 import '../../../domain/user_data/cv_api_failures.dart';
@@ -13,6 +14,7 @@ part 'noticeboard_bloc.freezed.dart';
 part 'noticeboard_event.dart';
 part 'noticeboard_state.dart';
 
+@injectable
 class NoticeBoardBloc extends Bloc<NoticeBoardEvent, NoticeBoardState> {
   final INoticeBoardRepository _noticeBoardRepository;
 

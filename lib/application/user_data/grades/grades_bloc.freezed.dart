@@ -7,7 +7,43 @@ part of 'grades_bloc.dart';
 // FreezedGenerator
 // **************************************************************************
 
-T _$identity<T>(T value) => value;
+mixin _$GradesEvent {
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result getSmallWidget(),
+    @required Result getFullWidget(),
+    @required Result getGradesOfSubject(String subjectCode),
+    @required
+        Result gradesReceived(
+            Either<CVApiFailure, KtList<Grade>> failureOrGrades),
+  });
+
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result getSmallWidget(),
+    Result getFullWidget(),
+    Result getGradesOfSubject(String subjectCode),
+    Result gradesReceived(Either<CVApiFailure, KtList<Grade>> failureOrGrades),
+    @required Result orElse(),
+  });
+
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result getSmallWidget(_getSmallWidget value),
+    @required Result getFullWidget(_getFullWidget value),
+    @required Result getGradesOfSubject(_getGradesOfSubject value),
+    @required Result gradesReceived(_GradesReceived value),
+  });
+
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result getSmallWidget(_getSmallWidget value),
+    Result getFullWidget(_getFullWidget value),
+    Result getGradesOfSubject(_getGradesOfSubject value),
+    Result gradesReceived(_GradesReceived value),
+    @required Result orElse(),
+  });
+}
 
 class _$GradesEventTearOff {
   const _$GradesEventTearOff();
@@ -34,74 +70,7 @@ class _$GradesEventTearOff {
   }
 }
 
-// ignore: unused_element
 const $GradesEvent = _$GradesEventTearOff();
-
-mixin _$GradesEvent {
-  @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result getSmallWidget(),
-    @required Result getFullWidget(),
-    @required Result getGradesOfSubject(String subjectCode),
-    @required
-        Result gradesReceived(
-            Either<CVApiFailure, KtList<Grade>> failureOrGrades),
-  });
-  @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result getSmallWidget(),
-    Result getFullWidget(),
-    Result getGradesOfSubject(String subjectCode),
-    Result gradesReceived(Either<CVApiFailure, KtList<Grade>> failureOrGrades),
-    @required Result orElse(),
-  });
-  @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result getSmallWidget(_getSmallWidget value),
-    @required Result getFullWidget(_getFullWidget value),
-    @required Result getGradesOfSubject(_getGradesOfSubject value),
-    @required Result gradesReceived(_GradesReceived value),
-  });
-  @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result getSmallWidget(_getSmallWidget value),
-    Result getFullWidget(_getFullWidget value),
-    Result getGradesOfSubject(_getGradesOfSubject value),
-    Result gradesReceived(_GradesReceived value),
-    @required Result orElse(),
-  });
-}
-
-abstract class $GradesEventCopyWith<$Res> {
-  factory $GradesEventCopyWith(
-          GradesEvent value, $Res Function(GradesEvent) then) =
-      _$GradesEventCopyWithImpl<$Res>;
-}
-
-class _$GradesEventCopyWithImpl<$Res> implements $GradesEventCopyWith<$Res> {
-  _$GradesEventCopyWithImpl(this._value, this._then);
-
-  final GradesEvent _value;
-  // ignore: unused_field
-  final $Res Function(GradesEvent) _then;
-}
-
-abstract class _$getSmallWidgetCopyWith<$Res> {
-  factory _$getSmallWidgetCopyWith(
-          _getSmallWidget value, $Res Function(_getSmallWidget) then) =
-      __$getSmallWidgetCopyWithImpl<$Res>;
-}
-
-class __$getSmallWidgetCopyWithImpl<$Res>
-    extends _$GradesEventCopyWithImpl<$Res>
-    implements _$getSmallWidgetCopyWith<$Res> {
-  __$getSmallWidgetCopyWithImpl(
-      _getSmallWidget _value, $Res Function(_getSmallWidget) _then)
-      : super(_value, (v) => _then(v as _getSmallWidget));
-
-  @override
-  _getSmallWidget get _value => super._value as _getSmallWidget;
-}
 
 class _$_getSmallWidget implements _getSmallWidget {
   const _$_getSmallWidget();
@@ -186,22 +155,6 @@ class _$_getSmallWidget implements _getSmallWidget {
 
 abstract class _getSmallWidget implements GradesEvent {
   const factory _getSmallWidget() = _$_getSmallWidget;
-}
-
-abstract class _$getFullWidgetCopyWith<$Res> {
-  factory _$getFullWidgetCopyWith(
-          _getFullWidget value, $Res Function(_getFullWidget) then) =
-      __$getFullWidgetCopyWithImpl<$Res>;
-}
-
-class __$getFullWidgetCopyWithImpl<$Res> extends _$GradesEventCopyWithImpl<$Res>
-    implements _$getFullWidgetCopyWith<$Res> {
-  __$getFullWidgetCopyWithImpl(
-      _getFullWidget _value, $Res Function(_getFullWidget) _then)
-      : super(_value, (v) => _then(v as _getFullWidget));
-
-  @override
-  _getFullWidget get _value => super._value as _getFullWidget;
 }
 
 class _$_getFullWidget implements _getFullWidget {
@@ -289,33 +242,6 @@ abstract class _getFullWidget implements GradesEvent {
   const factory _getFullWidget() = _$_getFullWidget;
 }
 
-abstract class _$getGradesOfSubjectCopyWith<$Res> {
-  factory _$getGradesOfSubjectCopyWith(
-          _getGradesOfSubject value, $Res Function(_getGradesOfSubject) then) =
-      __$getGradesOfSubjectCopyWithImpl<$Res>;
-  $Res call({String subjectCode});
-}
-
-class __$getGradesOfSubjectCopyWithImpl<$Res>
-    extends _$GradesEventCopyWithImpl<$Res>
-    implements _$getGradesOfSubjectCopyWith<$Res> {
-  __$getGradesOfSubjectCopyWithImpl(
-      _getGradesOfSubject _value, $Res Function(_getGradesOfSubject) _then)
-      : super(_value, (v) => _then(v as _getGradesOfSubject));
-
-  @override
-  _getGradesOfSubject get _value => super._value as _getGradesOfSubject;
-
-  @override
-  $Res call({
-    Object subjectCode = freezed,
-  }) {
-    return _then(_getGradesOfSubject(
-      subjectCode == freezed ? _value.subjectCode : subjectCode as String,
-    ));
-  }
-}
-
 class _$_getGradesOfSubject implements _getGradesOfSubject {
   const _$_getGradesOfSubject(this.subjectCode) : assert(subjectCode != null);
 
@@ -341,8 +267,13 @@ class _$_getGradesOfSubject implements _getGradesOfSubject {
       runtimeType.hashCode ^ const DeepCollectionEquality().hash(subjectCode);
 
   @override
-  _$getGradesOfSubjectCopyWith<_getGradesOfSubject> get copyWith =>
-      __$getGradesOfSubjectCopyWithImpl<_getGradesOfSubject>(this, _$identity);
+  _$_getGradesOfSubject copyWith({
+    Object subjectCode = freezed,
+  }) {
+    return _$_getGradesOfSubject(
+      subjectCode == freezed ? this.subjectCode : subjectCode as String,
+    );
+  }
 
   @override
   @optionalTypeArgs
@@ -413,36 +344,8 @@ abstract class _getGradesOfSubject implements GradesEvent {
   const factory _getGradesOfSubject(String subjectCode) = _$_getGradesOfSubject;
 
   String get subjectCode;
-  _$getGradesOfSubjectCopyWith<_getGradesOfSubject> get copyWith;
-}
 
-abstract class _$GradesReceivedCopyWith<$Res> {
-  factory _$GradesReceivedCopyWith(
-          _GradesReceived value, $Res Function(_GradesReceived) then) =
-      __$GradesReceivedCopyWithImpl<$Res>;
-  $Res call({Either<CVApiFailure, KtList<Grade>> failureOrGrades});
-}
-
-class __$GradesReceivedCopyWithImpl<$Res>
-    extends _$GradesEventCopyWithImpl<$Res>
-    implements _$GradesReceivedCopyWith<$Res> {
-  __$GradesReceivedCopyWithImpl(
-      _GradesReceived _value, $Res Function(_GradesReceived) _then)
-      : super(_value, (v) => _then(v as _GradesReceived));
-
-  @override
-  _GradesReceived get _value => super._value as _GradesReceived;
-
-  @override
-  $Res call({
-    Object failureOrGrades = freezed,
-  }) {
-    return _then(_GradesReceived(
-      failureOrGrades == freezed
-          ? _value.failureOrGrades
-          : failureOrGrades as Either<CVApiFailure, KtList<Grade>>,
-    ));
-  }
+  _getGradesOfSubject copyWith({String subjectCode});
 }
 
 class _$_GradesReceived implements _GradesReceived {
@@ -472,8 +375,15 @@ class _$_GradesReceived implements _GradesReceived {
       const DeepCollectionEquality().hash(failureOrGrades);
 
   @override
-  _$GradesReceivedCopyWith<_GradesReceived> get copyWith =>
-      __$GradesReceivedCopyWithImpl<_GradesReceived>(this, _$identity);
+  _$_GradesReceived copyWith({
+    Object failureOrGrades = freezed,
+  }) {
+    return _$_GradesReceived(
+      failureOrGrades == freezed
+          ? this.failureOrGrades
+          : failureOrGrades as Either<CVApiFailure, KtList<Grade>>,
+    );
+  }
 
   @override
   @optionalTypeArgs
@@ -545,7 +455,45 @@ abstract class _GradesReceived implements GradesEvent {
       Either<CVApiFailure, KtList<Grade>> failureOrGrades) = _$_GradesReceived;
 
   Either<CVApiFailure, KtList<Grade>> get failureOrGrades;
-  _$GradesReceivedCopyWith<_GradesReceived> get copyWith;
+
+  _GradesReceived copyWith(
+      {Either<CVApiFailure, KtList<Grade>> failureOrGrades});
+}
+
+mixin _$GradesState {
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result inital(),
+    @required Result loadInProgress(),
+    @required Result loadSuccess(KtList<Grade> grades),
+    @required Result loadFailure(CVApiFailure gradesOrFailure),
+  });
+
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result inital(),
+    Result loadInProgress(),
+    Result loadSuccess(KtList<Grade> grades),
+    Result loadFailure(CVApiFailure gradesOrFailure),
+    @required Result orElse(),
+  });
+
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result inital(Initial value),
+    @required Result loadInProgress(LoadInProgress value),
+    @required Result loadSuccess(LoadSuccess value),
+    @required Result loadFailure(LoadFailure value),
+  });
+
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result inital(Initial value),
+    Result loadInProgress(LoadInProgress value),
+    Result loadSuccess(LoadSuccess value),
+    Result loadFailure(LoadFailure value),
+    @required Result orElse(),
+  });
 }
 
 class _$GradesStateTearOff {
@@ -572,69 +520,7 @@ class _$GradesStateTearOff {
   }
 }
 
-// ignore: unused_element
 const $GradesState = _$GradesStateTearOff();
-
-mixin _$GradesState {
-  @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result inital(),
-    @required Result loadInProgress(),
-    @required Result loadSuccess(KtList<Grade> grades),
-    @required Result loadFailure(CVApiFailure gradesOrFailure),
-  });
-  @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result inital(),
-    Result loadInProgress(),
-    Result loadSuccess(KtList<Grade> grades),
-    Result loadFailure(CVApiFailure gradesOrFailure),
-    @required Result orElse(),
-  });
-  @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result inital(Initial value),
-    @required Result loadInProgress(LoadInProgress value),
-    @required Result loadSuccess(LoadSuccess value),
-    @required Result loadFailure(LoadFailure value),
-  });
-  @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result inital(Initial value),
-    Result loadInProgress(LoadInProgress value),
-    Result loadSuccess(LoadSuccess value),
-    Result loadFailure(LoadFailure value),
-    @required Result orElse(),
-  });
-}
-
-abstract class $GradesStateCopyWith<$Res> {
-  factory $GradesStateCopyWith(
-          GradesState value, $Res Function(GradesState) then) =
-      _$GradesStateCopyWithImpl<$Res>;
-}
-
-class _$GradesStateCopyWithImpl<$Res> implements $GradesStateCopyWith<$Res> {
-  _$GradesStateCopyWithImpl(this._value, this._then);
-
-  final GradesState _value;
-  // ignore: unused_field
-  final $Res Function(GradesState) _then;
-}
-
-abstract class $InitialCopyWith<$Res> {
-  factory $InitialCopyWith(Initial value, $Res Function(Initial) then) =
-      _$InitialCopyWithImpl<$Res>;
-}
-
-class _$InitialCopyWithImpl<$Res> extends _$GradesStateCopyWithImpl<$Res>
-    implements $InitialCopyWith<$Res> {
-  _$InitialCopyWithImpl(Initial _value, $Res Function(Initial) _then)
-      : super(_value, (v) => _then(v as Initial));
-
-  @override
-  Initial get _value => super._value as Initial;
-}
 
 class _$Initial implements Initial {
   const _$Initial();
@@ -717,22 +603,6 @@ class _$Initial implements Initial {
 
 abstract class Initial implements GradesState {
   const factory Initial() = _$Initial;
-}
-
-abstract class $LoadInProgressCopyWith<$Res> {
-  factory $LoadInProgressCopyWith(
-          LoadInProgress value, $Res Function(LoadInProgress) then) =
-      _$LoadInProgressCopyWithImpl<$Res>;
-}
-
-class _$LoadInProgressCopyWithImpl<$Res> extends _$GradesStateCopyWithImpl<$Res>
-    implements $LoadInProgressCopyWith<$Res> {
-  _$LoadInProgressCopyWithImpl(
-      LoadInProgress _value, $Res Function(LoadInProgress) _then)
-      : super(_value, (v) => _then(v as LoadInProgress));
-
-  @override
-  LoadInProgress get _value => super._value as LoadInProgress;
 }
 
 class _$LoadInProgress implements LoadInProgress {
@@ -818,32 +688,6 @@ abstract class LoadInProgress implements GradesState {
   const factory LoadInProgress() = _$LoadInProgress;
 }
 
-abstract class $LoadSuccessCopyWith<$Res> {
-  factory $LoadSuccessCopyWith(
-          LoadSuccess value, $Res Function(LoadSuccess) then) =
-      _$LoadSuccessCopyWithImpl<$Res>;
-  $Res call({KtList<Grade> grades});
-}
-
-class _$LoadSuccessCopyWithImpl<$Res> extends _$GradesStateCopyWithImpl<$Res>
-    implements $LoadSuccessCopyWith<$Res> {
-  _$LoadSuccessCopyWithImpl(
-      LoadSuccess _value, $Res Function(LoadSuccess) _then)
-      : super(_value, (v) => _then(v as LoadSuccess));
-
-  @override
-  LoadSuccess get _value => super._value as LoadSuccess;
-
-  @override
-  $Res call({
-    Object grades = freezed,
-  }) {
-    return _then(LoadSuccess(
-      grades == freezed ? _value.grades : grades as KtList<Grade>,
-    ));
-  }
-}
-
 class _$LoadSuccess implements LoadSuccess {
   const _$LoadSuccess(this.grades) : assert(grades != null);
 
@@ -868,8 +712,13 @@ class _$LoadSuccess implements LoadSuccess {
       runtimeType.hashCode ^ const DeepCollectionEquality().hash(grades);
 
   @override
-  $LoadSuccessCopyWith<LoadSuccess> get copyWith =>
-      _$LoadSuccessCopyWithImpl<LoadSuccess>(this, _$identity);
+  _$LoadSuccess copyWith({
+    Object grades = freezed,
+  }) {
+    return _$LoadSuccess(
+      grades == freezed ? this.grades : grades as KtList<Grade>,
+    );
+  }
 
   @override
   @optionalTypeArgs
@@ -938,47 +787,8 @@ abstract class LoadSuccess implements GradesState {
   const factory LoadSuccess(KtList<Grade> grades) = _$LoadSuccess;
 
   KtList<Grade> get grades;
-  $LoadSuccessCopyWith<LoadSuccess> get copyWith;
-}
 
-abstract class $LoadFailureCopyWith<$Res> {
-  factory $LoadFailureCopyWith(
-          LoadFailure value, $Res Function(LoadFailure) then) =
-      _$LoadFailureCopyWithImpl<$Res>;
-  $Res call({CVApiFailure gradesOrFailure});
-
-  $CVApiFailureCopyWith<$Res> get gradesOrFailure;
-}
-
-class _$LoadFailureCopyWithImpl<$Res> extends _$GradesStateCopyWithImpl<$Res>
-    implements $LoadFailureCopyWith<$Res> {
-  _$LoadFailureCopyWithImpl(
-      LoadFailure _value, $Res Function(LoadFailure) _then)
-      : super(_value, (v) => _then(v as LoadFailure));
-
-  @override
-  LoadFailure get _value => super._value as LoadFailure;
-
-  @override
-  $Res call({
-    Object gradesOrFailure = freezed,
-  }) {
-    return _then(LoadFailure(
-      gradesOrFailure == freezed
-          ? _value.gradesOrFailure
-          : gradesOrFailure as CVApiFailure,
-    ));
-  }
-
-  @override
-  $CVApiFailureCopyWith<$Res> get gradesOrFailure {
-    if (_value.gradesOrFailure == null) {
-      return null;
-    }
-    return $CVApiFailureCopyWith<$Res>(_value.gradesOrFailure, (value) {
-      return _then(_value.copyWith(gradesOrFailure: value));
-    });
-  }
+  LoadSuccess copyWith({KtList<Grade> grades});
 }
 
 class _$LoadFailure implements LoadFailure {
@@ -1007,8 +817,15 @@ class _$LoadFailure implements LoadFailure {
       const DeepCollectionEquality().hash(gradesOrFailure);
 
   @override
-  $LoadFailureCopyWith<LoadFailure> get copyWith =>
-      _$LoadFailureCopyWithImpl<LoadFailure>(this, _$identity);
+  _$LoadFailure copyWith({
+    Object gradesOrFailure = freezed,
+  }) {
+    return _$LoadFailure(
+      gradesOrFailure == freezed
+          ? this.gradesOrFailure
+          : gradesOrFailure as CVApiFailure,
+    );
+  }
 
   @override
   @optionalTypeArgs
@@ -1077,5 +894,6 @@ abstract class LoadFailure implements GradesState {
   const factory LoadFailure(CVApiFailure gradesOrFailure) = _$LoadFailure;
 
   CVApiFailure get gradesOrFailure;
-  $LoadFailureCopyWith<LoadFailure> get copyWith;
+
+  LoadFailure copyWith({CVApiFailure gradesOrFailure});
 }

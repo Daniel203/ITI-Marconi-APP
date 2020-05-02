@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:injectable/injectable.dart';
 import 'package:meta/meta.dart';
 
 import '../../../../domain/user_data/noticeboard/circular.dart';
@@ -12,6 +13,7 @@ part 'favourite_circulars_bloc.freezed.dart';
 part 'favourite_circulars_event.dart';
 part 'favourite_circulars_state.dart';
 
+@injectable
 class FavouriteCircularsBloc
     extends Bloc<FavouriteCircularsEvent, FavouriteCircularsState> {
   final INoticeBoardRepository _noticeBoardRepository;
