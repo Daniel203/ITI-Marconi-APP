@@ -7,37 +7,7 @@ part of 'favourite_circulars_bloc.dart';
 // FreezedGenerator
 // **************************************************************************
 
-mixin _$FavouriteCircularsEvent {
-  Circular get circular;
-
-  FavouriteCircularsEvent copyWith({Circular circular});
-
-  @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result removed(Circular circular),
-    @required Result added(Circular circular),
-  });
-
-  @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result removed(Circular circular),
-    Result added(Circular circular),
-    @required Result orElse(),
-  });
-
-  @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result removed(_Removed value),
-    @required Result added(_Added value),
-  });
-
-  @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result removed(_Removed value),
-    Result added(_Added value),
-    @required Result orElse(),
-  });
-}
+T _$identity<T>(T value) => value;
 
 class _$FavouriteCircularsEventTearOff {
   const _$FavouriteCircularsEventTearOff();
@@ -55,7 +25,104 @@ class _$FavouriteCircularsEventTearOff {
   }
 }
 
+// ignore: unused_element
 const $FavouriteCircularsEvent = _$FavouriteCircularsEventTearOff();
+
+mixin _$FavouriteCircularsEvent {
+  Circular get circular;
+
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result removed(Circular circular),
+    @required Result added(Circular circular),
+  });
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result removed(Circular circular),
+    Result added(Circular circular),
+    @required Result orElse(),
+  });
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result removed(_Removed value),
+    @required Result added(_Added value),
+  });
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result removed(_Removed value),
+    Result added(_Added value),
+    @required Result orElse(),
+  });
+
+  $FavouriteCircularsEventCopyWith<FavouriteCircularsEvent> get copyWith;
+}
+
+abstract class $FavouriteCircularsEventCopyWith<$Res> {
+  factory $FavouriteCircularsEventCopyWith(FavouriteCircularsEvent value,
+          $Res Function(FavouriteCircularsEvent) then) =
+      _$FavouriteCircularsEventCopyWithImpl<$Res>;
+  $Res call({Circular circular});
+
+  $CircularCopyWith<$Res> get circular;
+}
+
+class _$FavouriteCircularsEventCopyWithImpl<$Res>
+    implements $FavouriteCircularsEventCopyWith<$Res> {
+  _$FavouriteCircularsEventCopyWithImpl(this._value, this._then);
+
+  final FavouriteCircularsEvent _value;
+  // ignore: unused_field
+  final $Res Function(FavouriteCircularsEvent) _then;
+
+  @override
+  $Res call({
+    Object circular = freezed,
+  }) {
+    return _then(_value.copyWith(
+      circular: circular == freezed ? _value.circular : circular as Circular,
+    ));
+  }
+
+  @override
+  $CircularCopyWith<$Res> get circular {
+    if (_value.circular == null) {
+      return null;
+    }
+    return $CircularCopyWith<$Res>(_value.circular, (value) {
+      return _then(_value.copyWith(circular: value));
+    });
+  }
+}
+
+abstract class _$RemovedCopyWith<$Res>
+    implements $FavouriteCircularsEventCopyWith<$Res> {
+  factory _$RemovedCopyWith(_Removed value, $Res Function(_Removed) then) =
+      __$RemovedCopyWithImpl<$Res>;
+  @override
+  $Res call({Circular circular});
+
+  @override
+  $CircularCopyWith<$Res> get circular;
+}
+
+class __$RemovedCopyWithImpl<$Res>
+    extends _$FavouriteCircularsEventCopyWithImpl<$Res>
+    implements _$RemovedCopyWith<$Res> {
+  __$RemovedCopyWithImpl(_Removed _value, $Res Function(_Removed) _then)
+      : super(_value, (v) => _then(v as _Removed));
+
+  @override
+  _Removed get _value => super._value as _Removed;
+
+  @override
+  $Res call({
+    Object circular = freezed,
+  }) {
+    return _then(_Removed(
+      circular == freezed ? _value.circular : circular as Circular,
+    ));
+  }
+}
 
 class _$_Removed implements _Removed {
   const _$_Removed(this.circular) : assert(circular != null);
@@ -82,13 +149,8 @@ class _$_Removed implements _Removed {
       runtimeType.hashCode ^ const DeepCollectionEquality().hash(circular);
 
   @override
-  _$_Removed copyWith({
-    Object circular = freezed,
-  }) {
-    return _$_Removed(
-      circular == freezed ? this.circular : circular as Circular,
-    );
-  }
+  _$RemovedCopyWith<_Removed> get copyWith =>
+      __$RemovedCopyWithImpl<_Removed>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -146,9 +208,38 @@ abstract class _Removed implements FavouriteCircularsEvent {
 
   @override
   Circular get circular;
+  @override
+  _$RemovedCopyWith<_Removed> get copyWith;
+}
+
+abstract class _$AddedCopyWith<$Res>
+    implements $FavouriteCircularsEventCopyWith<$Res> {
+  factory _$AddedCopyWith(_Added value, $Res Function(_Added) then) =
+      __$AddedCopyWithImpl<$Res>;
+  @override
+  $Res call({Circular circular});
 
   @override
-  _Removed copyWith({Circular circular});
+  $CircularCopyWith<$Res> get circular;
+}
+
+class __$AddedCopyWithImpl<$Res>
+    extends _$FavouriteCircularsEventCopyWithImpl<$Res>
+    implements _$AddedCopyWith<$Res> {
+  __$AddedCopyWithImpl(_Added _value, $Res Function(_Added) _then)
+      : super(_value, (v) => _then(v as _Added));
+
+  @override
+  _Added get _value => super._value as _Added;
+
+  @override
+  $Res call({
+    Object circular = freezed,
+  }) {
+    return _then(_Added(
+      circular == freezed ? _value.circular : circular as Circular,
+    ));
+  }
 }
 
 class _$_Added implements _Added {
@@ -176,13 +267,8 @@ class _$_Added implements _Added {
       runtimeType.hashCode ^ const DeepCollectionEquality().hash(circular);
 
   @override
-  _$_Added copyWith({
-    Object circular = freezed,
-  }) {
-    return _$_Added(
-      circular == freezed ? this.circular : circular as Circular,
-    );
-  }
+  _$AddedCopyWith<_Added> get copyWith =>
+      __$AddedCopyWithImpl<_Added>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -240,53 +326,8 @@ abstract class _Added implements FavouriteCircularsEvent {
 
   @override
   Circular get circular;
-
   @override
-  _Added copyWith({Circular circular});
-}
-
-mixin _$FavouriteCircularsState {
-  @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result initial(),
-    @required Result actionInProgress(),
-    @required Result removeFailure(NoticeBoardFailure noticeBoardFailure),
-    @required Result addFailure(NoticeBoardFailure noticeBoardFailure),
-    @required Result removeSuccess(),
-    @required Result addSuccess(),
-  });
-
-  @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result initial(),
-    Result actionInProgress(),
-    Result removeFailure(NoticeBoardFailure noticeBoardFailure),
-    Result addFailure(NoticeBoardFailure noticeBoardFailure),
-    Result removeSuccess(),
-    Result addSuccess(),
-    @required Result orElse(),
-  });
-
-  @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result initial(Initial value),
-    @required Result actionInProgress(ActionInProgress value),
-    @required Result removeFailure(DeleteFailures value),
-    @required Result addFailure(AddFailures value),
-    @required Result removeSuccess(RemoveFailures value),
-    @required Result addSuccess(AddSuccess value),
-  });
-
-  @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result initial(Initial value),
-    Result actionInProgress(ActionInProgress value),
-    Result removeFailure(DeleteFailures value),
-    Result addFailure(AddFailures value),
-    Result removeSuccess(RemoveFailures value),
-    Result addSuccess(AddSuccess value),
-    @required Result orElse(),
-  });
+  _$AddedCopyWith<_Added> get copyWith;
 }
 
 class _$FavouriteCircularsStateTearOff {
@@ -321,7 +362,79 @@ class _$FavouriteCircularsStateTearOff {
   }
 }
 
+// ignore: unused_element
 const $FavouriteCircularsState = _$FavouriteCircularsStateTearOff();
+
+mixin _$FavouriteCircularsState {
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result initial(),
+    @required Result actionInProgress(),
+    @required Result removeFailure(NoticeBoardFailure noticeBoardFailure),
+    @required Result addFailure(NoticeBoardFailure noticeBoardFailure),
+    @required Result removeSuccess(),
+    @required Result addSuccess(),
+  });
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result initial(),
+    Result actionInProgress(),
+    Result removeFailure(NoticeBoardFailure noticeBoardFailure),
+    Result addFailure(NoticeBoardFailure noticeBoardFailure),
+    Result removeSuccess(),
+    Result addSuccess(),
+    @required Result orElse(),
+  });
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result initial(Initial value),
+    @required Result actionInProgress(ActionInProgress value),
+    @required Result removeFailure(DeleteFailures value),
+    @required Result addFailure(AddFailures value),
+    @required Result removeSuccess(RemoveFailures value),
+    @required Result addSuccess(AddSuccess value),
+  });
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result initial(Initial value),
+    Result actionInProgress(ActionInProgress value),
+    Result removeFailure(DeleteFailures value),
+    Result addFailure(AddFailures value),
+    Result removeSuccess(RemoveFailures value),
+    Result addSuccess(AddSuccess value),
+    @required Result orElse(),
+  });
+}
+
+abstract class $FavouriteCircularsStateCopyWith<$Res> {
+  factory $FavouriteCircularsStateCopyWith(FavouriteCircularsState value,
+          $Res Function(FavouriteCircularsState) then) =
+      _$FavouriteCircularsStateCopyWithImpl<$Res>;
+}
+
+class _$FavouriteCircularsStateCopyWithImpl<$Res>
+    implements $FavouriteCircularsStateCopyWith<$Res> {
+  _$FavouriteCircularsStateCopyWithImpl(this._value, this._then);
+
+  final FavouriteCircularsState _value;
+  // ignore: unused_field
+  final $Res Function(FavouriteCircularsState) _then;
+}
+
+abstract class $InitialCopyWith<$Res> {
+  factory $InitialCopyWith(Initial value, $Res Function(Initial) then) =
+      _$InitialCopyWithImpl<$Res>;
+}
+
+class _$InitialCopyWithImpl<$Res>
+    extends _$FavouriteCircularsStateCopyWithImpl<$Res>
+    implements $InitialCopyWith<$Res> {
+  _$InitialCopyWithImpl(Initial _value, $Res Function(Initial) _then)
+      : super(_value, (v) => _then(v as Initial));
+
+  @override
+  Initial get _value => super._value as Initial;
+}
 
 class _$Initial implements Initial {
   const _$Initial();
@@ -416,6 +529,23 @@ class _$Initial implements Initial {
 
 abstract class Initial implements FavouriteCircularsState {
   const factory Initial() = _$Initial;
+}
+
+abstract class $ActionInProgressCopyWith<$Res> {
+  factory $ActionInProgressCopyWith(
+          ActionInProgress value, $Res Function(ActionInProgress) then) =
+      _$ActionInProgressCopyWithImpl<$Res>;
+}
+
+class _$ActionInProgressCopyWithImpl<$Res>
+    extends _$FavouriteCircularsStateCopyWithImpl<$Res>
+    implements $ActionInProgressCopyWith<$Res> {
+  _$ActionInProgressCopyWithImpl(
+      ActionInProgress _value, $Res Function(ActionInProgress) _then)
+      : super(_value, (v) => _then(v as ActionInProgress));
+
+  @override
+  ActionInProgress get _value => super._value as ActionInProgress;
 }
 
 class _$ActionInProgress implements ActionInProgress {
@@ -513,6 +643,48 @@ abstract class ActionInProgress implements FavouriteCircularsState {
   const factory ActionInProgress() = _$ActionInProgress;
 }
 
+abstract class $DeleteFailuresCopyWith<$Res> {
+  factory $DeleteFailuresCopyWith(
+          DeleteFailures value, $Res Function(DeleteFailures) then) =
+      _$DeleteFailuresCopyWithImpl<$Res>;
+  $Res call({NoticeBoardFailure noticeBoardFailure});
+
+  $NoticeBoardFailureCopyWith<$Res> get noticeBoardFailure;
+}
+
+class _$DeleteFailuresCopyWithImpl<$Res>
+    extends _$FavouriteCircularsStateCopyWithImpl<$Res>
+    implements $DeleteFailuresCopyWith<$Res> {
+  _$DeleteFailuresCopyWithImpl(
+      DeleteFailures _value, $Res Function(DeleteFailures) _then)
+      : super(_value, (v) => _then(v as DeleteFailures));
+
+  @override
+  DeleteFailures get _value => super._value as DeleteFailures;
+
+  @override
+  $Res call({
+    Object noticeBoardFailure = freezed,
+  }) {
+    return _then(DeleteFailures(
+      noticeBoardFailure == freezed
+          ? _value.noticeBoardFailure
+          : noticeBoardFailure as NoticeBoardFailure,
+    ));
+  }
+
+  @override
+  $NoticeBoardFailureCopyWith<$Res> get noticeBoardFailure {
+    if (_value.noticeBoardFailure == null) {
+      return null;
+    }
+    return $NoticeBoardFailureCopyWith<$Res>(_value.noticeBoardFailure,
+        (value) {
+      return _then(_value.copyWith(noticeBoardFailure: value));
+    });
+  }
+}
+
 class _$DeleteFailures implements DeleteFailures {
   const _$DeleteFailures(this.noticeBoardFailure)
       : assert(noticeBoardFailure != null);
@@ -540,15 +712,8 @@ class _$DeleteFailures implements DeleteFailures {
       const DeepCollectionEquality().hash(noticeBoardFailure);
 
   @override
-  _$DeleteFailures copyWith({
-    Object noticeBoardFailure = freezed,
-  }) {
-    return _$DeleteFailures(
-      noticeBoardFailure == freezed
-          ? this.noticeBoardFailure
-          : noticeBoardFailure as NoticeBoardFailure,
-    );
-  }
+  $DeleteFailuresCopyWith<DeleteFailures> get copyWith =>
+      _$DeleteFailuresCopyWithImpl<DeleteFailures>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -630,8 +795,49 @@ abstract class DeleteFailures implements FavouriteCircularsState {
       _$DeleteFailures;
 
   NoticeBoardFailure get noticeBoardFailure;
+  $DeleteFailuresCopyWith<DeleteFailures> get copyWith;
+}
 
-  DeleteFailures copyWith({NoticeBoardFailure noticeBoardFailure});
+abstract class $AddFailuresCopyWith<$Res> {
+  factory $AddFailuresCopyWith(
+          AddFailures value, $Res Function(AddFailures) then) =
+      _$AddFailuresCopyWithImpl<$Res>;
+  $Res call({NoticeBoardFailure noticeBoardFailure});
+
+  $NoticeBoardFailureCopyWith<$Res> get noticeBoardFailure;
+}
+
+class _$AddFailuresCopyWithImpl<$Res>
+    extends _$FavouriteCircularsStateCopyWithImpl<$Res>
+    implements $AddFailuresCopyWith<$Res> {
+  _$AddFailuresCopyWithImpl(
+      AddFailures _value, $Res Function(AddFailures) _then)
+      : super(_value, (v) => _then(v as AddFailures));
+
+  @override
+  AddFailures get _value => super._value as AddFailures;
+
+  @override
+  $Res call({
+    Object noticeBoardFailure = freezed,
+  }) {
+    return _then(AddFailures(
+      noticeBoardFailure == freezed
+          ? _value.noticeBoardFailure
+          : noticeBoardFailure as NoticeBoardFailure,
+    ));
+  }
+
+  @override
+  $NoticeBoardFailureCopyWith<$Res> get noticeBoardFailure {
+    if (_value.noticeBoardFailure == null) {
+      return null;
+    }
+    return $NoticeBoardFailureCopyWith<$Res>(_value.noticeBoardFailure,
+        (value) {
+      return _then(_value.copyWith(noticeBoardFailure: value));
+    });
+  }
 }
 
 class _$AddFailures implements AddFailures {
@@ -661,15 +867,8 @@ class _$AddFailures implements AddFailures {
       const DeepCollectionEquality().hash(noticeBoardFailure);
 
   @override
-  _$AddFailures copyWith({
-    Object noticeBoardFailure = freezed,
-  }) {
-    return _$AddFailures(
-      noticeBoardFailure == freezed
-          ? this.noticeBoardFailure
-          : noticeBoardFailure as NoticeBoardFailure,
-    );
-  }
+  $AddFailuresCopyWith<AddFailures> get copyWith =>
+      _$AddFailuresCopyWithImpl<AddFailures>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -751,8 +950,24 @@ abstract class AddFailures implements FavouriteCircularsState {
       _$AddFailures;
 
   NoticeBoardFailure get noticeBoardFailure;
+  $AddFailuresCopyWith<AddFailures> get copyWith;
+}
 
-  AddFailures copyWith({NoticeBoardFailure noticeBoardFailure});
+abstract class $RemoveFailuresCopyWith<$Res> {
+  factory $RemoveFailuresCopyWith(
+          RemoveFailures value, $Res Function(RemoveFailures) then) =
+      _$RemoveFailuresCopyWithImpl<$Res>;
+}
+
+class _$RemoveFailuresCopyWithImpl<$Res>
+    extends _$FavouriteCircularsStateCopyWithImpl<$Res>
+    implements $RemoveFailuresCopyWith<$Res> {
+  _$RemoveFailuresCopyWithImpl(
+      RemoveFailures _value, $Res Function(RemoveFailures) _then)
+      : super(_value, (v) => _then(v as RemoveFailures));
+
+  @override
+  RemoveFailures get _value => super._value as RemoveFailures;
 }
 
 class _$RemoveFailures implements RemoveFailures {
@@ -848,6 +1063,22 @@ class _$RemoveFailures implements RemoveFailures {
 
 abstract class RemoveFailures implements FavouriteCircularsState {
   const factory RemoveFailures() = _$RemoveFailures;
+}
+
+abstract class $AddSuccessCopyWith<$Res> {
+  factory $AddSuccessCopyWith(
+          AddSuccess value, $Res Function(AddSuccess) then) =
+      _$AddSuccessCopyWithImpl<$Res>;
+}
+
+class _$AddSuccessCopyWithImpl<$Res>
+    extends _$FavouriteCircularsStateCopyWithImpl<$Res>
+    implements $AddSuccessCopyWith<$Res> {
+  _$AddSuccessCopyWithImpl(AddSuccess _value, $Res Function(AddSuccess) _then)
+      : super(_value, (v) => _then(v as AddSuccess));
+
+  @override
+  AddSuccess get _value => super._value as AddSuccess;
 }
 
 class _$AddSuccess implements AddSuccess {

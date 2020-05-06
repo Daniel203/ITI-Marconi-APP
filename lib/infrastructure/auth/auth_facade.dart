@@ -20,7 +20,8 @@ class AuthFacade extends IAuthFacade {
     final user = await ClasseVivaApiRepository().user();
     return user.fold(
       (f) => left(f),
-      (value) => right(UserDto.fromJson(value as Map<String, dynamic>).toDomain()),
+      (value) { 
+        return right(UserDto.fromJson(value['card'] as Map<String, dynamic>).toDomain()); }
     );
   }
 

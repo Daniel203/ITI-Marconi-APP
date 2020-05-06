@@ -7,20 +7,7 @@ part of 'absence.dart';
 // FreezedGenerator
 // **************************************************************************
 
-mixin _$Absence {
-  String get eventCode;
-  DateTime get eventDate;
-  bool get isJustified;
-  String get justifyReasonCode;
-  String get justifyReasonDescription;
-
-  Absence copyWith(
-      {String eventCode,
-      DateTime eventDate,
-      bool isJustified,
-      String justifyReasonCode,
-      String justifyReasonDescription});
-}
+T _$identity<T>(T value) => value;
 
 class _$AbsenceTearOff {
   const _$AbsenceTearOff();
@@ -41,7 +28,104 @@ class _$AbsenceTearOff {
   }
 }
 
+// ignore: unused_element
 const $Absence = _$AbsenceTearOff();
+
+mixin _$Absence {
+  String get eventCode;
+  DateTime get eventDate;
+  bool get isJustified;
+  String get justifyReasonCode;
+  String get justifyReasonDescription;
+
+  $AbsenceCopyWith<Absence> get copyWith;
+}
+
+abstract class $AbsenceCopyWith<$Res> {
+  factory $AbsenceCopyWith(Absence value, $Res Function(Absence) then) =
+      _$AbsenceCopyWithImpl<$Res>;
+  $Res call(
+      {String eventCode,
+      DateTime eventDate,
+      bool isJustified,
+      String justifyReasonCode,
+      String justifyReasonDescription});
+}
+
+class _$AbsenceCopyWithImpl<$Res> implements $AbsenceCopyWith<$Res> {
+  _$AbsenceCopyWithImpl(this._value, this._then);
+
+  final Absence _value;
+  // ignore: unused_field
+  final $Res Function(Absence) _then;
+
+  @override
+  $Res call({
+    Object eventCode = freezed,
+    Object eventDate = freezed,
+    Object isJustified = freezed,
+    Object justifyReasonCode = freezed,
+    Object justifyReasonDescription = freezed,
+  }) {
+    return _then(_value.copyWith(
+      eventCode: eventCode == freezed ? _value.eventCode : eventCode as String,
+      eventDate:
+          eventDate == freezed ? _value.eventDate : eventDate as DateTime,
+      isJustified:
+          isJustified == freezed ? _value.isJustified : isJustified as bool,
+      justifyReasonCode: justifyReasonCode == freezed
+          ? _value.justifyReasonCode
+          : justifyReasonCode as String,
+      justifyReasonDescription: justifyReasonDescription == freezed
+          ? _value.justifyReasonDescription
+          : justifyReasonDescription as String,
+    ));
+  }
+}
+
+abstract class _$AbsenceCopyWith<$Res> implements $AbsenceCopyWith<$Res> {
+  factory _$AbsenceCopyWith(_Absence value, $Res Function(_Absence) then) =
+      __$AbsenceCopyWithImpl<$Res>;
+  @override
+  $Res call(
+      {String eventCode,
+      DateTime eventDate,
+      bool isJustified,
+      String justifyReasonCode,
+      String justifyReasonDescription});
+}
+
+class __$AbsenceCopyWithImpl<$Res> extends _$AbsenceCopyWithImpl<$Res>
+    implements _$AbsenceCopyWith<$Res> {
+  __$AbsenceCopyWithImpl(_Absence _value, $Res Function(_Absence) _then)
+      : super(_value, (v) => _then(v as _Absence));
+
+  @override
+  _Absence get _value => super._value as _Absence;
+
+  @override
+  $Res call({
+    Object eventCode = freezed,
+    Object eventDate = freezed,
+    Object isJustified = freezed,
+    Object justifyReasonCode = freezed,
+    Object justifyReasonDescription = freezed,
+  }) {
+    return _then(_Absence(
+      eventCode: eventCode == freezed ? _value.eventCode : eventCode as String,
+      eventDate:
+          eventDate == freezed ? _value.eventDate : eventDate as DateTime,
+      isJustified:
+          isJustified == freezed ? _value.isJustified : isJustified as bool,
+      justifyReasonCode: justifyReasonCode == freezed
+          ? _value.justifyReasonCode
+          : justifyReasonCode as String,
+      justifyReasonDescription: justifyReasonDescription == freezed
+          ? _value.justifyReasonDescription
+          : justifyReasonDescription as String,
+    ));
+  }
+}
 
 class _$_Absence implements _Absence {
   const _$_Absence(
@@ -104,26 +188,8 @@ class _$_Absence implements _Absence {
       const DeepCollectionEquality().hash(justifyReasonDescription);
 
   @override
-  _$_Absence copyWith({
-    Object eventCode = freezed,
-    Object eventDate = freezed,
-    Object isJustified = freezed,
-    Object justifyReasonCode = freezed,
-    Object justifyReasonDescription = freezed,
-  }) {
-    return _$_Absence(
-      eventCode: eventCode == freezed ? this.eventCode : eventCode as String,
-      eventDate: eventDate == freezed ? this.eventDate : eventDate as DateTime,
-      isJustified:
-          isJustified == freezed ? this.isJustified : isJustified as bool,
-      justifyReasonCode: justifyReasonCode == freezed
-          ? this.justifyReasonCode
-          : justifyReasonCode as String,
-      justifyReasonDescription: justifyReasonDescription == freezed
-          ? this.justifyReasonDescription
-          : justifyReasonDescription as String,
-    );
-  }
+  _$AbsenceCopyWith<_Absence> get copyWith =>
+      __$AbsenceCopyWithImpl<_Absence>(this, _$identity);
 }
 
 abstract class _Absence implements Absence {
@@ -144,12 +210,6 @@ abstract class _Absence implements Absence {
   String get justifyReasonCode;
   @override
   String get justifyReasonDescription;
-
   @override
-  _Absence copyWith(
-      {String eventCode,
-      DateTime eventDate,
-      bool isJustified,
-      String justifyReasonCode,
-      String justifyReasonDescription});
+  _$AbsenceCopyWith<_Absence> get copyWith;
 }

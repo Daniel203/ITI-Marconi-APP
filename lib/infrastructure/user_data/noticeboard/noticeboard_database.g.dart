@@ -42,6 +42,30 @@ class Circular extends DataClass implements Insertable<Circular> {
           .mapFromDatabaseResponse(data['${effectivePrefix}is_favourite']),
     );
   }
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    if (!nullToAbsent || id != null) {
+      map['id'] = Variable<int>(id);
+    }
+    if (!nullToAbsent || filename != null) {
+      map['filename'] = Variable<String>(filename);
+    }
+    if (!nullToAbsent || title != null) {
+      map['title'] = Variable<String>(title);
+    }
+    if (!nullToAbsent || publicationDate != null) {
+      map['publication_date'] = Variable<DateTime>(publicationDate);
+    }
+    if (!nullToAbsent || isActive != null) {
+      map['is_active'] = Variable<bool>(isActive);
+    }
+    if (!nullToAbsent || isFavourite != null) {
+      map['is_favourite'] = Variable<bool>(isFavourite);
+    }
+    return map;
+  }
+
   factory Circular.fromJson(Map<String, dynamic> json,
       {ValueSerializer serializer}) {
     serializer ??= moorRuntimeOptions.defaultSerializer;
@@ -65,27 +89,6 @@ class Circular extends DataClass implements Insertable<Circular> {
       'isActive': serializer.toJson<bool>(isActive),
       'isFavourite': serializer.toJson<bool>(isFavourite),
     };
-  }
-
-  @override
-  CircularsCompanion createCompanion(bool nullToAbsent) {
-    return CircularsCompanion(
-      id: id == null && nullToAbsent ? const Value.absent() : Value(id),
-      filename: filename == null && nullToAbsent
-          ? const Value.absent()
-          : Value(filename),
-      title:
-          title == null && nullToAbsent ? const Value.absent() : Value(title),
-      publicationDate: publicationDate == null && nullToAbsent
-          ? const Value.absent()
-          : Value(publicationDate),
-      isActive: isActive == null && nullToAbsent
-          ? const Value.absent()
-          : Value(isActive),
-      isFavourite: isFavourite == null && nullToAbsent
-          ? const Value.absent()
-          : Value(isFavourite),
-    );
   }
 
   Circular copyWith(
@@ -153,17 +156,34 @@ class CircularsCompanion extends UpdateCompanion<Circular> {
     this.isFavourite = const Value.absent(),
   });
   CircularsCompanion.insert({
-    @required int id,
+    this.id = const Value.absent(),
     @required String filename,
     @required String title,
     @required DateTime publicationDate,
     @required bool isActive,
     this.isFavourite = const Value.absent(),
-  })  : id = Value(id),
-        filename = Value(filename),
+  })  : filename = Value(filename),
         title = Value(title),
         publicationDate = Value(publicationDate),
         isActive = Value(isActive);
+  static Insertable<Circular> custom({
+    Expression<int> id,
+    Expression<String> filename,
+    Expression<String> title,
+    Expression<DateTime> publicationDate,
+    Expression<bool> isActive,
+    Expression<bool> isFavourite,
+  }) {
+    return RawValuesInsertable({
+      if (id != null) 'id': id,
+      if (filename != null) 'filename': filename,
+      if (title != null) 'title': title,
+      if (publicationDate != null) 'publication_date': publicationDate,
+      if (isActive != null) 'is_active': isActive,
+      if (isFavourite != null) 'is_favourite': isFavourite,
+    });
+  }
+
   CircularsCompanion copyWith(
       {Value<int> id,
       Value<String> filename,
@@ -179,6 +199,30 @@ class CircularsCompanion extends UpdateCompanion<Circular> {
       isActive: isActive ?? this.isActive,
       isFavourite: isFavourite ?? this.isFavourite,
     );
+  }
+
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    if (id.present) {
+      map['id'] = Variable<int>(id.value);
+    }
+    if (filename.present) {
+      map['filename'] = Variable<String>(filename.value);
+    }
+    if (title.present) {
+      map['title'] = Variable<String>(title.value);
+    }
+    if (publicationDate.present) {
+      map['publication_date'] = Variable<DateTime>(publicationDate.value);
+    }
+    if (isActive.present) {
+      map['is_active'] = Variable<bool>(isActive.value);
+    }
+    if (isFavourite.present) {
+      map['is_favourite'] = Variable<bool>(isFavourite.value);
+    }
+    return map;
   }
 }
 
@@ -270,43 +314,44 @@ class $CircularsTable extends Circulars
   @override
   final String actualTableName = 'circulars';
   @override
-  VerificationContext validateIntegrity(CircularsCompanion d,
+  VerificationContext validateIntegrity(Insertable<Circular> instance,
       {bool isInserting = false}) {
     final context = VerificationContext();
-    if (d.id.present) {
-      context.handle(_idMeta, id.isAcceptableValue(d.id.value, _idMeta));
-    } else if (isInserting) {
-      context.missing(_idMeta);
+    final data = instance.toColumns(true);
+    if (data.containsKey('id')) {
+      context.handle(_idMeta, id.isAcceptableOrUnknown(data['id'], _idMeta));
     }
-    if (d.filename.present) {
+    if (data.containsKey('filename')) {
       context.handle(_filenameMeta,
-          filename.isAcceptableValue(d.filename.value, _filenameMeta));
+          filename.isAcceptableOrUnknown(data['filename'], _filenameMeta));
     } else if (isInserting) {
       context.missing(_filenameMeta);
     }
-    if (d.title.present) {
+    if (data.containsKey('title')) {
       context.handle(
-          _titleMeta, title.isAcceptableValue(d.title.value, _titleMeta));
+          _titleMeta, title.isAcceptableOrUnknown(data['title'], _titleMeta));
     } else if (isInserting) {
       context.missing(_titleMeta);
     }
-    if (d.publicationDate.present) {
+    if (data.containsKey('publication_date')) {
       context.handle(
           _publicationDateMeta,
-          publicationDate.isAcceptableValue(
-              d.publicationDate.value, _publicationDateMeta));
+          publicationDate.isAcceptableOrUnknown(
+              data['publication_date'], _publicationDateMeta));
     } else if (isInserting) {
       context.missing(_publicationDateMeta);
     }
-    if (d.isActive.present) {
+    if (data.containsKey('is_active')) {
       context.handle(_isActiveMeta,
-          isActive.isAcceptableValue(d.isActive.value, _isActiveMeta));
+          isActive.isAcceptableOrUnknown(data['is_active'], _isActiveMeta));
     } else if (isInserting) {
       context.missing(_isActiveMeta);
     }
-    if (d.isFavourite.present) {
-      context.handle(_isFavouriteMeta,
-          isFavourite.isAcceptableValue(d.isFavourite.value, _isFavouriteMeta));
+    if (data.containsKey('is_favourite')) {
+      context.handle(
+          _isFavouriteMeta,
+          isFavourite.isAcceptableOrUnknown(
+              data['is_favourite'], _isFavouriteMeta));
     }
     return context;
   }
@@ -317,31 +362,6 @@ class $CircularsTable extends Circulars
   Circular map(Map<String, dynamic> data, {String tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : null;
     return Circular.fromData(data, _db, prefix: effectivePrefix);
-  }
-
-  @override
-  Map<String, Variable> entityToSql(CircularsCompanion d) {
-    final map = <String, Variable>{};
-    if (d.id.present) {
-      map['id'] = Variable<int, IntType>(d.id.value);
-    }
-    if (d.filename.present) {
-      map['filename'] = Variable<String, StringType>(d.filename.value);
-    }
-    if (d.title.present) {
-      map['title'] = Variable<String, StringType>(d.title.value);
-    }
-    if (d.publicationDate.present) {
-      map['publication_date'] =
-          Variable<DateTime, DateTimeType>(d.publicationDate.value);
-    }
-    if (d.isActive.present) {
-      map['is_active'] = Variable<bool, BoolType>(d.isActive.value);
-    }
-    if (d.isFavourite.present) {
-      map['is_favourite'] = Variable<bool, BoolType>(d.isFavourite.value);
-    }
-    return map;
   }
 
   @override
@@ -368,5 +388,5 @@ abstract class _$AppDatabase extends GeneratedDatabase {
 // **************************************************************************
 
 mixin _$CircularDaoMixin on DatabaseAccessor<AppDatabase> {
-  $CircularsTable get circulars => db.circulars;
+  $CircularsTable get circulars => attachedDatabase.circulars;
 }

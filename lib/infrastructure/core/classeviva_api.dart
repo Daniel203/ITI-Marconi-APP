@@ -33,7 +33,6 @@ class ClasseVivaApiRepository extends IClasseVivaApi {
     String userCVId,
     String userCVPassword,
   }) async {
-    print("sing in in classeviva api singleton requested");
     final String url = "$_baseApiUrl/auth/login/";
     final Map<String, String> headers = {
       "User-Agent": "zorro/1.0",
@@ -42,18 +41,12 @@ class ClasseVivaApiRepository extends IClasseVivaApi {
     };
     final String values = jsonEncode({'uid': userCVId, 'pass': userCVPassword});
 
-    print("values : ${values.toString()}");
-
     final response = await http.post(url, headers: headers, body: values);
-
-    print("response : ${response.statusCode.toString()}");
-    print("body: ${json.decode(response.body).toString()}");
-
 
     switch (response.statusCode) {
       case 200:
         final body = json.decode(response.body);
-        _id = userCVId;
+        _id = userCVId.substring(1, userCVId.length);
         _token = body['token'].toString();
         return right(unit);
         break;
@@ -73,21 +66,26 @@ class ClasseVivaApiRepository extends IClasseVivaApi {
   }
 
   Future<Either<CVApiFailure, dynamic>> _request(List args) async {
-    print("_request in ClasseVivaApi");
     final buffer = StringBuffer("$_baseApiUrl/students/$_id");
     for (final arg in args) {
       buffer.write("/$arg");
     }
     final String url = buffer.toString();
-    print("URL IN _REQUEST::::::::::::::::::::::: ${url.toString()}");
     final Map<String, String> headers = {
       "User-Agent": "zorro/1.0",
       "Z-Dev-Apikey": "+zorro+",
       "Z-Auth-Token": _token,
       "Content-Type": "application/json"
     };
+    print("requrest arguments : ");
+    print(args.toString());
+
+    print(url);
 
     final response = await http.get(url, headers: headers);
+
+    print("response:");
+    print(response.body.toString());
 
     switch (response.statusCode) {
       case 200:

@@ -41,4 +41,18 @@ class SubjectsColors {
     "TPT":  Color(0xff8c6b00),
     "TRG":  Color(0xff525050),
   };
+
+  Color getColorForSubject(String subject, Brightness brightness) {
+    String formattedSubject;
+
+    if (subject.startsWith("L") && subject.length >= 4) {
+      formattedSubject = subject.substring(1, subject.length);
+    } else {
+      formattedSubject = subject;
+    }
+
+    final Color color = subjectsColors[formattedSubject];
+
+    return brightness == Brightness.light ? color.withOpacity(0.5) : color;
+  }
 }

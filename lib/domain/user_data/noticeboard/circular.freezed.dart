@@ -7,22 +7,7 @@ part of 'circular.dart';
 // FreezedGenerator
 // **************************************************************************
 
-mixin _$Circular {
-  String get filename;
-  int get id;
-  String get title;
-  DateTime get publicationDate;
-  bool get isActive;
-  bool get isFavourite;
-
-  Circular copyWith(
-      {String filename,
-      int id,
-      String title,
-      DateTime publicationDate,
-      bool isActive,
-      bool isFavourite});
-}
+T _$identity<T>(T value) => value;
 
 class _$CircularTearOff {
   const _$CircularTearOff();
@@ -45,7 +30,105 @@ class _$CircularTearOff {
   }
 }
 
+// ignore: unused_element
 const $Circular = _$CircularTearOff();
+
+mixin _$Circular {
+  String get filename;
+  int get id;
+  String get title;
+  DateTime get publicationDate;
+  bool get isActive;
+  bool get isFavourite;
+
+  $CircularCopyWith<Circular> get copyWith;
+}
+
+abstract class $CircularCopyWith<$Res> {
+  factory $CircularCopyWith(Circular value, $Res Function(Circular) then) =
+      _$CircularCopyWithImpl<$Res>;
+  $Res call(
+      {String filename,
+      int id,
+      String title,
+      DateTime publicationDate,
+      bool isActive,
+      bool isFavourite});
+}
+
+class _$CircularCopyWithImpl<$Res> implements $CircularCopyWith<$Res> {
+  _$CircularCopyWithImpl(this._value, this._then);
+
+  final Circular _value;
+  // ignore: unused_field
+  final $Res Function(Circular) _then;
+
+  @override
+  $Res call({
+    Object filename = freezed,
+    Object id = freezed,
+    Object title = freezed,
+    Object publicationDate = freezed,
+    Object isActive = freezed,
+    Object isFavourite = freezed,
+  }) {
+    return _then(_value.copyWith(
+      filename: filename == freezed ? _value.filename : filename as String,
+      id: id == freezed ? _value.id : id as int,
+      title: title == freezed ? _value.title : title as String,
+      publicationDate: publicationDate == freezed
+          ? _value.publicationDate
+          : publicationDate as DateTime,
+      isActive: isActive == freezed ? _value.isActive : isActive as bool,
+      isFavourite:
+          isFavourite == freezed ? _value.isFavourite : isFavourite as bool,
+    ));
+  }
+}
+
+abstract class _$CircularCopyWith<$Res> implements $CircularCopyWith<$Res> {
+  factory _$CircularCopyWith(_Circular value, $Res Function(_Circular) then) =
+      __$CircularCopyWithImpl<$Res>;
+  @override
+  $Res call(
+      {String filename,
+      int id,
+      String title,
+      DateTime publicationDate,
+      bool isActive,
+      bool isFavourite});
+}
+
+class __$CircularCopyWithImpl<$Res> extends _$CircularCopyWithImpl<$Res>
+    implements _$CircularCopyWith<$Res> {
+  __$CircularCopyWithImpl(_Circular _value, $Res Function(_Circular) _then)
+      : super(_value, (v) => _then(v as _Circular));
+
+  @override
+  _Circular get _value => super._value as _Circular;
+
+  @override
+  $Res call({
+    Object filename = freezed,
+    Object id = freezed,
+    Object title = freezed,
+    Object publicationDate = freezed,
+    Object isActive = freezed,
+    Object isFavourite = freezed,
+  }) {
+    return _then(_Circular(
+      filename: filename == freezed ? _value.filename : filename as String,
+      id: id == freezed ? _value.id : id as int,
+      title: title == freezed ? _value.title : title as String,
+      publicationDate: publicationDate == freezed
+          ? _value.publicationDate
+          : publicationDate as DateTime,
+      isActive: isActive == freezed ? _value.isActive : isActive as bool,
+      isFavourite:
+          isFavourite == freezed ? _value.isFavourite : isFavourite as bool,
+    ));
+  }
+}
 
 class _$_Circular with DiagnosticableTreeMixin implements _Circular {
   const _$_Circular(
@@ -126,26 +209,8 @@ class _$_Circular with DiagnosticableTreeMixin implements _Circular {
       const DeepCollectionEquality().hash(isFavourite);
 
   @override
-  _$_Circular copyWith({
-    Object filename = freezed,
-    Object id = freezed,
-    Object title = freezed,
-    Object publicationDate = freezed,
-    Object isActive = freezed,
-    Object isFavourite = freezed,
-  }) {
-    return _$_Circular(
-      filename: filename == freezed ? this.filename : filename as String,
-      id: id == freezed ? this.id : id as int,
-      title: title == freezed ? this.title : title as String,
-      publicationDate: publicationDate == freezed
-          ? this.publicationDate
-          : publicationDate as DateTime,
-      isActive: isActive == freezed ? this.isActive : isActive as bool,
-      isFavourite:
-          isFavourite == freezed ? this.isFavourite : isFavourite as bool,
-    );
-  }
+  _$CircularCopyWith<_Circular> get copyWith =>
+      __$CircularCopyWithImpl<_Circular>(this, _$identity);
 }
 
 abstract class _Circular implements Circular {
@@ -169,13 +234,6 @@ abstract class _Circular implements Circular {
   bool get isActive;
   @override
   bool get isFavourite;
-
   @override
-  _Circular copyWith(
-      {String filename,
-      int id,
-      String title,
-      DateTime publicationDate,
-      bool isActive,
-      bool isFavourite});
+  _$CircularCopyWith<_Circular> get copyWith;
 }

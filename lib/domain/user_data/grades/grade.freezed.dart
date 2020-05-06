@@ -7,24 +7,7 @@ part of 'grade.dart';
 // FreezedGenerator
 // **************************************************************************
 
-mixin _$Grade {
-  double get decimalValue;
-  DateTime get eventDate;
-  String get subjectCode;
-  GradeColor get color;
-  String get testType;
-  String get notes;
-  bool get isCancelled;
-
-  Grade copyWith(
-      {double decimalValue,
-      DateTime eventDate,
-      String subjectCode,
-      GradeColor color,
-      String testType,
-      String notes,
-      bool isCancelled});
-}
+T _$identity<T>(T value) => value;
 
 class _$GradeTearOff {
   const _$GradeTearOff();
@@ -49,7 +32,116 @@ class _$GradeTearOff {
   }
 }
 
+// ignore: unused_element
 const $Grade = _$GradeTearOff();
+
+mixin _$Grade {
+  double get decimalValue;
+  DateTime get eventDate;
+  String get subjectCode;
+  GradeColor get color;
+  String get testType;
+  String get notes;
+  bool get isCancelled;
+
+  $GradeCopyWith<Grade> get copyWith;
+}
+
+abstract class $GradeCopyWith<$Res> {
+  factory $GradeCopyWith(Grade value, $Res Function(Grade) then) =
+      _$GradeCopyWithImpl<$Res>;
+  $Res call(
+      {double decimalValue,
+      DateTime eventDate,
+      String subjectCode,
+      GradeColor color,
+      String testType,
+      String notes,
+      bool isCancelled});
+}
+
+class _$GradeCopyWithImpl<$Res> implements $GradeCopyWith<$Res> {
+  _$GradeCopyWithImpl(this._value, this._then);
+
+  final Grade _value;
+  // ignore: unused_field
+  final $Res Function(Grade) _then;
+
+  @override
+  $Res call({
+    Object decimalValue = freezed,
+    Object eventDate = freezed,
+    Object subjectCode = freezed,
+    Object color = freezed,
+    Object testType = freezed,
+    Object notes = freezed,
+    Object isCancelled = freezed,
+  }) {
+    return _then(_value.copyWith(
+      decimalValue: decimalValue == freezed
+          ? _value.decimalValue
+          : decimalValue as double,
+      eventDate:
+          eventDate == freezed ? _value.eventDate : eventDate as DateTime,
+      subjectCode:
+          subjectCode == freezed ? _value.subjectCode : subjectCode as String,
+      color: color == freezed ? _value.color : color as GradeColor,
+      testType: testType == freezed ? _value.testType : testType as String,
+      notes: notes == freezed ? _value.notes : notes as String,
+      isCancelled:
+          isCancelled == freezed ? _value.isCancelled : isCancelled as bool,
+    ));
+  }
+}
+
+abstract class _$GradeCopyWith<$Res> implements $GradeCopyWith<$Res> {
+  factory _$GradeCopyWith(_Grade value, $Res Function(_Grade) then) =
+      __$GradeCopyWithImpl<$Res>;
+  @override
+  $Res call(
+      {double decimalValue,
+      DateTime eventDate,
+      String subjectCode,
+      GradeColor color,
+      String testType,
+      String notes,
+      bool isCancelled});
+}
+
+class __$GradeCopyWithImpl<$Res> extends _$GradeCopyWithImpl<$Res>
+    implements _$GradeCopyWith<$Res> {
+  __$GradeCopyWithImpl(_Grade _value, $Res Function(_Grade) _then)
+      : super(_value, (v) => _then(v as _Grade));
+
+  @override
+  _Grade get _value => super._value as _Grade;
+
+  @override
+  $Res call({
+    Object decimalValue = freezed,
+    Object eventDate = freezed,
+    Object subjectCode = freezed,
+    Object color = freezed,
+    Object testType = freezed,
+    Object notes = freezed,
+    Object isCancelled = freezed,
+  }) {
+    return _then(_Grade(
+      decimalValue: decimalValue == freezed
+          ? _value.decimalValue
+          : decimalValue as double,
+      eventDate:
+          eventDate == freezed ? _value.eventDate : eventDate as DateTime,
+      subjectCode:
+          subjectCode == freezed ? _value.subjectCode : subjectCode as String,
+      color: color == freezed ? _value.color : color as GradeColor,
+      testType: testType == freezed ? _value.testType : testType as String,
+      notes: notes == freezed ? _value.notes : notes as String,
+      isCancelled:
+          isCancelled == freezed ? _value.isCancelled : isCancelled as bool,
+    ));
+  }
+}
 
 class _$_Grade with DiagnosticableTreeMixin implements _Grade {
   const _$_Grade(
@@ -139,28 +231,8 @@ class _$_Grade with DiagnosticableTreeMixin implements _Grade {
       const DeepCollectionEquality().hash(isCancelled);
 
   @override
-  _$_Grade copyWith({
-    Object decimalValue = freezed,
-    Object eventDate = freezed,
-    Object subjectCode = freezed,
-    Object color = freezed,
-    Object testType = freezed,
-    Object notes = freezed,
-    Object isCancelled = freezed,
-  }) {
-    return _$_Grade(
-      decimalValue:
-          decimalValue == freezed ? this.decimalValue : decimalValue as double,
-      eventDate: eventDate == freezed ? this.eventDate : eventDate as DateTime,
-      subjectCode:
-          subjectCode == freezed ? this.subjectCode : subjectCode as String,
-      color: color == freezed ? this.color : color as GradeColor,
-      testType: testType == freezed ? this.testType : testType as String,
-      notes: notes == freezed ? this.notes : notes as String,
-      isCancelled:
-          isCancelled == freezed ? this.isCancelled : isCancelled as bool,
-    );
-  }
+  _$GradeCopyWith<_Grade> get copyWith =>
+      __$GradeCopyWithImpl<_Grade>(this, _$identity);
 }
 
 abstract class _Grade implements Grade {
@@ -187,14 +259,6 @@ abstract class _Grade implements Grade {
   String get notes;
   @override
   bool get isCancelled;
-
   @override
-  _Grade copyWith(
-      {double decimalValue,
-      DateTime eventDate,
-      String subjectCode,
-      GradeColor color,
-      String testType,
-      String notes,
-      bool isCancelled});
+  _$GradeCopyWith<_Grade> get copyWith;
 }

@@ -1,5 +1,4 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:marconi_app/domain/auth/value_objects.dart';
 
 part 'user.freezed.dart';
 

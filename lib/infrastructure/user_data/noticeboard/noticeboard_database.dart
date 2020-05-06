@@ -30,7 +30,8 @@ class AppDatabase extends _$AppDatabase {
 @UseDao(tables: [Circulars])
 class CircularDao extends DatabaseAccessor<AppDatabase>
     with _$CircularDaoMixin {
-  final AppDatabase db;
+ 
+ final AppDatabase db;
 
   CircularDao(this.db) : super(db);
 

@@ -1,0 +1,173 @@
+import 'package:flutter/material.dart';
+import 'package:kt_dart/collection.dart';
+
+import '../../../../domain/orario/orario_ora.dart';
+import '../../../theme/constraints.dart';
+import '../../../theme/subjects_colors.dart';
+
+class OrarioDayView extends StatelessWidget {
+  final KtList<OrarioOra> orario;
+  final double containerHeight;
+
+  const OrarioDayView({
+    Key key,
+    @required this.orario,
+    @required this.containerHeight,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    final int numeroOre = orario.last().ora;
+
+    final Map<String, double> dimensions = {
+      'containerHeight': containerHeight,
+      'rowHeight': (numeroOre >= 6) ? containerHeight / 8 : containerHeight / 7,
+      'hourNumberIndicatorWidth': MediaQuery.of(context).size.width * 0.15,
+      'hourInformationsWidth': MediaQuery.of(context).size.width * 0.75,
+    };
+
+    return Container(
+      height: dimensions['containerHeight'],
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: _orarioDayUI(orario, context, dimensions),
+      ),
+    );
+  }
+}
+
+List<Widget> _orarioDayUI(
+  KtList<OrarioOra> orario,
+  BuildContext context,
+  Map<String, double> dimensions,
+) {
+  final List<Widget> orarioWidgets = [];
+  final KtList<OrarioOra> parsedOrario = _parseOrario(orario);
+
+  for (final OrarioOra orarioOra in parsedOrario.iter) {
+    orarioWidgets.add(
+      Container(
+        height: dimensions['rowHeight'],
+        child: Row(
+          children: <Widget>[
+            _hourNumberIndicator(orarioOra.ora, context, dimensions),
+            _hourInformations(orarioOra, context, dimensions),
+          ],
+        ),
+      ),
+    );
+  }
+
+  return orarioWidgets;
+}
+
+KtList<OrarioOra> _parseOrario(KtList<OrarioOra> orario) {
+  final List<OrarioOra> parsedOrario = [];
+  final List<int> parsedHours = [];
+
+  for (final OrarioOra orarioOra in orario.iter) {
+    if (parsedHours.contains(orarioOra.ora)) {
+      final OrarioOra previousHour = parsedOrario[orarioOra.ora - 1];
+      parsedOrario[orarioOra.ora - 1] =
+          parsedOrario[orarioOra.ora - 1].copyWith(
+        prof: "${previousHour.prof},${orarioOra.prof}",
+      );
+    } else {
+      parsedOrario.add(orarioOra);
+      parsedHours.add(orarioOra.ora);
+    }
+  }
+  return parsedOrario.toImmutableList();
+}
+
+Widget _hourNumberIndicator(
+    int hourNumber, BuildContext context, Map<String, double> dimensions) {
+  return Container(
+    width: dimensions['hourNumberIndicatorWidth'],
+    decoration: BoxDecoration(
+      color: Theme.of(context).primaryColorLight,
+      shape: BoxShape.circle,
+    ),
+    child: Center(
+      child: Text(
+        hourNumber.toString(),
+        style: Theme.of(context).textTheme.title,
+      ),
+    ),
+  );
+}
+
+Widget _hourInformations(
+    OrarioOra orarioOra, BuildContext context, Map<String, double> dimensions) {
+  return Container(
+    width: dimensions['hourInformationsWidth'],
+    decoration: BoxDecoration(
+      color: Theme.of(context).primaryColorLight,
+      borderRadius: AppConstraints.boxRadius,
+    ),
+    child: Row(
+      children: <Widget>[
+        Column(
+          children: <Widget>[
+            _hourSubjectInfoUI(orarioOra.materia, context, dimensions),
+          ],
+        ),
+        const Spacer(),
+        Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            _hourProfAndClassroomInfoUI(
+                orarioOra.aula, orarioOra.prof, context),
+          ],
+        ),
+        const Spacer(),
+      ],
+    ),
+  );
+}
+
+Widget _hourProfAndClassroomInfoUI(
+    String aula, String professore, BuildContext context) {
+  return Column(
+    crossAxisAlignment: CrossAxisAlignment.center,
+    mainAxisAlignment: MainAxisAlignment.center,
+    children: <Widget>[
+      Text(
+        "$aula",
+        style: Theme.of(context).textTheme.body2,
+      ),
+      Text(
+        "${_formatProfessorSurname(professore)}",
+        style: Theme.of(context).textTheme.body2,
+      ),
+    ],
+  );
+}
+
+Widget _hourSubjectInfoUI(
+    String materia, BuildContext context, Map<String, double> dimensions) {
+  return Container(
+    height: dimensions['rowHeight'],
+    width: dimensions['rowHeight'],
+    decoration: BoxDecoration(
+      color: SubjectsColors()
+          .getColorForSubject(materia, Theme.of(context).brightness),
+      shape: BoxShape.circle,
+    ),
+    child: Center(
+      child: Text(
+        materia,
+        style: Theme.of(context).textTheme.body2,
+      ),
+    ),
+  );
+}
+
+String _formatProfessorSurname(String professore) {
+  if (professore.contains(",")) {
+    final List profNameAndSurnameSplitted =
+        (professore.split(",").join(" ")).split(" ");
+    return "${profNameAndSurnameSplitted[0]}, ${profNameAndSurnameSplitted[2]}";
+  }
+  return professore.split(" ")[0];
+}

@@ -7,40 +7,7 @@ part of 'planner_bloc.dart';
 // FreezedGenerator
 // **************************************************************************
 
-mixin _$PlannerEvent {
-  @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result getSmallWidget(),
-    @required Result getFullWidget(),
-    @required
-        Result plannerReceived(
-            Either<CVApiFailure, KtList<PlannerElement>> failureOrPlanner),
-  });
-
-  @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result getSmallWidget(),
-    Result getFullWidget(),
-    Result plannerReceived(
-        Either<CVApiFailure, KtList<PlannerElement>> failureOrPlanner),
-    @required Result orElse(),
-  });
-
-  @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result getSmallWidget(GetSmallWidget value),
-    @required Result getFullWidget(GetFullWidget value),
-    @required Result plannerReceived(PlannerReceived value),
-  });
-
-  @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result getSmallWidget(GetSmallWidget value),
-    Result getFullWidget(GetFullWidget value),
-    Result plannerReceived(PlannerReceived value),
-    @required Result orElse(),
-  });
-}
+T _$identity<T>(T value) => value;
 
 class _$PlannerEventTearOff {
   const _$PlannerEventTearOff();
@@ -61,7 +28,71 @@ class _$PlannerEventTearOff {
   }
 }
 
+// ignore: unused_element
 const $PlannerEvent = _$PlannerEventTearOff();
+
+mixin _$PlannerEvent {
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result getSmallWidget(),
+    @required Result getFullWidget(),
+    @required
+        Result plannerReceived(
+            Either<CVApiFailure, KtList<PlannerElement>> failureOrPlanner),
+  });
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result getSmallWidget(),
+    Result getFullWidget(),
+    Result plannerReceived(
+        Either<CVApiFailure, KtList<PlannerElement>> failureOrPlanner),
+    @required Result orElse(),
+  });
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result getSmallWidget(GetSmallWidget value),
+    @required Result getFullWidget(GetFullWidget value),
+    @required Result plannerReceived(PlannerReceived value),
+  });
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result getSmallWidget(GetSmallWidget value),
+    Result getFullWidget(GetFullWidget value),
+    Result plannerReceived(PlannerReceived value),
+    @required Result orElse(),
+  });
+}
+
+abstract class $PlannerEventCopyWith<$Res> {
+  factory $PlannerEventCopyWith(
+          PlannerEvent value, $Res Function(PlannerEvent) then) =
+      _$PlannerEventCopyWithImpl<$Res>;
+}
+
+class _$PlannerEventCopyWithImpl<$Res> implements $PlannerEventCopyWith<$Res> {
+  _$PlannerEventCopyWithImpl(this._value, this._then);
+
+  final PlannerEvent _value;
+  // ignore: unused_field
+  final $Res Function(PlannerEvent) _then;
+}
+
+abstract class $GetSmallWidgetCopyWith<$Res> {
+  factory $GetSmallWidgetCopyWith(
+          GetSmallWidget value, $Res Function(GetSmallWidget) then) =
+      _$GetSmallWidgetCopyWithImpl<$Res>;
+}
+
+class _$GetSmallWidgetCopyWithImpl<$Res>
+    extends _$PlannerEventCopyWithImpl<$Res>
+    implements $GetSmallWidgetCopyWith<$Res> {
+  _$GetSmallWidgetCopyWithImpl(
+      GetSmallWidget _value, $Res Function(GetSmallWidget) _then)
+      : super(_value, (v) => _then(v as GetSmallWidget));
+
+  @override
+  GetSmallWidget get _value => super._value as GetSmallWidget;
+}
 
 class _$GetSmallWidget implements GetSmallWidget {
   const _$GetSmallWidget();
@@ -141,6 +172,22 @@ class _$GetSmallWidget implements GetSmallWidget {
 
 abstract class GetSmallWidget implements PlannerEvent {
   const factory GetSmallWidget() = _$GetSmallWidget;
+}
+
+abstract class $GetFullWidgetCopyWith<$Res> {
+  factory $GetFullWidgetCopyWith(
+          GetFullWidget value, $Res Function(GetFullWidget) then) =
+      _$GetFullWidgetCopyWithImpl<$Res>;
+}
+
+class _$GetFullWidgetCopyWithImpl<$Res> extends _$PlannerEventCopyWithImpl<$Res>
+    implements $GetFullWidgetCopyWith<$Res> {
+  _$GetFullWidgetCopyWithImpl(
+      GetFullWidget _value, $Res Function(GetFullWidget) _then)
+      : super(_value, (v) => _then(v as GetFullWidget));
+
+  @override
+  GetFullWidget get _value => super._value as GetFullWidget;
 }
 
 class _$GetFullWidget implements GetFullWidget {
@@ -223,6 +270,35 @@ abstract class GetFullWidget implements PlannerEvent {
   const factory GetFullWidget() = _$GetFullWidget;
 }
 
+abstract class $PlannerReceivedCopyWith<$Res> {
+  factory $PlannerReceivedCopyWith(
+          PlannerReceived value, $Res Function(PlannerReceived) then) =
+      _$PlannerReceivedCopyWithImpl<$Res>;
+  $Res call({Either<CVApiFailure, KtList<PlannerElement>> failureOrPlanner});
+}
+
+class _$PlannerReceivedCopyWithImpl<$Res>
+    extends _$PlannerEventCopyWithImpl<$Res>
+    implements $PlannerReceivedCopyWith<$Res> {
+  _$PlannerReceivedCopyWithImpl(
+      PlannerReceived _value, $Res Function(PlannerReceived) _then)
+      : super(_value, (v) => _then(v as PlannerReceived));
+
+  @override
+  PlannerReceived get _value => super._value as PlannerReceived;
+
+  @override
+  $Res call({
+    Object failureOrPlanner = freezed,
+  }) {
+    return _then(PlannerReceived(
+      failureOrPlanner == freezed
+          ? _value.failureOrPlanner
+          : failureOrPlanner as Either<CVApiFailure, KtList<PlannerElement>>,
+    ));
+  }
+}
+
 class _$PlannerReceived implements PlannerReceived {
   const _$PlannerReceived(this.failureOrPlanner)
       : assert(failureOrPlanner != null);
@@ -250,15 +326,8 @@ class _$PlannerReceived implements PlannerReceived {
       const DeepCollectionEquality().hash(failureOrPlanner);
 
   @override
-  _$PlannerReceived copyWith({
-    Object failureOrPlanner = freezed,
-  }) {
-    return _$PlannerReceived(
-      failureOrPlanner == freezed
-          ? this.failureOrPlanner
-          : failureOrPlanner as Either<CVApiFailure, KtList<PlannerElement>>,
-    );
-  }
+  $PlannerReceivedCopyWith<PlannerReceived> get copyWith =>
+      _$PlannerReceivedCopyWithImpl<PlannerReceived>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -326,45 +395,7 @@ abstract class PlannerReceived implements PlannerEvent {
       _$PlannerReceived;
 
   Either<CVApiFailure, KtList<PlannerElement>> get failureOrPlanner;
-
-  PlannerReceived copyWith(
-      {Either<CVApiFailure, KtList<PlannerElement>> failureOrPlanner});
-}
-
-mixin _$PlannerState {
-  @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result initial(),
-    @required Result loadInProgress(),
-    @required Result loadSuccess(KtList<PlannerElement> planner),
-    @required Result loadFailure(CVApiFailure plannerOrFailure),
-  });
-
-  @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result initial(),
-    Result loadInProgress(),
-    Result loadSuccess(KtList<PlannerElement> planner),
-    Result loadFailure(CVApiFailure plannerOrFailure),
-    @required Result orElse(),
-  });
-
-  @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result initial(Initial value),
-    @required Result loadInProgress(LoadInProgress value),
-    @required Result loadSuccess(LoadSuccess value),
-    @required Result loadFailure(LoadFailure value),
-  });
-
-  @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result initial(Initial value),
-    Result loadInProgress(LoadInProgress value),
-    Result loadSuccess(LoadSuccess value),
-    Result loadFailure(LoadFailure value),
-    @required Result orElse(),
-  });
+  $PlannerReceivedCopyWith<PlannerReceived> get copyWith;
 }
 
 class _$PlannerStateTearOff {
@@ -391,7 +422,69 @@ class _$PlannerStateTearOff {
   }
 }
 
+// ignore: unused_element
 const $PlannerState = _$PlannerStateTearOff();
+
+mixin _$PlannerState {
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result initial(),
+    @required Result loadInProgress(),
+    @required Result loadSuccess(KtList<PlannerElement> planner),
+    @required Result loadFailure(CVApiFailure plannerOrFailure),
+  });
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result initial(),
+    Result loadInProgress(),
+    Result loadSuccess(KtList<PlannerElement> planner),
+    Result loadFailure(CVApiFailure plannerOrFailure),
+    @required Result orElse(),
+  });
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result initial(Initial value),
+    @required Result loadInProgress(LoadInProgress value),
+    @required Result loadSuccess(LoadSuccess value),
+    @required Result loadFailure(LoadFailure value),
+  });
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result initial(Initial value),
+    Result loadInProgress(LoadInProgress value),
+    Result loadSuccess(LoadSuccess value),
+    Result loadFailure(LoadFailure value),
+    @required Result orElse(),
+  });
+}
+
+abstract class $PlannerStateCopyWith<$Res> {
+  factory $PlannerStateCopyWith(
+          PlannerState value, $Res Function(PlannerState) then) =
+      _$PlannerStateCopyWithImpl<$Res>;
+}
+
+class _$PlannerStateCopyWithImpl<$Res> implements $PlannerStateCopyWith<$Res> {
+  _$PlannerStateCopyWithImpl(this._value, this._then);
+
+  final PlannerState _value;
+  // ignore: unused_field
+  final $Res Function(PlannerState) _then;
+}
+
+abstract class $InitialCopyWith<$Res> {
+  factory $InitialCopyWith(Initial value, $Res Function(Initial) then) =
+      _$InitialCopyWithImpl<$Res>;
+}
+
+class _$InitialCopyWithImpl<$Res> extends _$PlannerStateCopyWithImpl<$Res>
+    implements $InitialCopyWith<$Res> {
+  _$InitialCopyWithImpl(Initial _value, $Res Function(Initial) _then)
+      : super(_value, (v) => _then(v as Initial));
+
+  @override
+  Initial get _value => super._value as Initial;
+}
 
 class _$Initial implements Initial {
   const _$Initial();
@@ -474,6 +567,23 @@ class _$Initial implements Initial {
 
 abstract class Initial implements PlannerState {
   const factory Initial() = _$Initial;
+}
+
+abstract class $LoadInProgressCopyWith<$Res> {
+  factory $LoadInProgressCopyWith(
+          LoadInProgress value, $Res Function(LoadInProgress) then) =
+      _$LoadInProgressCopyWithImpl<$Res>;
+}
+
+class _$LoadInProgressCopyWithImpl<$Res>
+    extends _$PlannerStateCopyWithImpl<$Res>
+    implements $LoadInProgressCopyWith<$Res> {
+  _$LoadInProgressCopyWithImpl(
+      LoadInProgress _value, $Res Function(LoadInProgress) _then)
+      : super(_value, (v) => _then(v as LoadInProgress));
+
+  @override
+  LoadInProgress get _value => super._value as LoadInProgress;
 }
 
 class _$LoadInProgress implements LoadInProgress {
@@ -559,6 +669,32 @@ abstract class LoadInProgress implements PlannerState {
   const factory LoadInProgress() = _$LoadInProgress;
 }
 
+abstract class $LoadSuccessCopyWith<$Res> {
+  factory $LoadSuccessCopyWith(
+          LoadSuccess value, $Res Function(LoadSuccess) then) =
+      _$LoadSuccessCopyWithImpl<$Res>;
+  $Res call({KtList<PlannerElement> planner});
+}
+
+class _$LoadSuccessCopyWithImpl<$Res> extends _$PlannerStateCopyWithImpl<$Res>
+    implements $LoadSuccessCopyWith<$Res> {
+  _$LoadSuccessCopyWithImpl(
+      LoadSuccess _value, $Res Function(LoadSuccess) _then)
+      : super(_value, (v) => _then(v as LoadSuccess));
+
+  @override
+  LoadSuccess get _value => super._value as LoadSuccess;
+
+  @override
+  $Res call({
+    Object planner = freezed,
+  }) {
+    return _then(LoadSuccess(
+      planner == freezed ? _value.planner : planner as KtList<PlannerElement>,
+    ));
+  }
+}
+
 class _$LoadSuccess implements LoadSuccess {
   const _$LoadSuccess(this.planner) : assert(planner != null);
 
@@ -583,13 +719,8 @@ class _$LoadSuccess implements LoadSuccess {
       runtimeType.hashCode ^ const DeepCollectionEquality().hash(planner);
 
   @override
-  _$LoadSuccess copyWith({
-    Object planner = freezed,
-  }) {
-    return _$LoadSuccess(
-      planner == freezed ? this.planner : planner as KtList<PlannerElement>,
-    );
-  }
+  $LoadSuccessCopyWith<LoadSuccess> get copyWith =>
+      _$LoadSuccessCopyWithImpl<LoadSuccess>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -658,8 +789,47 @@ abstract class LoadSuccess implements PlannerState {
   const factory LoadSuccess(KtList<PlannerElement> planner) = _$LoadSuccess;
 
   KtList<PlannerElement> get planner;
+  $LoadSuccessCopyWith<LoadSuccess> get copyWith;
+}
 
-  LoadSuccess copyWith({KtList<PlannerElement> planner});
+abstract class $LoadFailureCopyWith<$Res> {
+  factory $LoadFailureCopyWith(
+          LoadFailure value, $Res Function(LoadFailure) then) =
+      _$LoadFailureCopyWithImpl<$Res>;
+  $Res call({CVApiFailure plannerOrFailure});
+
+  $CVApiFailureCopyWith<$Res> get plannerOrFailure;
+}
+
+class _$LoadFailureCopyWithImpl<$Res> extends _$PlannerStateCopyWithImpl<$Res>
+    implements $LoadFailureCopyWith<$Res> {
+  _$LoadFailureCopyWithImpl(
+      LoadFailure _value, $Res Function(LoadFailure) _then)
+      : super(_value, (v) => _then(v as LoadFailure));
+
+  @override
+  LoadFailure get _value => super._value as LoadFailure;
+
+  @override
+  $Res call({
+    Object plannerOrFailure = freezed,
+  }) {
+    return _then(LoadFailure(
+      plannerOrFailure == freezed
+          ? _value.plannerOrFailure
+          : plannerOrFailure as CVApiFailure,
+    ));
+  }
+
+  @override
+  $CVApiFailureCopyWith<$Res> get plannerOrFailure {
+    if (_value.plannerOrFailure == null) {
+      return null;
+    }
+    return $CVApiFailureCopyWith<$Res>(_value.plannerOrFailure, (value) {
+      return _then(_value.copyWith(plannerOrFailure: value));
+    });
+  }
 }
 
 class _$LoadFailure implements LoadFailure {
@@ -688,15 +858,8 @@ class _$LoadFailure implements LoadFailure {
       const DeepCollectionEquality().hash(plannerOrFailure);
 
   @override
-  _$LoadFailure copyWith({
-    Object plannerOrFailure = freezed,
-  }) {
-    return _$LoadFailure(
-      plannerOrFailure == freezed
-          ? this.plannerOrFailure
-          : plannerOrFailure as CVApiFailure,
-    );
-  }
+  $LoadFailureCopyWith<LoadFailure> get copyWith =>
+      _$LoadFailureCopyWithImpl<LoadFailure>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -765,6 +928,5 @@ abstract class LoadFailure implements PlannerState {
   const factory LoadFailure(CVApiFailure plannerOrFailure) = _$LoadFailure;
 
   CVApiFailure get plannerOrFailure;
-
-  LoadFailure copyWith({CVApiFailure plannerOrFailure});
+  $LoadFailureCopyWith<LoadFailure> get copyWith;
 }

@@ -7,37 +7,7 @@ part of 'cv_api_failures.dart';
 // FreezedGenerator
 // **************************************************************************
 
-mixin _$CVApiFailure {
-  @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result serverError(),
-    @required Result invalidRequest(),
-    @required Result cannotFindOnSystemError(),
-  });
-
-  @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result serverError(),
-    Result invalidRequest(),
-    Result cannotFindOnSystemError(),
-    @required Result orElse(),
-  });
-
-  @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result serverError(ServerError value),
-    @required Result invalidRequest(InvalidRequest value),
-    @required Result cannotFindOnSystemError(CannotFindOnSystemError value),
-  });
-
-  @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result serverError(ServerError value),
-    Result invalidRequest(InvalidRequest value),
-    Result cannotFindOnSystemError(CannotFindOnSystemError value),
-    @required Result orElse(),
-  });
-}
+T _$identity<T>(T value) => value;
 
 class _$CVApiFailureTearOff {
   const _$CVApiFailureTearOff();
@@ -55,7 +25,67 @@ class _$CVApiFailureTearOff {
   }
 }
 
+// ignore: unused_element
 const $CVApiFailure = _$CVApiFailureTearOff();
+
+mixin _$CVApiFailure {
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result serverError(),
+    @required Result invalidRequest(),
+    @required Result cannotFindOnSystemError(),
+  });
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result serverError(),
+    Result invalidRequest(),
+    Result cannotFindOnSystemError(),
+    @required Result orElse(),
+  });
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result serverError(ServerError value),
+    @required Result invalidRequest(InvalidRequest value),
+    @required Result cannotFindOnSystemError(CannotFindOnSystemError value),
+  });
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result serverError(ServerError value),
+    Result invalidRequest(InvalidRequest value),
+    Result cannotFindOnSystemError(CannotFindOnSystemError value),
+    @required Result orElse(),
+  });
+}
+
+abstract class $CVApiFailureCopyWith<$Res> {
+  factory $CVApiFailureCopyWith(
+          CVApiFailure value, $Res Function(CVApiFailure) then) =
+      _$CVApiFailureCopyWithImpl<$Res>;
+}
+
+class _$CVApiFailureCopyWithImpl<$Res> implements $CVApiFailureCopyWith<$Res> {
+  _$CVApiFailureCopyWithImpl(this._value, this._then);
+
+  final CVApiFailure _value;
+  // ignore: unused_field
+  final $Res Function(CVApiFailure) _then;
+}
+
+abstract class $ServerErrorCopyWith<$Res> {
+  factory $ServerErrorCopyWith(
+          ServerError value, $Res Function(ServerError) then) =
+      _$ServerErrorCopyWithImpl<$Res>;
+}
+
+class _$ServerErrorCopyWithImpl<$Res> extends _$CVApiFailureCopyWithImpl<$Res>
+    implements $ServerErrorCopyWith<$Res> {
+  _$ServerErrorCopyWithImpl(
+      ServerError _value, $Res Function(ServerError) _then)
+      : super(_value, (v) => _then(v as ServerError));
+
+  @override
+  ServerError get _value => super._value as ServerError;
+}
 
 class _$ServerError implements ServerError {
   const _$ServerError();
@@ -134,6 +164,23 @@ abstract class ServerError implements CVApiFailure {
   const factory ServerError() = _$ServerError;
 }
 
+abstract class $InvalidRequestCopyWith<$Res> {
+  factory $InvalidRequestCopyWith(
+          InvalidRequest value, $Res Function(InvalidRequest) then) =
+      _$InvalidRequestCopyWithImpl<$Res>;
+}
+
+class _$InvalidRequestCopyWithImpl<$Res>
+    extends _$CVApiFailureCopyWithImpl<$Res>
+    implements $InvalidRequestCopyWith<$Res> {
+  _$InvalidRequestCopyWithImpl(
+      InvalidRequest _value, $Res Function(InvalidRequest) _then)
+      : super(_value, (v) => _then(v as InvalidRequest));
+
+  @override
+  InvalidRequest get _value => super._value as InvalidRequest;
+}
+
 class _$InvalidRequest implements InvalidRequest {
   const _$InvalidRequest();
 
@@ -209,6 +256,23 @@ class _$InvalidRequest implements InvalidRequest {
 
 abstract class InvalidRequest implements CVApiFailure {
   const factory InvalidRequest() = _$InvalidRequest;
+}
+
+abstract class $CannotFindOnSystemErrorCopyWith<$Res> {
+  factory $CannotFindOnSystemErrorCopyWith(CannotFindOnSystemError value,
+          $Res Function(CannotFindOnSystemError) then) =
+      _$CannotFindOnSystemErrorCopyWithImpl<$Res>;
+}
+
+class _$CannotFindOnSystemErrorCopyWithImpl<$Res>
+    extends _$CVApiFailureCopyWithImpl<$Res>
+    implements $CannotFindOnSystemErrorCopyWith<$Res> {
+  _$CannotFindOnSystemErrorCopyWithImpl(CannotFindOnSystemError _value,
+      $Res Function(CannotFindOnSystemError) _then)
+      : super(_value, (v) => _then(v as CannotFindOnSystemError));
+
+  @override
+  CannotFindOnSystemError get _value => super._value as CannotFindOnSystemError;
 }
 
 class _$CannotFindOnSystemError implements CannotFindOnSystemError {

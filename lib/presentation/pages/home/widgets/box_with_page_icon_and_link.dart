@@ -31,11 +31,8 @@ class BoxWithPageIconAndLink extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: <Widget>[
-              Icon(
-                pageIcon,
-                color: iconColor,
-                size: Theme.of(context).iconTheme.size 
-              ),
+              Icon(pageIcon,
+                  color: iconColor, size: Theme.of(context).iconTheme.size),
               Text(
                 pageName,
                 style: Theme.of(context).textTheme.subtitle,

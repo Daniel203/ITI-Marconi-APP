@@ -7,25 +7,16 @@ part of 'user_dto.dart';
 // FreezedGenerator
 // **************************************************************************
 
+T _$identity<T>(T value) => value;
 UserDto _$UserDtoFromJson(Map<String, dynamic> json) {
   return _UserDto.fromJson(json);
-}
-
-mixin _$UserDto {
-  String get usrId;
-  String get firstName;
-  String get lastName;
-
-  UserDto copyWith({String usrId, String firstName, String lastName});
-
-  Map<String, dynamic> toJson();
 }
 
 class _$UserDtoTearOff {
   const _$UserDtoTearOff();
 
   _UserDto call(
-      {@required String usrId,
+      {@required int usrId,
       @required String firstName,
       @required String lastName}) {
     return _UserDto(
@@ -36,7 +27,73 @@ class _$UserDtoTearOff {
   }
 }
 
+// ignore: unused_element
 const $UserDto = _$UserDtoTearOff();
+
+mixin _$UserDto {
+  int get usrId;
+  String get firstName;
+  String get lastName;
+
+  Map<String, dynamic> toJson();
+  $UserDtoCopyWith<UserDto> get copyWith;
+}
+
+abstract class $UserDtoCopyWith<$Res> {
+  factory $UserDtoCopyWith(UserDto value, $Res Function(UserDto) then) =
+      _$UserDtoCopyWithImpl<$Res>;
+  $Res call({int usrId, String firstName, String lastName});
+}
+
+class _$UserDtoCopyWithImpl<$Res> implements $UserDtoCopyWith<$Res> {
+  _$UserDtoCopyWithImpl(this._value, this._then);
+
+  final UserDto _value;
+  // ignore: unused_field
+  final $Res Function(UserDto) _then;
+
+  @override
+  $Res call({
+    Object usrId = freezed,
+    Object firstName = freezed,
+    Object lastName = freezed,
+  }) {
+    return _then(_value.copyWith(
+      usrId: usrId == freezed ? _value.usrId : usrId as int,
+      firstName: firstName == freezed ? _value.firstName : firstName as String,
+      lastName: lastName == freezed ? _value.lastName : lastName as String,
+    ));
+  }
+}
+
+abstract class _$UserDtoCopyWith<$Res> implements $UserDtoCopyWith<$Res> {
+  factory _$UserDtoCopyWith(_UserDto value, $Res Function(_UserDto) then) =
+      __$UserDtoCopyWithImpl<$Res>;
+  @override
+  $Res call({int usrId, String firstName, String lastName});
+}
+
+class __$UserDtoCopyWithImpl<$Res> extends _$UserDtoCopyWithImpl<$Res>
+    implements _$UserDtoCopyWith<$Res> {
+  __$UserDtoCopyWithImpl(_UserDto _value, $Res Function(_UserDto) _then)
+      : super(_value, (v) => _then(v as _UserDto));
+
+  @override
+  _UserDto get _value => super._value as _UserDto;
+
+  @override
+  $Res call({
+    Object usrId = freezed,
+    Object firstName = freezed,
+    Object lastName = freezed,
+  }) {
+    return _then(_UserDto(
+      usrId: usrId == freezed ? _value.usrId : usrId as int,
+      firstName: firstName == freezed ? _value.firstName : firstName as String,
+      lastName: lastName == freezed ? _value.lastName : lastName as String,
+    ));
+  }
+}
 
 @JsonSerializable()
 class _$_UserDto implements _UserDto {
@@ -50,7 +107,7 @@ class _$_UserDto implements _UserDto {
       _$_$_UserDtoFromJson(json);
 
   @override
-  final String usrId;
+  final int usrId;
   @override
   final String firstName;
   @override
@@ -83,17 +140,8 @@ class _$_UserDto implements _UserDto {
       const DeepCollectionEquality().hash(lastName);
 
   @override
-  _$_UserDto copyWith({
-    Object usrId = freezed,
-    Object firstName = freezed,
-    Object lastName = freezed,
-  }) {
-    return _$_UserDto(
-      usrId: usrId == freezed ? this.usrId : usrId as String,
-      firstName: firstName == freezed ? this.firstName : firstName as String,
-      lastName: lastName == freezed ? this.lastName : lastName as String,
-    );
-  }
+  _$UserDtoCopyWith<_UserDto> get copyWith =>
+      __$UserDtoCopyWithImpl<_UserDto>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -103,19 +151,18 @@ class _$_UserDto implements _UserDto {
 
 abstract class _UserDto implements UserDto {
   factory _UserDto(
-      {@required String usrId,
+      {@required int usrId,
       @required String firstName,
       @required String lastName}) = _$_UserDto;
 
   factory _UserDto.fromJson(Map<String, dynamic> json) = _$_UserDto.fromJson;
 
   @override
-  String get usrId;
+  int get usrId;
   @override
   String get firstName;
   @override
   String get lastName;
-
   @override
-  _UserDto copyWith({String usrId, String firstName, String lastName});
+  _$UserDtoCopyWith<_UserDto> get copyWith;
 }

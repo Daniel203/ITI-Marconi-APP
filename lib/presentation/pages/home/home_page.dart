@@ -8,20 +8,26 @@ import '../../../application/orario/orario_bloc.dart';
 import '../../../application/user_data/absences/absences_bloc.dart';
 import '../../../application/user_data/grades/grades_bloc.dart';
 import '../../../application/user_data/planner/planner_bloc.dart';
+import '../../../infrastructure/orario/orario_repository.dart';
 import '../../../injection.dart';
 import '../../routes/router.gr.dart';
 import '../../theme/constraints.dart';
+import '../../theme/responsive_safe_area.dart';
+import '../orario/widgets/orario_small_widget.dart';
+import '../planner/widgets/planner_small_widget.dart';
 import 'widgets/box_with_page_icon_and_link.dart';
 import 'widgets/small_widget_container.dart';
 import 'widgets/small_widgets_carousel.dart';
 
 class HomePage extends HookWidget implements AutoRouteWrapper {
+  /* dynamic OrarioRepository orarioRepository = new OrarioRepository()
+ */
   @override
   Widget get wrappedRoute => MultiBlocProvider(
         providers: [
           BlocProvider<OrarioBloc>(
-            create: (context) =>
-                getIt<OrarioBloc>()..add(const OrarioEvent.getSmalLWidget()),
+            create: (context) => OrarioBloc(OrarioRepository("5ai"))
+              ..add(const OrarioEvent.getSmalLWidget()),
           ),
           BlocProvider<AbsencesBloc>(
             create: (context) => getIt<AbsencesBloc>()
@@ -65,31 +71,40 @@ class HomePage extends HookWidget implements AutoRouteWrapper {
 }
 
 Widget _body(BuildContext context) {
-  return Column(
-    children: <Widget>[
-      AppConstraints.separator,
-      _smalllWidgetsCarousel(context),
-      AppConstraints.separator,
-      _bottomGridWithLinkToPages(),
-    ],
+  return ResponsiveSafeArea(
+    builder: (context, size) {
+      return Column(
+        children: <Widget>[
+          AppConstraints.separator,
+          _smalllWidgetsCarousel(context, size),
+          AppConstraints.separator,
+          _bottomGridWithLinkToPages(size),
+        ],
+      );
+    },
   );
 }
 
-Widget _smalllWidgetsCarousel(BuildContext context) {
+Widget _smalllWidgetsCarousel(BuildContext context, Size size) {
   final List<SmallWidgetContainer> smallWidgetContainers = [
-    const SmallWidgetContainer(widget: Text(""), pageLink: null,),
-    const SmallWidgetContainer(widget: Text(""), pageLink: null),
+    SmallWidgetContainer(
+      widget: OrarioSmallWidget(size: size),
+      pageLink: Router.orarioPage,
+    ),
+    SmallWidgetContainer(
+      widget: PlannerSmallWidget(size: size),
+      pageLink: Router.plannerPage,
+    ),
     const SmallWidgetContainer(widget: Text(""), pageLink: null),
   ];
 
-  return Expanded(
-    child: SmallWidgetsCarousel(
-      widgets: smallWidgetContainers,
-    ),
+  return SmallWidgetsCarousel(
+    widgets: smallWidgetContainers,
+    size: size,
   );
 }
 
-Widget _bottomGridWithLinkToPages() {
+Widget _bottomGridWithLinkToPages(Size size) {
   final List<BoxWithPageIconAndLink> pageBoxes = [
     BoxWithPageIconAndLink(
         pageName: "Circolari",
@@ -100,7 +115,7 @@ Widget _bottomGridWithLinkToPages() {
         pageName: "Orari",
         pageIcon: Icons.tune,
         iconColor: Colors.blue,
-        pageLink: null),
+        pageLink: Router.orarioPage),
     BoxWithPageIconAndLink(
         pageName: "Registro",
         pageIcon: Icons.unarchive,
@@ -120,7 +135,8 @@ Widget _bottomGridWithLinkToPages() {
         crossAxisCount: 2,
         crossAxisSpacing: 4,
         mainAxisSpacing: 4,
-        childAspectRatio: 4 / 3,
+        childAspectRatio: 4.5 / 3,
+        physics: const NeverScrollableScrollPhysics(),
         children: pageBoxes,
       ),
     ),

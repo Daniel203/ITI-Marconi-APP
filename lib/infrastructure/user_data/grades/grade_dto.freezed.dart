@@ -7,29 +7,9 @@ part of 'grade_dto.dart';
 // FreezedGenerator
 // **************************************************************************
 
+T _$identity<T>(T value) => value;
 GradeDto _$GradeDtoFromJson(Map<String, dynamic> json) {
   return _GradeDto.fromJson(json);
-}
-
-mixin _$GradeDto {
-  double get decimalValue;
-  String get eventDate;
-  String get subjectCode;
-  String get color;
-  String get testType;
-  String get notes;
-  bool get isCancelled;
-
-  GradeDto copyWith(
-      {double decimalValue,
-      String eventDate,
-      String subjectCode,
-      String color,
-      String testType,
-      String notes,
-      bool isCancelled});
-
-  Map<String, dynamic> toJson();
 }
 
 class _$GradeDtoTearOff {
@@ -55,7 +35,115 @@ class _$GradeDtoTearOff {
   }
 }
 
+// ignore: unused_element
 const $GradeDto = _$GradeDtoTearOff();
+
+mixin _$GradeDto {
+  double get decimalValue;
+  String get eventDate;
+  String get subjectCode;
+  String get color;
+  String get testType;
+  String get notes;
+  bool get isCancelled;
+
+  Map<String, dynamic> toJson();
+  $GradeDtoCopyWith<GradeDto> get copyWith;
+}
+
+abstract class $GradeDtoCopyWith<$Res> {
+  factory $GradeDtoCopyWith(GradeDto value, $Res Function(GradeDto) then) =
+      _$GradeDtoCopyWithImpl<$Res>;
+  $Res call(
+      {double decimalValue,
+      String eventDate,
+      String subjectCode,
+      String color,
+      String testType,
+      String notes,
+      bool isCancelled});
+}
+
+class _$GradeDtoCopyWithImpl<$Res> implements $GradeDtoCopyWith<$Res> {
+  _$GradeDtoCopyWithImpl(this._value, this._then);
+
+  final GradeDto _value;
+  // ignore: unused_field
+  final $Res Function(GradeDto) _then;
+
+  @override
+  $Res call({
+    Object decimalValue = freezed,
+    Object eventDate = freezed,
+    Object subjectCode = freezed,
+    Object color = freezed,
+    Object testType = freezed,
+    Object notes = freezed,
+    Object isCancelled = freezed,
+  }) {
+    return _then(_value.copyWith(
+      decimalValue: decimalValue == freezed
+          ? _value.decimalValue
+          : decimalValue as double,
+      eventDate: eventDate == freezed ? _value.eventDate : eventDate as String,
+      subjectCode:
+          subjectCode == freezed ? _value.subjectCode : subjectCode as String,
+      color: color == freezed ? _value.color : color as String,
+      testType: testType == freezed ? _value.testType : testType as String,
+      notes: notes == freezed ? _value.notes : notes as String,
+      isCancelled:
+          isCancelled == freezed ? _value.isCancelled : isCancelled as bool,
+    ));
+  }
+}
+
+abstract class _$GradeDtoCopyWith<$Res> implements $GradeDtoCopyWith<$Res> {
+  factory _$GradeDtoCopyWith(_GradeDto value, $Res Function(_GradeDto) then) =
+      __$GradeDtoCopyWithImpl<$Res>;
+  @override
+  $Res call(
+      {double decimalValue,
+      String eventDate,
+      String subjectCode,
+      String color,
+      String testType,
+      String notes,
+      bool isCancelled});
+}
+
+class __$GradeDtoCopyWithImpl<$Res> extends _$GradeDtoCopyWithImpl<$Res>
+    implements _$GradeDtoCopyWith<$Res> {
+  __$GradeDtoCopyWithImpl(_GradeDto _value, $Res Function(_GradeDto) _then)
+      : super(_value, (v) => _then(v as _GradeDto));
+
+  @override
+  _GradeDto get _value => super._value as _GradeDto;
+
+  @override
+  $Res call({
+    Object decimalValue = freezed,
+    Object eventDate = freezed,
+    Object subjectCode = freezed,
+    Object color = freezed,
+    Object testType = freezed,
+    Object notes = freezed,
+    Object isCancelled = freezed,
+  }) {
+    return _then(_GradeDto(
+      decimalValue: decimalValue == freezed
+          ? _value.decimalValue
+          : decimalValue as double,
+      eventDate: eventDate == freezed ? _value.eventDate : eventDate as String,
+      subjectCode:
+          subjectCode == freezed ? _value.subjectCode : subjectCode as String,
+      color: color == freezed ? _value.color : color as String,
+      testType: testType == freezed ? _value.testType : testType as String,
+      notes: notes == freezed ? _value.notes : notes as String,
+      isCancelled:
+          isCancelled == freezed ? _value.isCancelled : isCancelled as bool,
+    ));
+  }
+}
 
 @JsonSerializable()
 class _$_GradeDto implements _GradeDto {
@@ -135,28 +223,8 @@ class _$_GradeDto implements _GradeDto {
       const DeepCollectionEquality().hash(isCancelled);
 
   @override
-  _$_GradeDto copyWith({
-    Object decimalValue = freezed,
-    Object eventDate = freezed,
-    Object subjectCode = freezed,
-    Object color = freezed,
-    Object testType = freezed,
-    Object notes = freezed,
-    Object isCancelled = freezed,
-  }) {
-    return _$_GradeDto(
-      decimalValue:
-          decimalValue == freezed ? this.decimalValue : decimalValue as double,
-      eventDate: eventDate == freezed ? this.eventDate : eventDate as String,
-      subjectCode:
-          subjectCode == freezed ? this.subjectCode : subjectCode as String,
-      color: color == freezed ? this.color : color as String,
-      testType: testType == freezed ? this.testType : testType as String,
-      notes: notes == freezed ? this.notes : notes as String,
-      isCancelled:
-          isCancelled == freezed ? this.isCancelled : isCancelled as bool,
-    );
-  }
+  _$GradeDtoCopyWith<_GradeDto> get copyWith =>
+      __$GradeDtoCopyWithImpl<_GradeDto>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -190,14 +258,6 @@ abstract class _GradeDto implements GradeDto {
   String get notes;
   @override
   bool get isCancelled;
-
   @override
-  _GradeDto copyWith(
-      {double decimalValue,
-      String eventDate,
-      String subjectCode,
-      String color,
-      String testType,
-      String notes,
-      bool isCancelled});
+  _$GradeDtoCopyWith<_GradeDto> get copyWith;
 }

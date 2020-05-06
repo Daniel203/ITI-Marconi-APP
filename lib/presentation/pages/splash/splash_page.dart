@@ -12,10 +12,15 @@ class SplashPage extends StatelessWidget {
         state.map(
           intial: (_) {},
           authenticated: (_) {
-            Router.navigator.pushReplacementNamed(Router.homePage);
+              print("STATE: UNATHANTICATED");
+              Router.navigator.pushReplacementNamed(Router.homePage);
+          },
+          unauthenticatedWithLocalData: (_) {
+              print("non autenticato ma con dati in locale");
+              Router.navigator.pushReplacementNamed(Router.signInLocalDataPage);
           },
           unauthenticated: (_) =>
-            Router.navigator.pushReplacementNamed(Router.signInPage),
+              Router.navigator.pushReplacementNamed(Router.signInPage),
         );
       },
       child: _PageWidget(),
@@ -26,10 +31,11 @@ class SplashPage extends StatelessWidget {
 class _PageWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Center(
+    return Scaffold(
+      backgroundColor: Theme.of(context).backgroundColor,
+      body: const Center(
         child: CircularProgressIndicator(),
       ),
     );
   }
-} 
+}

@@ -7,25 +7,9 @@ part of 'absence_dto.dart';
 // FreezedGenerator
 // **************************************************************************
 
+T _$identity<T>(T value) => value;
 AbsenceDto _$AbsenceDtoFromJson(Map<String, dynamic> json) {
   return _AbsenceDto.fromJson(json);
-}
-
-mixin _$AbsenceDto {
-  String get eventCode;
-  String get eventDate;
-  bool get isJustified;
-  String get justifyReasonCode;
-  String get justifyReasonDescription;
-
-  AbsenceDto copyWith(
-      {String eventCode,
-      String eventDate,
-      bool isJustified,
-      String justifyReasonCode,
-      String justifyReasonDescription});
-
-  Map<String, dynamic> toJson();
 }
 
 class _$AbsenceDtoTearOff {
@@ -47,7 +31,106 @@ class _$AbsenceDtoTearOff {
   }
 }
 
+// ignore: unused_element
 const $AbsenceDto = _$AbsenceDtoTearOff();
+
+mixin _$AbsenceDto {
+  String get eventCode;
+  String get eventDate;
+  bool get isJustified;
+  String get justifyReasonCode;
+  String get justifyReasonDescription;
+
+  Map<String, dynamic> toJson();
+  $AbsenceDtoCopyWith<AbsenceDto> get copyWith;
+}
+
+abstract class $AbsenceDtoCopyWith<$Res> {
+  factory $AbsenceDtoCopyWith(
+          AbsenceDto value, $Res Function(AbsenceDto) then) =
+      _$AbsenceDtoCopyWithImpl<$Res>;
+  $Res call(
+      {String eventCode,
+      String eventDate,
+      bool isJustified,
+      String justifyReasonCode,
+      String justifyReasonDescription});
+}
+
+class _$AbsenceDtoCopyWithImpl<$Res> implements $AbsenceDtoCopyWith<$Res> {
+  _$AbsenceDtoCopyWithImpl(this._value, this._then);
+
+  final AbsenceDto _value;
+  // ignore: unused_field
+  final $Res Function(AbsenceDto) _then;
+
+  @override
+  $Res call({
+    Object eventCode = freezed,
+    Object eventDate = freezed,
+    Object isJustified = freezed,
+    Object justifyReasonCode = freezed,
+    Object justifyReasonDescription = freezed,
+  }) {
+    return _then(_value.copyWith(
+      eventCode: eventCode == freezed ? _value.eventCode : eventCode as String,
+      eventDate: eventDate == freezed ? _value.eventDate : eventDate as String,
+      isJustified:
+          isJustified == freezed ? _value.isJustified : isJustified as bool,
+      justifyReasonCode: justifyReasonCode == freezed
+          ? _value.justifyReasonCode
+          : justifyReasonCode as String,
+      justifyReasonDescription: justifyReasonDescription == freezed
+          ? _value.justifyReasonDescription
+          : justifyReasonDescription as String,
+    ));
+  }
+}
+
+abstract class _$AbsenceDtoCopyWith<$Res> implements $AbsenceDtoCopyWith<$Res> {
+  factory _$AbsenceDtoCopyWith(
+          _AbsenceDto value, $Res Function(_AbsenceDto) then) =
+      __$AbsenceDtoCopyWithImpl<$Res>;
+  @override
+  $Res call(
+      {String eventCode,
+      String eventDate,
+      bool isJustified,
+      String justifyReasonCode,
+      String justifyReasonDescription});
+}
+
+class __$AbsenceDtoCopyWithImpl<$Res> extends _$AbsenceDtoCopyWithImpl<$Res>
+    implements _$AbsenceDtoCopyWith<$Res> {
+  __$AbsenceDtoCopyWithImpl(
+      _AbsenceDto _value, $Res Function(_AbsenceDto) _then)
+      : super(_value, (v) => _then(v as _AbsenceDto));
+
+  @override
+  _AbsenceDto get _value => super._value as _AbsenceDto;
+
+  @override
+  $Res call({
+    Object eventCode = freezed,
+    Object eventDate = freezed,
+    Object isJustified = freezed,
+    Object justifyReasonCode = freezed,
+    Object justifyReasonDescription = freezed,
+  }) {
+    return _then(_AbsenceDto(
+      eventCode: eventCode == freezed ? _value.eventCode : eventCode as String,
+      eventDate: eventDate == freezed ? _value.eventDate : eventDate as String,
+      isJustified:
+          isJustified == freezed ? _value.isJustified : isJustified as bool,
+      justifyReasonCode: justifyReasonCode == freezed
+          ? _value.justifyReasonCode
+          : justifyReasonCode as String,
+      justifyReasonDescription: justifyReasonDescription == freezed
+          ? _value.justifyReasonDescription
+          : justifyReasonDescription as String,
+    ));
+  }
+}
 
 @JsonSerializable()
 class _$_AbsenceDto implements _AbsenceDto {
@@ -114,26 +197,8 @@ class _$_AbsenceDto implements _AbsenceDto {
       const DeepCollectionEquality().hash(justifyReasonDescription);
 
   @override
-  _$_AbsenceDto copyWith({
-    Object eventCode = freezed,
-    Object eventDate = freezed,
-    Object isJustified = freezed,
-    Object justifyReasonCode = freezed,
-    Object justifyReasonDescription = freezed,
-  }) {
-    return _$_AbsenceDto(
-      eventCode: eventCode == freezed ? this.eventCode : eventCode as String,
-      eventDate: eventDate == freezed ? this.eventDate : eventDate as String,
-      isJustified:
-          isJustified == freezed ? this.isJustified : isJustified as bool,
-      justifyReasonCode: justifyReasonCode == freezed
-          ? this.justifyReasonCode
-          : justifyReasonCode as String,
-      justifyReasonDescription: justifyReasonDescription == freezed
-          ? this.justifyReasonDescription
-          : justifyReasonDescription as String,
-    );
-  }
+  _$AbsenceDtoCopyWith<_AbsenceDto> get copyWith =>
+      __$AbsenceDtoCopyWithImpl<_AbsenceDto>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -162,12 +227,6 @@ abstract class _AbsenceDto implements AbsenceDto {
   String get justifyReasonCode;
   @override
   String get justifyReasonDescription;
-
   @override
-  _AbsenceDto copyWith(
-      {String eventCode,
-      String eventDate,
-      bool isJustified,
-      String justifyReasonCode,
-      String justifyReasonDescription});
+  _$AbsenceDtoCopyWith<_AbsenceDto> get copyWith;
 }

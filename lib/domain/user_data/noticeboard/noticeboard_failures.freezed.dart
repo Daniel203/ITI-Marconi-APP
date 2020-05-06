@@ -7,34 +7,7 @@ part of 'noticeboard_failures.dart';
 // FreezedGenerator
 // **************************************************************************
 
-mixin _$NoticeBoardFailure {
-  @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result unableToAddToFavourites(),
-    @required Result unableToRemoveFromFavourites(),
-  });
-
-  @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result unableToAddToFavourites(),
-    Result unableToRemoveFromFavourites(),
-    @required Result orElse(),
-  });
-
-  @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result unableToAddToFavourites(UnableToAddToFavourites value),
-    @required
-        Result unableToRemoveFromFavourites(UnableToRemoveFromFavourites value),
-  });
-
-  @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result unableToAddToFavourites(UnableToAddToFavourites value),
-    Result unableToRemoveFromFavourites(UnableToRemoveFromFavourites value),
-    @required Result orElse(),
-  });
-}
+T _$identity<T>(T value) => value;
 
 class _$NoticeBoardFailureTearOff {
   const _$NoticeBoardFailureTearOff();
@@ -48,7 +21,66 @@ class _$NoticeBoardFailureTearOff {
   }
 }
 
+// ignore: unused_element
 const $NoticeBoardFailure = _$NoticeBoardFailureTearOff();
+
+mixin _$NoticeBoardFailure {
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result unableToAddToFavourites(),
+    @required Result unableToRemoveFromFavourites(),
+  });
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result unableToAddToFavourites(),
+    Result unableToRemoveFromFavourites(),
+    @required Result orElse(),
+  });
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result unableToAddToFavourites(UnableToAddToFavourites value),
+    @required
+        Result unableToRemoveFromFavourites(UnableToRemoveFromFavourites value),
+  });
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result unableToAddToFavourites(UnableToAddToFavourites value),
+    Result unableToRemoveFromFavourites(UnableToRemoveFromFavourites value),
+    @required Result orElse(),
+  });
+}
+
+abstract class $NoticeBoardFailureCopyWith<$Res> {
+  factory $NoticeBoardFailureCopyWith(
+          NoticeBoardFailure value, $Res Function(NoticeBoardFailure) then) =
+      _$NoticeBoardFailureCopyWithImpl<$Res>;
+}
+
+class _$NoticeBoardFailureCopyWithImpl<$Res>
+    implements $NoticeBoardFailureCopyWith<$Res> {
+  _$NoticeBoardFailureCopyWithImpl(this._value, this._then);
+
+  final NoticeBoardFailure _value;
+  // ignore: unused_field
+  final $Res Function(NoticeBoardFailure) _then;
+}
+
+abstract class $UnableToAddToFavouritesCopyWith<$Res> {
+  factory $UnableToAddToFavouritesCopyWith(UnableToAddToFavourites value,
+          $Res Function(UnableToAddToFavourites) then) =
+      _$UnableToAddToFavouritesCopyWithImpl<$Res>;
+}
+
+class _$UnableToAddToFavouritesCopyWithImpl<$Res>
+    extends _$NoticeBoardFailureCopyWithImpl<$Res>
+    implements $UnableToAddToFavouritesCopyWith<$Res> {
+  _$UnableToAddToFavouritesCopyWithImpl(UnableToAddToFavourites _value,
+      $Res Function(UnableToAddToFavourites) _then)
+      : super(_value, (v) => _then(v as UnableToAddToFavourites));
+
+  @override
+  UnableToAddToFavourites get _value => super._value as UnableToAddToFavourites;
+}
 
 class _$UnableToAddToFavourites implements UnableToAddToFavourites {
   const _$UnableToAddToFavourites();
@@ -120,6 +152,26 @@ class _$UnableToAddToFavourites implements UnableToAddToFavourites {
 
 abstract class UnableToAddToFavourites implements NoticeBoardFailure {
   const factory UnableToAddToFavourites() = _$UnableToAddToFavourites;
+}
+
+abstract class $UnableToRemoveFromFavouritesCopyWith<$Res> {
+  factory $UnableToRemoveFromFavouritesCopyWith(
+          UnableToRemoveFromFavourites value,
+          $Res Function(UnableToRemoveFromFavourites) then) =
+      _$UnableToRemoveFromFavouritesCopyWithImpl<$Res>;
+}
+
+class _$UnableToRemoveFromFavouritesCopyWithImpl<$Res>
+    extends _$NoticeBoardFailureCopyWithImpl<$Res>
+    implements $UnableToRemoveFromFavouritesCopyWith<$Res> {
+  _$UnableToRemoveFromFavouritesCopyWithImpl(
+      UnableToRemoveFromFavourites _value,
+      $Res Function(UnableToRemoveFromFavourites) _then)
+      : super(_value, (v) => _then(v as UnableToRemoveFromFavourites));
+
+  @override
+  UnableToRemoveFromFavourites get _value =>
+      super._value as UnableToRemoveFromFavourites;
 }
 
 class _$UnableToRemoveFromFavourites implements UnableToRemoveFromFavourites {

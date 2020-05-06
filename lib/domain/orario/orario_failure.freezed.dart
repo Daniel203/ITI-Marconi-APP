@@ -7,33 +7,7 @@ part of 'orario_failure.dart';
 // FreezedGenerator
 // **************************************************************************
 
-mixin _$OrarioFailure {
-  @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result serverError(),
-    @required Result invalidType(),
-  });
-
-  @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result serverError(),
-    Result invalidType(),
-    @required Result orElse(),
-  });
-
-  @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result serverError(ServerError value),
-    @required Result invalidType(InvalidType value),
-  });
-
-  @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result serverError(ServerError value),
-    Result invalidType(InvalidType value),
-    @required Result orElse(),
-  });
-}
+T _$identity<T>(T value) => value;
 
 class _$OrarioFailureTearOff {
   const _$OrarioFailureTearOff();
@@ -47,7 +21,64 @@ class _$OrarioFailureTearOff {
   }
 }
 
+// ignore: unused_element
 const $OrarioFailure = _$OrarioFailureTearOff();
+
+mixin _$OrarioFailure {
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result serverError(),
+    @required Result invalidType(),
+  });
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result serverError(),
+    Result invalidType(),
+    @required Result orElse(),
+  });
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result serverError(ServerError value),
+    @required Result invalidType(InvalidType value),
+  });
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result serverError(ServerError value),
+    Result invalidType(InvalidType value),
+    @required Result orElse(),
+  });
+}
+
+abstract class $OrarioFailureCopyWith<$Res> {
+  factory $OrarioFailureCopyWith(
+          OrarioFailure value, $Res Function(OrarioFailure) then) =
+      _$OrarioFailureCopyWithImpl<$Res>;
+}
+
+class _$OrarioFailureCopyWithImpl<$Res>
+    implements $OrarioFailureCopyWith<$Res> {
+  _$OrarioFailureCopyWithImpl(this._value, this._then);
+
+  final OrarioFailure _value;
+  // ignore: unused_field
+  final $Res Function(OrarioFailure) _then;
+}
+
+abstract class $ServerErrorCopyWith<$Res> {
+  factory $ServerErrorCopyWith(
+          ServerError value, $Res Function(ServerError) then) =
+      _$ServerErrorCopyWithImpl<$Res>;
+}
+
+class _$ServerErrorCopyWithImpl<$Res> extends _$OrarioFailureCopyWithImpl<$Res>
+    implements $ServerErrorCopyWith<$Res> {
+  _$ServerErrorCopyWithImpl(
+      ServerError _value, $Res Function(ServerError) _then)
+      : super(_value, (v) => _then(v as ServerError));
+
+  @override
+  ServerError get _value => super._value as ServerError;
+}
 
 class _$ServerError implements ServerError {
   const _$ServerError();
@@ -118,6 +149,22 @@ class _$ServerError implements ServerError {
 
 abstract class ServerError implements OrarioFailure {
   const factory ServerError() = _$ServerError;
+}
+
+abstract class $InvalidTypeCopyWith<$Res> {
+  factory $InvalidTypeCopyWith(
+          InvalidType value, $Res Function(InvalidType) then) =
+      _$InvalidTypeCopyWithImpl<$Res>;
+}
+
+class _$InvalidTypeCopyWithImpl<$Res> extends _$OrarioFailureCopyWithImpl<$Res>
+    implements $InvalidTypeCopyWith<$Res> {
+  _$InvalidTypeCopyWithImpl(
+      InvalidType _value, $Res Function(InvalidType) _then)
+      : super(_value, (v) => _then(v as InvalidType));
+
+  @override
+  InvalidType get _value => super._value as InvalidType;
 }
 
 class _$InvalidType implements InvalidType {

@@ -18,7 +18,6 @@ class SignInForm extends StatelessWidget {
           (either) {
             either.fold(
               (failure) {
-                print("failure in sign in form presentation : $failure");
                 Scaffold.of(context).hideCurrentSnackBar();
                 Scaffold.of(context).showSnackBar(
                   SnackBar(
@@ -32,7 +31,6 @@ class SignInForm extends StatelessWidget {
                 );
               },
               (_) {
-                print("success, cambio pagina ");
                 Router.navigator.pushReplacementNamed(Router.homePage);
                 context
                     .bloc<AuthBloc>()
@@ -43,22 +41,26 @@ class SignInForm extends StatelessWidget {
         );
       },
       builder: (context, state) {
-        return Form(
-          autovalidate: state.showErrorMessage,
-          child: ListView(
-            padding: const EdgeInsets.all(8.0),
-            children: <Widget>[
-              _idFormField(context, state),
-              AppConstraints.separator,
-              _passwordFormField(context, state),
-              AppConstraints.separator,
-              _loginButton(context, state)
-            ],
-          ),
-        );
+        return _form(context, state);
       },
     );
   }
+}
+
+Widget _form(BuildContext context, SignInFormState state) {
+  return Form(
+    autovalidate: state.showErrorMessage,
+    child: ListView(
+      padding: const EdgeInsets.all(8.0),
+      children: <Widget>[
+        _idFormField(context, state),
+        AppConstraints.separator,
+        _passwordFormField(context, state),
+        AppConstraints.separator,
+        _loginButton(context, state)
+      ],
+    ),
+  );
 }
 
 TextFormField _idFormField(BuildContext context, SignInFormState state) {
@@ -71,13 +73,7 @@ TextFormField _idFormField(BuildContext context, SignInFormState state) {
     onChanged: (value) => context
         .bloc<SignInFormBloc>()
         .add(SignInFormEvent.userCVIdChanged(value)),
-    validator: (_) => state.userCVId.value.fold(
-      (f) => f.maybeMap(
-        invalidUserCVId: (_) => 'Id non valido',
-        orElse: () => null,
-      ),
-      (_) => null,
-    ),
+    validator: (_) => state.isUserCVIdValid ? null : 'Id inserito non valido',
   );
 }
 
@@ -91,14 +87,9 @@ TextFormField _passwordFormField(BuildContext context, SignInFormState state) {
     autocorrect: false,
     onChanged: (value) => context
         .bloc<SignInFormBloc>()
-        .add($SignInFormEvent.userCVPasswordChanged(value)),
-    validator: (_) => state.userCVPassword.value.fold(
-      (f) => f.maybeMap(
-        invalidUserCVPassword: (_) => 'Password non valida',
-        orElse: () => null,
-      ),
-      (_) => null,
-    ),
+        .add(SignInFormEvent.userCVPasswordChanged(value)),
+    validator: (_) =>
+        state.isUserCVPasswordValid ? null : 'Password inserita non valida',
   );
 }
 
@@ -108,10 +99,7 @@ Row _loginButton(BuildContext context, SignInFormState state) {
       Expanded(
         child: FlatButton(
           onPressed: () {
-            print("bottone premuto con forza");
-            context
-                .bloc<SignInFormBloc>()
-                .add(const SignInFormEvent.signInWithIdAndPassword());
+            context.bloc<SignInFormBloc>().add(const SignInWithIdAndPassword());
           },
           child: const Text("Sign In"),
         ),

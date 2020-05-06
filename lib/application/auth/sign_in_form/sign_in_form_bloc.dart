@@ -5,15 +5,15 @@ import 'package:dartz/dartz.dart';
 import 'package:flutter/foundation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
-import 'package:meta/meta.dart';
 
 import '../../../domain/auth/auth_failure.dart';
 import '../../../domain/auth/i_auth_facade.dart';
 import '../../../domain/auth/value_objects.dart';
 
-part 'sign_in_form_bloc.freezed.dart';
 part 'sign_in_form_event.dart';
 part 'sign_in_form_state.dart';
+
+part 'sign_in_form_bloc.freezed.dart';
 
 @injectable
 class SignInFormBloc extends Bloc<SignInFormEvent, SignInFormState> {
@@ -28,35 +28,27 @@ class SignInFormBloc extends Bloc<SignInFormEvent, SignInFormState> {
   Stream<SignInFormState> mapEventToState(
     SignInFormEvent event,
   ) async* {
-    yield* event.map(
-      userCVIdChanged: (e) async* {
-/*         print(e.toString());
-        print("usercvidchanged state : $state"); */
-        yield state.copyWith(
-          userCVId: UserCVId(e.userCVIdStr),
-          authFailureOrSuccessOption: none(),
-        );
-      },
-      userCVPasswordChanged: (e) async* {
-/*         print("-----------------------------------------------------");
-        print(e.toString());
-        print("usercvpasswordchanged state : $state");
-        print("copyWith ----------- ${state.copyWith(
-          userCVPassword: UserCVPassword(e.userCVPasswordStr),
-          authFailureOrSuccessOption: none(),
-        )}");
- */
-        yield state.copyWith(
-          userCVPassword: UserCVPassword(e.userCVPasswordStr),
-          authFailureOrSuccessOption: none(),
-        );
-      },
-      signInWithIdAndPassword: (e) async* {
-        yield* _performActionOnAuthFacadeWithIdAndPassword(
-          _authFacade.signInWithIdAndPassword,
-        );
-      },
-    );
+    yield* event.map(userCVIdChanged: (e) async* {
+      yield state.copyWith(
+        userCVId: e.userCVIdStr,
+        isUserCVIdValid: UserCVId(e.userCVIdStr).isValid(),
+        authFailureOrSuccessOption: none(),
+      );
+    }, userCVPasswordChanged: (e) async* {
+      yield state.copyWith(
+        userCVPassword: e.userCVPasswordStr,
+        isUserCVPasswordValid: UserCVPassword(e.userCVPasswordStr).isValid(),
+        authFailureOrSuccessOption: none(),
+      );
+    }, signInWithIdAndPassword: (e) async* {
+      yield* _performActionOnAuthFacadeWithIdAndPassword(
+        _authFacade.signInWithIdAndPassword,
+      );
+    }, signInWithLocalIdAndPassword: (e) async* {
+      yield* _performActionOnAuthFacadeWithLocalIdAndPassword(
+        _authFacade.signInWithLocalData,
+      );
+    });
   }
 
   Stream<SignInFormState> _performActionOnAuthFacadeWithIdAndPassword(
@@ -66,26 +58,41 @@ class SignInFormBloc extends Bloc<SignInFormEvent, SignInFormState> {
     })
         forwardedCall,
   ) async* {
-    print("userCvId in state  : ${state.userCVId}");
-    print("userCVPassword in state :  ${state.userCVPassword}");
     Either<AuthFailure, Unit> failureOrSuccess;
 
-    final isUserCVIdValid = state.userCVId.isValid();
-    final isUserCVPasswordValid = state.userCVPassword.isValid();
+    final UserCVId user = UserCVId(state.userCVId);
+    final UserCVPassword password = UserCVPassword(state.userCVPassword);
 
-    if (isUserCVIdValid && isUserCVPasswordValid) {
-      print("check user id: $isUserCVIdValid");
-      print("chek user password: $isUserCVPasswordValid");
+    if (user.isValid() && password.isValid()) {
       yield state.copyWith(
         isSubmitting: true,
         authFailureOrSuccessOption: none(),
       );
 
       failureOrSuccess = await forwardedCall(
-        userCVId: state.userCVId,
-        userCVPassword: state.userCVPassword,
+        userCVId: user,
+        userCVPassword: password,
       );
     }
+
+    yield state.copyWith(
+      isSubmitting: false,
+      showErrorMessage: true,
+      authFailureOrSuccessOption: optionOf(failureOrSuccess),
+    );
+  }
+
+  Stream<SignInFormState> _performActionOnAuthFacadeWithLocalIdAndPassword(
+    Future<Either<AuthFailure, Unit>> Function() forwardedCall,
+  ) async* {
+    Either<AuthFailure, Unit> failureOrSuccess;
+
+    yield state.copyWith(
+      isSubmitting: true,
+      authFailureOrSuccessOption: none(),
+    );
+
+    failureOrSuccess = await forwardedCall();
 
     yield state.copyWith(
       isSubmitting: false,

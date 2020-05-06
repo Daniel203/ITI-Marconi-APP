@@ -12,8 +12,8 @@ import 'planner_element_dto.dart';
 @lazySingleton
 @RegisterAs(IPlannerRepository)
 class PlannerRepository implements IPlannerRepository {
+  final List<PlannerElement> _plannerData = [];
   Either<CVApiFailure, dynamic> _data;
-  List<PlannerElement> _plannerData;
 
   PlannerRepository() {
     _getAndConvertDataFromJson();
@@ -24,7 +24,9 @@ class PlannerRepository implements IPlannerRepository {
     _data.fold(
       (f) => left(f),
       (data) {
-        for (final Map<String, dynamic> item in data) {
+        print("data: ${data['agenda']}");
+        for (final Map<String, dynamic> item in data['agenda']) {
+          print("PlannerElement: ${PlannerElementDto.fromJson(item).toDomain().toString()}");
           _plannerData.add(PlannerElementDto.fromJson(item).toDomain());
         }
       },
@@ -45,7 +47,14 @@ class PlannerRepository implements IPlannerRepository {
   Future<Either<CVApiFailure, KtList<PlannerElement>>>
       getNextThreePlannerElements() async {
     try {
-      final int plannerDataLength = _plannerData.length;
+      int plannerDataLength;
+      if (_plannerData != null) {
+        int plannerDataLength = _plannerData.length;
+      } else {
+        print("else");
+        PlannerRepository();
+        PlannerRepository().getNextThreePlannerElements();
+      }
       final List<PlannerElement> lastThreePlannerEvents =
           _plannerData.sublist(plannerDataLength - 4, plannerDataLength - 1);
       return right(lastThreePlannerEvents.toImmutableList());

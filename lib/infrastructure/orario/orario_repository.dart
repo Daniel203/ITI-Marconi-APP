@@ -9,6 +9,7 @@ import 'package:kt_dart/collection.dart';
 import '../../domain/orario/i_orario_repository.dart';
 import '../../domain/orario/orario_failure.dart';
 import '../../domain/orario/orario_ora.dart';
+import 'orario_ora_dto.dart';
 
 @prod
 @lazySingleton
@@ -37,7 +38,7 @@ class OrarioRepository implements IOrarioRepository {
           _getTodayOrarioFromData(data)),
     );
   }
-  
+
   static Future<Either<OrarioFailure, List<dynamic>>> _getData(
       String classe) async {
     final String url =
@@ -65,7 +66,8 @@ class OrarioRepository implements IOrarioRepository {
     return dio;
   }
 
-  static Either<OrarioFailure, List<dynamic>> _checkResponse(Response response) {
+  static Either<OrarioFailure, List<dynamic>> _checkResponse(
+      Response response) {
     if (response.statusMessage == 'OK') {
       final String responseDataStr = response.data.toString();
       final List<dynamic> jsonDecoded =
@@ -77,10 +79,10 @@ class OrarioRepository implements IOrarioRepository {
 
   static KtList<OrarioOra> _getTodayOrarioFromData(List<dynamic> data) {
     final int todayNumber = DateTime.now().weekday;
-    List<OrarioOra> todayOrario = [];
+    final List<OrarioOra> todayOrario = [];
     for (final dynamic item in data) {
       final OrarioOra orarioOra =
-          OrarioOra.fromJson(item as Map<String, dynamic>);
+          OrarioOraDto.fromJson(item as Map<String, dynamic>).toDomain();
       if (orarioOra.giorno == todayNumber) {
         todayOrario.add(orarioOra);
       }
@@ -91,7 +93,8 @@ class OrarioRepository implements IOrarioRepository {
 
   static KtList<OrarioOra> _getFullOrarioFromData(List<dynamic> data) {
     final KtList<OrarioOra> orario = data
-        .map((dynamic item) => OrarioOra.fromJson(json as Map<String, dynamic>))
+        .map((dynamic item) =>
+            OrarioOraDto.fromJson(json as Map<String, dynamic>).toDomain())
         .toImmutableList();
     return orario;
   }

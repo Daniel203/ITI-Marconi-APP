@@ -1,22 +1,22 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'orario_ora.dart';
+part of 'orario_ora_dto.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_OrarioOra _$_$_OrarioOraFromJson(Map<String, dynamic> json) {
-  return _$_OrarioOra(
+_$_OrarioOraDto _$_$_OrarioOraDtoFromJson(Map<String, dynamic> json) {
+  return _$_OrarioOraDto(
     prof: json['prof'] as String,
     materia: json['materia'] as String,
     aula: json['aula'] as String,
-    giorno: json['giorno'] as int,
-    ora: json['ora'] as int,
+    giorno: json['giorno'] as String,
+    ora: json['ora'] as String,
   );
 }
 
-Map<String, dynamic> _$_$_OrarioOraToJson(_$_OrarioOra instance) =>
+Map<String, dynamic> _$_$_OrarioOraDtoToJson(_$_OrarioOraDto instance) =>
     <String, dynamic>{
       'prof': instance.prof,
       'materia': instance.materia,

@@ -7,20 +7,7 @@ part of 'planner_element.dart';
 // FreezedGenerator
 // **************************************************************************
 
-mixin _$PlannerElement {
-  String get authorName;
-  DateTime get beginDate;
-  DateTime get endDate;
-  String get notes;
-  String get eventType;
-
-  PlannerElement copyWith(
-      {String authorName,
-      DateTime beginDate,
-      DateTime endDate,
-      String notes,
-      String eventType});
-}
+T _$identity<T>(T value) => value;
 
 class _$PlannerElementTearOff {
   const _$PlannerElementTearOff();
@@ -41,7 +28,102 @@ class _$PlannerElementTearOff {
   }
 }
 
+// ignore: unused_element
 const $PlannerElement = _$PlannerElementTearOff();
+
+mixin _$PlannerElement {
+  String get authorName;
+  DateTime get beginDate;
+  DateTime get endDate;
+  String get notes;
+  String get eventType;
+
+  $PlannerElementCopyWith<PlannerElement> get copyWith;
+}
+
+abstract class $PlannerElementCopyWith<$Res> {
+  factory $PlannerElementCopyWith(
+          PlannerElement value, $Res Function(PlannerElement) then) =
+      _$PlannerElementCopyWithImpl<$Res>;
+  $Res call(
+      {String authorName,
+      DateTime beginDate,
+      DateTime endDate,
+      String notes,
+      String eventType});
+}
+
+class _$PlannerElementCopyWithImpl<$Res>
+    implements $PlannerElementCopyWith<$Res> {
+  _$PlannerElementCopyWithImpl(this._value, this._then);
+
+  final PlannerElement _value;
+  // ignore: unused_field
+  final $Res Function(PlannerElement) _then;
+
+  @override
+  $Res call({
+    Object authorName = freezed,
+    Object beginDate = freezed,
+    Object endDate = freezed,
+    Object notes = freezed,
+    Object eventType = freezed,
+  }) {
+    return _then(_value.copyWith(
+      authorName:
+          authorName == freezed ? _value.authorName : authorName as String,
+      beginDate:
+          beginDate == freezed ? _value.beginDate : beginDate as DateTime,
+      endDate: endDate == freezed ? _value.endDate : endDate as DateTime,
+      notes: notes == freezed ? _value.notes : notes as String,
+      eventType: eventType == freezed ? _value.eventType : eventType as String,
+    ));
+  }
+}
+
+abstract class _$PlannerElementCopyWith<$Res>
+    implements $PlannerElementCopyWith<$Res> {
+  factory _$PlannerElementCopyWith(
+          _PlannerElement value, $Res Function(_PlannerElement) then) =
+      __$PlannerElementCopyWithImpl<$Res>;
+  @override
+  $Res call(
+      {String authorName,
+      DateTime beginDate,
+      DateTime endDate,
+      String notes,
+      String eventType});
+}
+
+class __$PlannerElementCopyWithImpl<$Res>
+    extends _$PlannerElementCopyWithImpl<$Res>
+    implements _$PlannerElementCopyWith<$Res> {
+  __$PlannerElementCopyWithImpl(
+      _PlannerElement _value, $Res Function(_PlannerElement) _then)
+      : super(_value, (v) => _then(v as _PlannerElement));
+
+  @override
+  _PlannerElement get _value => super._value as _PlannerElement;
+
+  @override
+  $Res call({
+    Object authorName = freezed,
+    Object beginDate = freezed,
+    Object endDate = freezed,
+    Object notes = freezed,
+    Object eventType = freezed,
+  }) {
+    return _then(_PlannerElement(
+      authorName:
+          authorName == freezed ? _value.authorName : authorName as String,
+      beginDate:
+          beginDate == freezed ? _value.beginDate : beginDate as DateTime,
+      endDate: endDate == freezed ? _value.endDate : endDate as DateTime,
+      notes: notes == freezed ? _value.notes : notes as String,
+      eventType: eventType == freezed ? _value.eventType : eventType as String,
+    ));
+  }
+}
 
 class _$_PlannerElement implements _PlannerElement {
   const _$_PlannerElement(
@@ -102,22 +184,8 @@ class _$_PlannerElement implements _PlannerElement {
       const DeepCollectionEquality().hash(eventType);
 
   @override
-  _$_PlannerElement copyWith({
-    Object authorName = freezed,
-    Object beginDate = freezed,
-    Object endDate = freezed,
-    Object notes = freezed,
-    Object eventType = freezed,
-  }) {
-    return _$_PlannerElement(
-      authorName:
-          authorName == freezed ? this.authorName : authorName as String,
-      beginDate: beginDate == freezed ? this.beginDate : beginDate as DateTime,
-      endDate: endDate == freezed ? this.endDate : endDate as DateTime,
-      notes: notes == freezed ? this.notes : notes as String,
-      eventType: eventType == freezed ? this.eventType : eventType as String,
-    );
-  }
+  _$PlannerElementCopyWith<_PlannerElement> get copyWith =>
+      __$PlannerElementCopyWithImpl<_PlannerElement>(this, _$identity);
 }
 
 abstract class _PlannerElement implements PlannerElement {
@@ -138,12 +206,6 @@ abstract class _PlannerElement implements PlannerElement {
   String get notes;
   @override
   String get eventType;
-
   @override
-  _PlannerElement copyWith(
-      {String authorName,
-      DateTime beginDate,
-      DateTime endDate,
-      String notes,
-      String eventType});
+  _$PlannerElementCopyWith<_PlannerElement> get copyWith;
 }
