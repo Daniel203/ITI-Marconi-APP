@@ -24,10 +24,10 @@ class PlannerRepository implements IPlannerRepository {
     _data.fold(
       (f) => left(f),
       (data) {
-        print("data: ${data['agenda']}");
-        for (final Map<String, dynamic> item in data['agenda']) {
-          print("PlannerElement: ${PlannerElementDto.fromJson(item).toDomain().toString()}");
-          _plannerData.add(PlannerElementDto.fromJson(item).toDomain());
+        for (final item in data['agenda']) {
+          _plannerData.add(
+              PlannerElementDto.fromJson(item as Map<String, dynamic>)
+                  .toDomain());
         }
       },
     );

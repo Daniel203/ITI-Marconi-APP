@@ -24,8 +24,8 @@ class GradesRepository implements IGradesRepository {
     _data.fold(
       (f) => left(f),
       (data) {
-        for (final Map<String, dynamic> item in data) {
-          _gradesData.add(GradeDto.fromJson(item).toDomain());
+        for (final item in data) {
+          _gradesData.add(GradeDto.fromJson(item as Map<String, dynamic>).toDomain());
         }
       },
     );

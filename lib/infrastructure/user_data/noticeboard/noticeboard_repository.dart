@@ -29,8 +29,8 @@ class NoticeboardRepository implements INoticeBoardRepository {
     _data.fold(
       (f) => left(f),
       (data) {
-        for (final Map<String, dynamic> item in data) {
-          _noticeboardData.add(CircularDto.fromJson(item).toDomain());
+        for (final item in data) {
+          _noticeboardData.add(CircularDto.fromJson(item as Map<String, dynamic>).toDomain());
         }
       },
     );

@@ -24,9 +24,9 @@ class AbsencesRepository implements IAbsencesRepository {
     _data.fold(
       (f) => left(f),
       (data) {
-        for (final Map<String, dynamic> item in data) {
+        for (final item in data['agenda']) {
           _absencesData.add(
-              AbsenceDto.fromJson(item).toDomain());
+              AbsenceDto.fromJson(item as Map<String, dynamic>).toDomain());
         }
       },
     );
