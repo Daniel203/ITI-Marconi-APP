@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:kt_dart/collection.dart';
 
@@ -21,7 +22,7 @@ class OrarioDayView extends StatelessWidget {
 
     final Map<String, double> dimensions = {
       'containerHeight': containerHeight,
-      'rowHeight': (numeroOre >= 6) ? containerHeight / 8 : containerHeight / 7,
+      'rowHeight': (numeroOre >= 6) ? containerHeight / 9 : containerHeight / 8,
       'hourNumberIndicatorWidth': MediaQuery.of(context).size.width * 0.15,
       'hourInformationsWidth': MediaQuery.of(context).size.width * 0.75,
     };
@@ -49,6 +50,7 @@ List<Widget> _orarioDayUI(
       Container(
         height: dimensions['rowHeight'],
         child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: <Widget>[
             _hourNumberIndicator(orarioOra.ora, context, dimensions),
             _hourInformations(orarioOra, context, dimensions),
@@ -56,6 +58,12 @@ List<Widget> _orarioDayUI(
         ),
       ),
     );
+  }
+
+  orarioWidgets.insert(2, _breakLineIndicator("9:50", context, dimensions));
+
+  if (orarioWidgets.length > 5) {
+    orarioWidgets.insert(5, _breakLineIndicator("11:50", context, dimensions));
   }
 
   return orarioWidgets;
@@ -91,7 +99,7 @@ Widget _hourNumberIndicator(
     child: Center(
       child: Text(
         hourNumber.toString(),
-        style: Theme.of(context).textTheme.title,
+        style: Theme.of(context).textTheme.headline6,
       ),
     ),
   );
@@ -109,7 +117,7 @@ Widget _hourInformations(
       children: <Widget>[
         Column(
           children: <Widget>[
-            _hourSubjectInfoUI(orarioOra.materia, context, dimensions),
+            _hourSubjectCircle(orarioOra.materia, context, dimensions),
           ],
         ),
         const Spacer(),
@@ -134,30 +142,33 @@ Widget _hourProfAndClassroomInfoUI(
     children: <Widget>[
       Text(
         "$aula",
-        style: Theme.of(context).textTheme.body2,
+        style: Theme.of(context).textTheme.bodyText2,
       ),
       Text(
         "${_formatProfessorSurname(professore)}",
-        style: Theme.of(context).textTheme.body2,
+        style: Theme.of(context).textTheme.bodyText2,
       ),
     ],
   );
 }
 
-Widget _hourSubjectInfoUI(
+Widget _hourSubjectCircle(
     String materia, BuildContext context, Map<String, double> dimensions) {
-  return Container(
-    height: dimensions['rowHeight'],
-    width: dimensions['rowHeight'],
-    decoration: BoxDecoration(
-      color: SubjectsColors()
-          .getColorForSubject(materia, Theme.of(context).brightness),
-      shape: BoxShape.circle,
-    ),
-    child: Center(
-      child: Text(
-        materia,
-        style: Theme.of(context).textTheme.body2,
+  return Padding(
+    padding: EdgeInsets.all(dimensions['rowHeight'] * 0.05),
+    child: Container(
+      height: dimensions['rowHeight'] * 0.90,
+      width: dimensions['rowHeight'] * 0.90,
+      decoration: BoxDecoration(
+        color: SubjectsColors()
+            .getColorForSubject(materia, Theme.of(context).brightness),
+        shape: BoxShape.circle,
+      ),
+      child: Center(
+        child: Text(
+          materia,
+          style: Theme.of(context).textTheme.bodyText2,
+        ),
       ),
     ),
   );
@@ -170,4 +181,26 @@ String _formatProfessorSurname(String professore) {
     return "${profNameAndSurnameSplitted[0]}, ${profNameAndSurnameSplitted[2]}";
   }
   return professore.split(" ")[0];
+}
+
+Widget _breakLineIndicator(
+    String text, BuildContext context, Map<String, double> dimensions) {
+  return Row(
+    mainAxisAlignment: MainAxisAlignment.spaceAround,
+    children: <Widget>[
+      Container(
+        width: dimensions['hourNumberIndicatorWidth'],
+        decoration: const BoxDecoration(
+          shape: BoxShape.circle,
+        ),
+        child: Center(child: Text(text)),
+      ),
+      Container(
+        width: dimensions['hourInformationsWidth'],
+        height: 1,
+        color: Theme.of(context).textTheme.bodyText2.color,
+        child: null,
+      ),
+    ],
+  );
 }

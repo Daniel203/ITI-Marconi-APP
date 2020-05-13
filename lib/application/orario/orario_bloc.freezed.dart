@@ -21,7 +21,7 @@ class _$OrarioEventTearOff {
   }
 
   _OraioReceived orarioReceived(
-      Either<OrarioFailure, KtList<OrarioOra>> failureOrOrario) {
+      Either<OrarioFailure, KtList<KtList<OrarioOra>>> failureOrOrario) {
     return _OraioReceived(
       failureOrOrario,
     );
@@ -38,14 +38,14 @@ mixin _$OrarioEvent {
     @required Result getFullWidget(),
     @required
         Result orarioReceived(
-            Either<OrarioFailure, KtList<OrarioOra>> failureOrOrario),
+            Either<OrarioFailure, KtList<KtList<OrarioOra>>> failureOrOrario),
   });
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
     Result getSmalLWidget(),
     Result getFullWidget(),
     Result orarioReceived(
-        Either<OrarioFailure, KtList<OrarioOra>> failureOrOrario),
+        Either<OrarioFailure, KtList<KtList<OrarioOra>>> failureOrOrario),
     @required Result orElse(),
   });
   @optionalTypeArgs
@@ -125,7 +125,7 @@ class _$_getSmallWidget
     @required Result getFullWidget(),
     @required
         Result orarioReceived(
-            Either<OrarioFailure, KtList<OrarioOra>> failureOrOrario),
+            Either<OrarioFailure, KtList<KtList<OrarioOra>>> failureOrOrario),
   }) {
     assert(getSmalLWidget != null);
     assert(getFullWidget != null);
@@ -139,7 +139,7 @@ class _$_getSmallWidget
     Result getSmalLWidget(),
     Result getFullWidget(),
     Result orarioReceived(
-        Either<OrarioFailure, KtList<OrarioOra>> failureOrOrario),
+        Either<OrarioFailure, KtList<KtList<OrarioOra>>> failureOrOrario),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -227,7 +227,7 @@ class _$_getFullWidget with DiagnosticableTreeMixin implements _getFullWidget {
     @required Result getFullWidget(),
     @required
         Result orarioReceived(
-            Either<OrarioFailure, KtList<OrarioOra>> failureOrOrario),
+            Either<OrarioFailure, KtList<KtList<OrarioOra>>> failureOrOrario),
   }) {
     assert(getSmalLWidget != null);
     assert(getFullWidget != null);
@@ -241,7 +241,7 @@ class _$_getFullWidget with DiagnosticableTreeMixin implements _getFullWidget {
     Result getSmalLWidget(),
     Result getFullWidget(),
     Result orarioReceived(
-        Either<OrarioFailure, KtList<OrarioOra>> failureOrOrario),
+        Either<OrarioFailure, KtList<KtList<OrarioOra>>> failureOrOrario),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -288,7 +288,7 @@ abstract class _$OraioReceivedCopyWith<$Res> {
   factory _$OraioReceivedCopyWith(
           _OraioReceived value, $Res Function(_OraioReceived) then) =
       __$OraioReceivedCopyWithImpl<$Res>;
-  $Res call({Either<OrarioFailure, KtList<OrarioOra>> failureOrOrario});
+  $Res call({Either<OrarioFailure, KtList<KtList<OrarioOra>>> failureOrOrario});
 }
 
 class __$OraioReceivedCopyWithImpl<$Res> extends _$OrarioEventCopyWithImpl<$Res>
@@ -307,7 +307,7 @@ class __$OraioReceivedCopyWithImpl<$Res> extends _$OrarioEventCopyWithImpl<$Res>
     return _then(_OraioReceived(
       failureOrOrario == freezed
           ? _value.failureOrOrario
-          : failureOrOrario as Either<OrarioFailure, KtList<OrarioOra>>,
+          : failureOrOrario as Either<OrarioFailure, KtList<KtList<OrarioOra>>>,
     ));
   }
 }
@@ -317,7 +317,7 @@ class _$_OraioReceived with DiagnosticableTreeMixin implements _OraioReceived {
       : assert(failureOrOrario != null);
 
   @override
-  final Either<OrarioFailure, KtList<OrarioOra>> failureOrOrario;
+  final Either<OrarioFailure, KtList<KtList<OrarioOra>>> failureOrOrario;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
@@ -357,7 +357,7 @@ class _$_OraioReceived with DiagnosticableTreeMixin implements _OraioReceived {
     @required Result getFullWidget(),
     @required
         Result orarioReceived(
-            Either<OrarioFailure, KtList<OrarioOra>> failureOrOrario),
+            Either<OrarioFailure, KtList<KtList<OrarioOra>>> failureOrOrario),
   }) {
     assert(getSmalLWidget != null);
     assert(getFullWidget != null);
@@ -371,7 +371,7 @@ class _$_OraioReceived with DiagnosticableTreeMixin implements _OraioReceived {
     Result getSmalLWidget(),
     Result getFullWidget(),
     Result orarioReceived(
-        Either<OrarioFailure, KtList<OrarioOra>> failureOrOrario),
+        Either<OrarioFailure, KtList<KtList<OrarioOra>>> failureOrOrario),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -412,10 +412,10 @@ class _$_OraioReceived with DiagnosticableTreeMixin implements _OraioReceived {
 
 abstract class _OraioReceived implements OrarioEvent {
   const factory _OraioReceived(
-          Either<OrarioFailure, KtList<OrarioOra>> failureOrOrario) =
+          Either<OrarioFailure, KtList<KtList<OrarioOra>>> failureOrOrario) =
       _$_OraioReceived;
 
-  Either<OrarioFailure, KtList<OrarioOra>> get failureOrOrario;
+  Either<OrarioFailure, KtList<KtList<OrarioOra>>> get failureOrOrario;
   _$OraioReceivedCopyWith<_OraioReceived> get copyWith;
 }
 
@@ -430,7 +430,7 @@ class _$OrarioStateTearOff {
     return const LoadInProgress();
   }
 
-  LoadSuccess loadSuccess(KtList<OrarioOra> orario) {
+  LoadSuccess loadSuccess(KtList<KtList<OrarioOra>> orario) {
     return LoadSuccess(
       orario,
     );
@@ -451,14 +451,14 @@ mixin _$OrarioState {
   Result when<Result extends Object>({
     @required Result initial(),
     @required Result loadInProgress(),
-    @required Result loadSuccess(KtList<OrarioOra> orario),
+    @required Result loadSuccess(KtList<KtList<OrarioOra>> orario),
     @required Result loadFailure(OrarioFailure orarioFailure),
   });
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
     Result initial(),
     Result loadInProgress(),
-    Result loadSuccess(KtList<OrarioOra> orario),
+    Result loadSuccess(KtList<KtList<OrarioOra>> orario),
     Result loadFailure(OrarioFailure orarioFailure),
     @required Result orElse(),
   });
@@ -534,7 +534,7 @@ class _$Initial with DiagnosticableTreeMixin implements Initial {
   Result when<Result extends Object>({
     @required Result initial(),
     @required Result loadInProgress(),
-    @required Result loadSuccess(KtList<OrarioOra> orario),
+    @required Result loadSuccess(KtList<KtList<OrarioOra>> orario),
     @required Result loadFailure(OrarioFailure orarioFailure),
   }) {
     assert(initial != null);
@@ -549,7 +549,7 @@ class _$Initial with DiagnosticableTreeMixin implements Initial {
   Result maybeWhen<Result extends Object>({
     Result initial(),
     Result loadInProgress(),
-    Result loadSuccess(KtList<OrarioOra> orario),
+    Result loadSuccess(KtList<KtList<OrarioOra>> orario),
     Result loadFailure(OrarioFailure orarioFailure),
     @required Result orElse(),
   }) {
@@ -639,7 +639,7 @@ class _$LoadInProgress with DiagnosticableTreeMixin implements LoadInProgress {
   Result when<Result extends Object>({
     @required Result initial(),
     @required Result loadInProgress(),
-    @required Result loadSuccess(KtList<OrarioOra> orario),
+    @required Result loadSuccess(KtList<KtList<OrarioOra>> orario),
     @required Result loadFailure(OrarioFailure orarioFailure),
   }) {
     assert(initial != null);
@@ -654,7 +654,7 @@ class _$LoadInProgress with DiagnosticableTreeMixin implements LoadInProgress {
   Result maybeWhen<Result extends Object>({
     Result initial(),
     Result loadInProgress(),
-    Result loadSuccess(KtList<OrarioOra> orario),
+    Result loadSuccess(KtList<KtList<OrarioOra>> orario),
     Result loadFailure(OrarioFailure orarioFailure),
     @required Result orElse(),
   }) {
@@ -705,7 +705,7 @@ abstract class $LoadSuccessCopyWith<$Res> {
   factory $LoadSuccessCopyWith(
           LoadSuccess value, $Res Function(LoadSuccess) then) =
       _$LoadSuccessCopyWithImpl<$Res>;
-  $Res call({KtList<OrarioOra> orario});
+  $Res call({KtList<KtList<OrarioOra>> orario});
 }
 
 class _$LoadSuccessCopyWithImpl<$Res> extends _$OrarioStateCopyWithImpl<$Res>
@@ -722,7 +722,7 @@ class _$LoadSuccessCopyWithImpl<$Res> extends _$OrarioStateCopyWithImpl<$Res>
     Object orario = freezed,
   }) {
     return _then(LoadSuccess(
-      orario == freezed ? _value.orario : orario as KtList<OrarioOra>,
+      orario == freezed ? _value.orario : orario as KtList<KtList<OrarioOra>>,
     ));
   }
 }
@@ -731,7 +731,7 @@ class _$LoadSuccess with DiagnosticableTreeMixin implements LoadSuccess {
   const _$LoadSuccess(this.orario) : assert(orario != null);
 
   @override
-  final KtList<OrarioOra> orario;
+  final KtList<KtList<OrarioOra>> orario;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
@@ -767,7 +767,7 @@ class _$LoadSuccess with DiagnosticableTreeMixin implements LoadSuccess {
   Result when<Result extends Object>({
     @required Result initial(),
     @required Result loadInProgress(),
-    @required Result loadSuccess(KtList<OrarioOra> orario),
+    @required Result loadSuccess(KtList<KtList<OrarioOra>> orario),
     @required Result loadFailure(OrarioFailure orarioFailure),
   }) {
     assert(initial != null);
@@ -782,7 +782,7 @@ class _$LoadSuccess with DiagnosticableTreeMixin implements LoadSuccess {
   Result maybeWhen<Result extends Object>({
     Result initial(),
     Result loadInProgress(),
-    Result loadSuccess(KtList<OrarioOra> orario),
+    Result loadSuccess(KtList<KtList<OrarioOra>> orario),
     Result loadFailure(OrarioFailure orarioFailure),
     @required Result orElse(),
   }) {
@@ -826,9 +826,9 @@ class _$LoadSuccess with DiagnosticableTreeMixin implements LoadSuccess {
 }
 
 abstract class LoadSuccess implements OrarioState {
-  const factory LoadSuccess(KtList<OrarioOra> orario) = _$LoadSuccess;
+  const factory LoadSuccess(KtList<KtList<OrarioOra>> orario) = _$LoadSuccess;
 
-  KtList<OrarioOra> get orario;
+  KtList<KtList<OrarioOra>> get orario;
   $LoadSuccessCopyWith<LoadSuccess> get copyWith;
 }
 
@@ -913,7 +913,7 @@ class _$LoadFailure with DiagnosticableTreeMixin implements LoadFailure {
   Result when<Result extends Object>({
     @required Result initial(),
     @required Result loadInProgress(),
-    @required Result loadSuccess(KtList<OrarioOra> orario),
+    @required Result loadSuccess(KtList<KtList<OrarioOra>> orario),
     @required Result loadFailure(OrarioFailure orarioFailure),
   }) {
     assert(initial != null);
@@ -928,7 +928,7 @@ class _$LoadFailure with DiagnosticableTreeMixin implements LoadFailure {
   Result maybeWhen<Result extends Object>({
     Result initial(),
     Result loadInProgress(),
-    Result loadSuccess(KtList<OrarioOra> orario),
+    Result loadSuccess(KtList<KtList<OrarioOra>> orario),
     Result loadFailure(OrarioFailure orarioFailure),
     @required Result orElse(),
   }) {

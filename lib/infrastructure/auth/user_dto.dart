@@ -11,6 +11,7 @@ abstract class UserDto with _$UserDto {
     @required int usrId,
     @required String firstName,
     @required String lastName,
+    @required String className,
   }) = _UserDto;
 
   factory UserDto.fromJson(Map<String, dynamic> json) =>
@@ -23,6 +24,7 @@ extension UserDtoX on UserDto {
       id: usrId.toString(),
       firstName: firstName,
       lastName: lastName,
+      className: className,
     );
   }
 }

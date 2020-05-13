@@ -35,7 +35,7 @@ class BoxWithPageIconAndLink extends StatelessWidget {
                   color: iconColor, size: Theme.of(context).iconTheme.size),
               Text(
                 pageName,
-                style: Theme.of(context).textTheme.subtitle,
+                style: Theme.of(context).textTheme.subtitle2,
               ),
             ],
           ),

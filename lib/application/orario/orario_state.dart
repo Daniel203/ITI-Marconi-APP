@@ -4,6 +4,6 @@ part of 'orario_bloc.dart';
 abstract class OrarioState with _$OrarioState {
   const factory OrarioState.initial() = Initial;
   const factory OrarioState.loadInProgress() = LoadInProgress;
-  const factory OrarioState.loadSuccess(KtList<OrarioOra> orario) = LoadSuccess;
+  const factory OrarioState.loadSuccess(KtList<KtList<OrarioOra>> orario) = LoadSuccess;
   const factory OrarioState.loadFailure(OrarioFailure orarioFailure) = LoadFailure;
 }

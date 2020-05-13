@@ -28,27 +28,32 @@ class SignInFormBloc extends Bloc<SignInFormEvent, SignInFormState> {
   Stream<SignInFormState> mapEventToState(
     SignInFormEvent event,
   ) async* {
-    yield* event.map(userCVIdChanged: (e) async* {
-      yield state.copyWith(
-        userCVId: e.userCVIdStr,
-        isUserCVIdValid: UserCVId(e.userCVIdStr).isValid(),
-        authFailureOrSuccessOption: none(),
-      );
-    }, userCVPasswordChanged: (e) async* {
-      yield state.copyWith(
-        userCVPassword: e.userCVPasswordStr,
-        isUserCVPasswordValid: UserCVPassword(e.userCVPasswordStr).isValid(),
-        authFailureOrSuccessOption: none(),
-      );
-    }, signInWithIdAndPassword: (e) async* {
-      yield* _performActionOnAuthFacadeWithIdAndPassword(
-        _authFacade.signInWithIdAndPassword,
-      );
-    }, signInWithLocalIdAndPassword: (e) async* {
-      yield* _performActionOnAuthFacadeWithLocalIdAndPassword(
-        _authFacade.signInWithLocalData,
-      );
-    });
+    yield* event.map(
+      userCVIdChanged: (e) async* {
+        yield state.copyWith(
+          userCVId: e.userCVIdStr,
+          isUserCVIdValid: UserCVId(e.userCVIdStr).isValid(),
+          authFailureOrSuccessOption: none(),
+        );
+      },
+      userCVPasswordChanged: (e) async* {
+        yield state.copyWith(
+          userCVPassword: e.userCVPasswordStr,
+          isUserCVPasswordValid: UserCVPassword(e.userCVPasswordStr).isValid(),
+          authFailureOrSuccessOption: none(),
+        );
+      },
+      signInWithIdAndPassword: (e) async* {
+        yield* _performActionOnAuthFacadeWithIdAndPassword(
+          _authFacade.signInWithIdAndPassword,
+        );
+      },
+      signInWithLocalIdAndPassword: (e) async* {
+        yield* _performActionOnAuthFacadeWithLocalIdAndPassword(
+          _authFacade.signInWithLocalData,
+        );
+      },
+    );
   }
 
   Stream<SignInFormState> _performActionOnAuthFacadeWithIdAndPassword(

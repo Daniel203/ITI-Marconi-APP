@@ -13,6 +13,6 @@ mixin AppConstraints {
   static const Duration animationDuration = Duration(milliseconds: 200);
   static const Curve animationCurve = Curves.easeInOut;
 
-  static const double smallContainerHeightFactor = 0.5;
+  static const double smallContainerHeightFactor = 0.6;
 
 }

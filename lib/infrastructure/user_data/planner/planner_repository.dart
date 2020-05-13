@@ -15,28 +15,13 @@ class PlannerRepository implements IPlannerRepository {
   final List<PlannerElement> _plannerData = [];
   Either<CVApiFailure, dynamic> _data;
 
-  PlannerRepository() {
-    _getAndConvertDataFromJson();
-  }
-
-  Future<void> _getAndConvertDataFromJson() async {
-    _data = await ClasseVivaApiRepository().planner();
-    _data.fold(
-      (f) => left(f),
-      (data) {
-        for (final item in data['agenda']) {
-          _plannerData.add(
-              PlannerElementDto.fromJson(item as Map<String, dynamic>)
-                  .toDomain());
-        }
-      },
-    );
-  }
+  PlannerRepository();
 
   @override
   Future<Either<CVApiFailure, KtList<PlannerElement>>>
       getAllPlannerElements() async {
     try {
+      await _getAndConvertDataFromJson();
       return right(_plannerData.toImmutableList());
     } on Exception {
       return left(const CVApiFailure.serverError());
@@ -47,19 +32,46 @@ class PlannerRepository implements IPlannerRepository {
   Future<Either<CVApiFailure, KtList<PlannerElement>>>
       getNextThreePlannerElements() async {
     try {
-      int plannerDataLength;
-      if (_plannerData != null) {
-        int plannerDataLength = _plannerData.length;
-      } else {
-        print("else");
-        PlannerRepository();
-        PlannerRepository().getNextThreePlannerElements();
-      }
+      await _getAndConvertDataFromJson();
       final List<PlannerElement> lastThreePlannerEvents =
-          _plannerData.sublist(plannerDataLength - 4, plannerDataLength - 1);
+          _getNextThreePlannerElementsNotAlreadyEnded();
       return right(lastThreePlannerEvents.toImmutableList());
     } on Exception {
       return left(const CVApiFailure.serverError());
     }
+  }
+
+  Future<void> _getAndConvertDataFromJson() async {
+    if (_plannerData.isEmpty && _data == null) {
+      _data = await ClasseVivaApiRepository().planner();
+      _data.fold(
+        (f) => left(f),
+        (data) {
+          for (final item in data['agenda']) {
+            _plannerData.add(
+                PlannerElementDto.fromJson(item as Map<String, dynamic>)
+                    .toDomain());
+          }
+        },
+      );
+    }
+  }
+
+  List<PlannerElement> _getNextThreePlannerElementsNotAlreadyEnded() {
+    final List<PlannerElement> plannerElementsNotAlreadyEnded = [];
+    int index = 0;
+    while (plannerElementsNotAlreadyEnded.length < 3) {
+      final PlannerElement plannerElement = _plannerData[index];
+      if (_isPlannerElementIsAlreadyEnded(plannerElement)) {
+        plannerElementsNotAlreadyEnded.add(plannerElement);
+      }
+      index++;
+    }
+
+    return plannerElementsNotAlreadyEnded;
+  }
+
+  bool _isPlannerElementIsAlreadyEnded(PlannerElement plannerElement) {
+    return plannerElement.endDate.difference(DateTime.now()).inMinutes > 0;
   }
 }

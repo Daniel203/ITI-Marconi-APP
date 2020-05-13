@@ -5,6 +5,9 @@ import 'package:dio/dio.dart';
 import 'package:dio_http_cache/dio_http_cache.dart';
 import 'package:injectable/injectable.dart';
 import 'package:kt_dart/collection.dart';
+import 'package:marconi_app/domain/auth/user.dart';
+import 'package:marconi_app/domain/user_data/cv_api_failures.dart';
+import 'package:marconi_app/infrastructure/auth/auth_facade.dart';
 
 import '../../domain/orario/i_orario_repository.dart';
 import '../../domain/orario/orario_failure.dart';
@@ -15,45 +18,79 @@ import 'orario_ora_dto.dart';
 @lazySingleton
 @RegisterAs(IOrarioRepository)
 class OrarioRepository implements IOrarioRepository {
-  final String className;
+  List<OrarioOra> orario = [];
 
-  OrarioRepository(this.className) : assert(className != null);
+  static final OrarioRepository _singleton = OrarioRepository._internal();
+
+  factory OrarioRepository() {
+    return _singleton;
+  }
+
+  OrarioRepository._internal();
 
   @override
-  Future<Either<OrarioFailure, KtList<OrarioOra>>> getFullOrario() async {
-    final orarioData = await _getData(className);
-    return orarioData.fold(
-      (f) => left(f),
-      (data) =>
-          right<OrarioFailure, KtList<OrarioOra>>(_getFullOrarioFromData(data)),
-    );
+  Future<Either<OrarioFailure, KtList<KtList<OrarioOra>>>> getFullOrario() async {
+    await _getData();
+    if (orario.isEmpty) {
+      return left(const OrarioFailure.serverError());
+    } else {
+      final List<KtList<OrarioOra>> orarioSeparatedInDays = [];
+      for (int weekday = 1; weekday <= 6; weekday++) {
+        orarioSeparatedInDays.add(_getTodayOrarioFromData(orario, weekday));
+      }
+      return right(orarioSeparatedInDays.toImmutableList());
+    }
   }
 
   @override
-  Future<Either<OrarioFailure, KtList<OrarioOra>>> getTodayOrario() async {
-    final orarioData = await _getData(className);
-    return orarioData.fold(
-      (f) => left(f),
-      (data) => right<OrarioFailure, KtList<OrarioOra>>(
-          _getTodayOrarioFromData(data)),
-    );
+  Future<Either<OrarioFailure, KtList<KtList<OrarioOra>>>> getTodayOrario() async {
+    await _getData();
+    if (orario.isEmpty) {
+      return left(const OrarioFailure.serverError());
+    } else {
+      int todayNumber = DateTime.now().weekday;
+      if (todayNumber == 7) todayNumber = 1;
+
+      return right([_getTodayOrarioFromData(orario, todayNumber)].toImmutableList());
+    }
   }
 
-  static Future<Either<OrarioFailure, List<dynamic>>> _getData(
-      String classe) async {
-    final String url =
-        Uri.encodeFull('http://apps.marconivr.it/orario/api.php?class=$classe');
-    final Dio dio = _setupDio(url);
+  @override
+  String getSubjectFromProf(String profName) {
+    if (orario.isNotEmpty) {
+      for (final OrarioOra orarioOra in orario) {
+        if (orarioOra.prof == profName) {
+          return orarioOra.materia;
+        }
+      }
+    }
+    return '';
+  }
 
-    final response = await dio.get(
-      url,
-      options: buildCacheOptions(
-        const Duration(days: 7),
-        maxStale: const Duration(days: 21),
-      ),
-    );
+  Future<void> _getData() async {
+    if (orario.isEmpty) {
+      final Either<CVApiFailure, User> user =
+          await AuthFacade().getSignedUser();
+      final classe = user.fold((l) => '', (r) => r.className);
+      final String url = Uri.encodeFull(
+          'http://apps.marconivr.it/orario/api.php?class=$classe');
+      final Dio dio = _setupDio(url);
 
-    return _checkResponse(response);
+      final response = await dio.get(
+        url,
+        options: buildCacheOptions(
+          const Duration(days: 7),
+          maxStale: const Duration(days: 21),
+        ),
+      );
+      orario = _checkResponse(response).fold(
+        (l) => null,
+        (data) => data
+            .map((item) =>
+                OrarioOraDto.fromJson(item as Map<String, dynamic>).toDomain())
+            .toList(),
+      );
+    }
   }
 
   static Dio _setupDio(String url) {
@@ -77,25 +114,14 @@ class OrarioRepository implements IOrarioRepository {
     return left(const OrarioFailure.serverError());
   }
 
-  static KtList<OrarioOra> _getTodayOrarioFromData(List<dynamic> data) {
-    final int todayNumber = DateTime.now().weekday;
+  static KtList<OrarioOra> _getTodayOrarioFromData(List<OrarioOra> data, int todayWeekdayNumber) {
     final List<OrarioOra> todayOrario = [];
-    for (final dynamic item in data) {
-      final OrarioOra orarioOra =
-          OrarioOraDto.fromJson(item as Map<String, dynamic>).toDomain();
-      if (orarioOra.giorno == todayNumber) {
+    for (final OrarioOra orarioOra in data) {
+      if (orarioOra.giorno == todayWeekdayNumber) {
         todayOrario.add(orarioOra);
       }
     }
     final KtList<OrarioOra> orario = todayOrario.toImmutableList();
-    return orario;
-  }
-
-  static KtList<OrarioOra> _getFullOrarioFromData(List<dynamic> data) {
-    final KtList<OrarioOra> orario = data
-        .map((dynamic item) =>
-            OrarioOraDto.fromJson(json as Map<String, dynamic>).toDomain())
-        .toImmutableList();
     return orario;
   }
 }

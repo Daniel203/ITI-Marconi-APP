@@ -48,8 +48,7 @@ void $initGetIt(GetIt g, {String environment}) {
     g.registerLazySingleton<IGradesRepository>(() => GradesRepository());
     g.registerLazySingleton<INoticeBoardRepository>(
         () => NoticeboardRepository());
-    g.registerLazySingleton<IOrarioRepository>(
-        () => OrarioRepository(g<String>()));
+    g.registerLazySingleton<IOrarioRepository>(() => OrarioRepository());
     g.registerLazySingleton<IPlannerRepository>(() => PlannerRepository());
   }
 }

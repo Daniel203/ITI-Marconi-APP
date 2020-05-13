@@ -11,6 +11,7 @@ _$_UserDto _$_$_UserDtoFromJson(Map<String, dynamic> json) {
     usrId: json['usrId'] as int,
     firstName: json['firstName'] as String,
     lastName: json['lastName'] as String,
+    className: json['className'] as String,
   );
 }
 
@@ -19,4 +20,5 @@ Map<String, dynamic> _$_$_UserDtoToJson(_$_UserDto instance) =>
       'usrId': instance.usrId,
       'firstName': instance.firstName,
       'lastName': instance.lastName,
+      'className': instance.className,
     };

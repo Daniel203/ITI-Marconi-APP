@@ -12,8 +12,16 @@ class SignInPage extends StatelessWidget {
     return Scaffold(
       backgroundColor: Theme.of(context).backgroundColor,
       appBar: AppBar(
-        title: const Text('LogIn'),
+        title: Text(
+          "Login",
+          style: Theme.of(context)
+              .textTheme
+              .headline5
+              .copyWith(fontWeight: FontWeight.bold),
+        ),
+        elevation: 0,
         centerTitle: true,
+        backgroundColor: Theme.of(context).backgroundColor,
       ),
       body: ResponsiveSafeArea(
         builder: (context, size) {

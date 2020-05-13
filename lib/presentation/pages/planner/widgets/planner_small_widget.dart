@@ -18,6 +18,7 @@ class PlannerSmallWidget extends StatelessWidget {
         loadSuccess: (state) => PlannerDayView(
           planner: state.planner,
           containerHeight: size.height * AppConstraints.smallContainerHeightFactor,
+          containerWidth: size.width,
         ),
         loadFailure: (_) => const Expanded(
           child: Center(

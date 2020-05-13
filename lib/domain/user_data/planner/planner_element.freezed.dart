@@ -14,12 +14,14 @@ class _$PlannerElementTearOff {
 
   _PlannerElement call(
       {@required String authorName,
+      @required String subject,
       @required DateTime beginDate,
       @required DateTime endDate,
       @required String notes,
       @required String eventType}) {
     return _PlannerElement(
       authorName: authorName,
+      subject: subject,
       beginDate: beginDate,
       endDate: endDate,
       notes: notes,
@@ -33,6 +35,7 @@ const $PlannerElement = _$PlannerElementTearOff();
 
 mixin _$PlannerElement {
   String get authorName;
+  String get subject;
   DateTime get beginDate;
   DateTime get endDate;
   String get notes;
@@ -47,6 +50,7 @@ abstract class $PlannerElementCopyWith<$Res> {
       _$PlannerElementCopyWithImpl<$Res>;
   $Res call(
       {String authorName,
+      String subject,
       DateTime beginDate,
       DateTime endDate,
       String notes,
@@ -64,6 +68,7 @@ class _$PlannerElementCopyWithImpl<$Res>
   @override
   $Res call({
     Object authorName = freezed,
+    Object subject = freezed,
     Object beginDate = freezed,
     Object endDate = freezed,
     Object notes = freezed,
@@ -72,6 +77,7 @@ class _$PlannerElementCopyWithImpl<$Res>
     return _then(_value.copyWith(
       authorName:
           authorName == freezed ? _value.authorName : authorName as String,
+      subject: subject == freezed ? _value.subject : subject as String,
       beginDate:
           beginDate == freezed ? _value.beginDate : beginDate as DateTime,
       endDate: endDate == freezed ? _value.endDate : endDate as DateTime,
@@ -89,6 +95,7 @@ abstract class _$PlannerElementCopyWith<$Res>
   @override
   $Res call(
       {String authorName,
+      String subject,
       DateTime beginDate,
       DateTime endDate,
       String notes,
@@ -108,6 +115,7 @@ class __$PlannerElementCopyWithImpl<$Res>
   @override
   $Res call({
     Object authorName = freezed,
+    Object subject = freezed,
     Object beginDate = freezed,
     Object endDate = freezed,
     Object notes = freezed,
@@ -116,6 +124,7 @@ class __$PlannerElementCopyWithImpl<$Res>
     return _then(_PlannerElement(
       authorName:
           authorName == freezed ? _value.authorName : authorName as String,
+      subject: subject == freezed ? _value.subject : subject as String,
       beginDate:
           beginDate == freezed ? _value.beginDate : beginDate as DateTime,
       endDate: endDate == freezed ? _value.endDate : endDate as DateTime,
@@ -128,11 +137,13 @@ class __$PlannerElementCopyWithImpl<$Res>
 class _$_PlannerElement implements _PlannerElement {
   const _$_PlannerElement(
       {@required this.authorName,
+      @required this.subject,
       @required this.beginDate,
       @required this.endDate,
       @required this.notes,
       @required this.eventType})
       : assert(authorName != null),
+        assert(subject != null),
         assert(beginDate != null),
         assert(endDate != null),
         assert(notes != null),
@@ -140,6 +151,8 @@ class _$_PlannerElement implements _PlannerElement {
 
   @override
   final String authorName;
+  @override
+  final String subject;
   @override
   final DateTime beginDate;
   @override
@@ -151,7 +164,7 @@ class _$_PlannerElement implements _PlannerElement {
 
   @override
   String toString() {
-    return 'PlannerElement(authorName: $authorName, beginDate: $beginDate, endDate: $endDate, notes: $notes, eventType: $eventType)';
+    return 'PlannerElement(authorName: $authorName, subject: $subject, beginDate: $beginDate, endDate: $endDate, notes: $notes, eventType: $eventType)';
   }
 
   @override
@@ -161,6 +174,9 @@ class _$_PlannerElement implements _PlannerElement {
             (identical(other.authorName, authorName) ||
                 const DeepCollectionEquality()
                     .equals(other.authorName, authorName)) &&
+            (identical(other.subject, subject) ||
+                const DeepCollectionEquality()
+                    .equals(other.subject, subject)) &&
             (identical(other.beginDate, beginDate) ||
                 const DeepCollectionEquality()
                     .equals(other.beginDate, beginDate)) &&
@@ -178,6 +194,7 @@ class _$_PlannerElement implements _PlannerElement {
   int get hashCode =>
       runtimeType.hashCode ^
       const DeepCollectionEquality().hash(authorName) ^
+      const DeepCollectionEquality().hash(subject) ^
       const DeepCollectionEquality().hash(beginDate) ^
       const DeepCollectionEquality().hash(endDate) ^
       const DeepCollectionEquality().hash(notes) ^
@@ -191,6 +208,7 @@ class _$_PlannerElement implements _PlannerElement {
 abstract class _PlannerElement implements PlannerElement {
   const factory _PlannerElement(
       {@required String authorName,
+      @required String subject,
       @required DateTime beginDate,
       @required DateTime endDate,
       @required String notes,
@@ -198,6 +216,8 @@ abstract class _PlannerElement implements PlannerElement {
 
   @override
   String get authorName;
+  @override
+  String get subject;
   @override
   DateTime get beginDate;
   @override

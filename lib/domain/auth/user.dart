@@ -8,5 +8,6 @@ abstract class User with _$User {
     @required String id,
     @required String firstName,
     @required String lastName,
+    @required String className,
   }) = _User;
 }

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 class SubjectsColors {
   static const Map<String, Color> subjectsColors = {
+    "SMS":  Color(0xff32a852),
     "CHI":  Color(0xff8fbc8f),
     "CMP":  Color(0xff912713),
     "MAT":  Color(0xff912713),
@@ -53,6 +54,10 @@ class SubjectsColors {
 
     final Color color = subjectsColors[formattedSubject];
 
-    return brightness == Brightness.light ? color.withOpacity(0.5) : color;
+    if (color == null) {
+      return const Color(0xffe7e7e7);
+    }
+
+    return (brightness == Brightness.light) ? color.withAlpha(120) : color;
   }
 }

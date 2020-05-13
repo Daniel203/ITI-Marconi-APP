@@ -6,6 +6,7 @@ part 'planner_element.freezed.dart';
 abstract class PlannerElement with _$PlannerElement {
   const factory PlannerElement({
     @required String authorName,
+    @required String subject,
     @required DateTime beginDate,
     @required DateTime endDate,
     @required String notes,

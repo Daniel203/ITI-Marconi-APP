@@ -4,6 +4,7 @@ import 'package:dartz/dartz.dart';
 import 'package:http/http.dart' as http;
 import 'package:injectable/injectable.dart';
 import 'package:intl/intl.dart';
+import 'package:marconi_app/domain/auth/value_objects.dart';
 
 import '../../domain/auth/auth_failure.dart';
 import '../../domain/user_data/cv_api_failures.dart';
@@ -46,7 +47,7 @@ class ClasseVivaApiRepository extends IClasseVivaApi {
     switch (response.statusCode) {
       case 200:
         final body = json.decode(response.body);
-        _id = userCVId.substring(1, userCVId.length);
+        _id = userCVId.replaceAll(RegExp(r'[^0-9]+'), '');
         _token = body['token'].toString();
         return right(unit);
         break;
@@ -142,9 +143,12 @@ class ClasseVivaApiRepository extends IClasseVivaApi {
 
   @override
   Future<Either<CVApiFailure, dynamic>> user() async {
-    if (_id != null) {
-      return _request(['card']);
-    }
-    return left(const CVApiFailure.serverError());
+    return  _request(['card']);
+  }
+
+  @override
+  Future<Either<CVApiFailure, dynamic>> className() {
+    final DateFormat dateFormat = DateFormat('yyyyMMdd');
+    return _request(['lessons', dateFormat.format(DateTime.now())]);
   }
 }

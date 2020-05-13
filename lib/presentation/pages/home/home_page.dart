@@ -20,13 +20,11 @@ import 'widgets/small_widget_container.dart';
 import 'widgets/small_widgets_carousel.dart';
 
 class HomePage extends HookWidget implements AutoRouteWrapper {
-  /* dynamic OrarioRepository orarioRepository = new OrarioRepository()
- */
   @override
   Widget get wrappedRoute => MultiBlocProvider(
         providers: [
           BlocProvider<OrarioBloc>(
-            create: (context) => OrarioBloc(OrarioRepository("5ai"))
+            create: (context) => OrarioBloc(OrarioRepository())
               ..add(const OrarioEvent.getSmalLWidget()),
           ),
           BlocProvider<AbsencesBloc>(
@@ -61,8 +59,16 @@ class HomePage extends HookWidget implements AutoRouteWrapper {
       child: Scaffold(
         backgroundColor: Theme.of(context).backgroundColor,
         appBar: AppBar(
-          title: const Text("ITI Marconi"),
+          title: Text(
+            "ITI Marconi",
+            style: Theme.of(context)
+                .textTheme
+                .headline5
+                .copyWith(fontWeight: FontWeight.bold),
+          ),
+          elevation: 0,
           centerTitle: true,
+          backgroundColor: Theme.of(context).backgroundColor,
         ),
         body: _body(context),
       ),
@@ -76,7 +82,7 @@ Widget _body(BuildContext context) {
       return Column(
         children: <Widget>[
           AppConstraints.separator,
-          _smalllWidgetsCarousel(context, size),
+          _smallWidgetsCarousel(context, size),
           AppConstraints.separator,
           _bottomGridWithLinkToPages(size),
         ],
@@ -85,7 +91,7 @@ Widget _body(BuildContext context) {
   );
 }
 
-Widget _smalllWidgetsCarousel(BuildContext context, Size size) {
+Widget _smallWidgetsCarousel(BuildContext context, Size size) {
   final List<SmallWidgetContainer> smallWidgetContainers = [
     SmallWidgetContainer(
       widget: OrarioSmallWidget(size: size),
@@ -135,7 +141,7 @@ Widget _bottomGridWithLinkToPages(Size size) {
         crossAxisCount: 2,
         crossAxisSpacing: 4,
         mainAxisSpacing: 4,
-        childAspectRatio: 4.5 / 3,
+        childAspectRatio: 5.5 / 3,
         physics: const NeverScrollableScrollPhysics(),
         children: pageBoxes,
       ),

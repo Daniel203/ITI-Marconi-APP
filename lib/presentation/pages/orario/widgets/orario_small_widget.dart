@@ -20,14 +20,12 @@ class OrarioSmallWidget extends StatelessWidget {
           ),
           loadSuccess: (state) {
             return OrarioDayView(
-              orario: state.orario,
+              orario: state.orario[0],
               containerHeight: size.height * AppConstraints.smallContainerHeightFactor,
             );
           },
-          loadFailure: (_) => const Expanded(
-            child: Center(
-              child: Text("Errore nel caricamento dell'orario"),
-            ),
+          loadFailure: (_) => const Center(
+            child: Text("Errore nel caricamento dell'orario"),
           ),
         );
       },

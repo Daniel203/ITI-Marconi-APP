@@ -1,11 +1,32 @@
-/* import 'package:flutter/material.dart';
+import 'package:dartz/dartz_unsafe.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:kt_dart/kt.dart';
 import 'package:marconi_app/application/orario/orario_bloc.dart';
+import 'package:marconi_app/domain/orario/orario_ora.dart';
+import 'package:marconi_app/presentation/pages/orario/widgets/orario_day_view.dart';
+import 'package:marconi_app/presentation/theme/constraints.dart';
 
 class OrarioFullWidget extends HookWidget {
+  final Size size;
+
+  const OrarioFullWidget({
+    Key key,
+    @required this.size,
+  }) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
+    final Map<String, double> dimensions = {
+      'daysRowOnTopHeight': size.height * 0.1,
+      'daysCircleOnTopWidth': size.width * 0.13,
+      'bodyHeight': size.height * 0.8,
+    };
+    final PageController pageController =
+        PageController(initialPage: DateTime.now().weekday - 1);
+    final pageNumberState = useState(DateTime.now().weekday);
+
     return BlocBuilder<OrarioBloc, OrarioState>(
       builder: (context, state) {
         return state.map(
@@ -14,14 +35,112 @@ class OrarioFullWidget extends HookWidget {
             child: CircularProgressIndicator(),
           ),
           loadSuccess: (state) {
-            return Center(
-              child: Text("ho caricato"),
-            );
+            return _orarioFullWidget(state.orario, context, dimensions,
+                pageNumberState, pageController);
           },
-          loadFailure: (state) => Center(child: Text("Errore"),),
+          loadFailure: (state) => const Center(
+            child: Text("Errore"),
+          ),
         );
       },
     );
   }
+
+  Widget _orarioFullWidget(
+    KtList<KtList<OrarioOra>> orario,
+    BuildContext context,
+    Map<String, double> dimensions,
+    pageNumberState,
+    PageController pageController,
+  ) {
+    return Column(
+      children: <Widget>[
+        _dayTopNumberIndicators(
+            context, dimensions, pageNumberState, pageController),
+        _orarioBody(
+            orario, context, dimensions, pageNumberState, pageController),
+      ],
+    );
+  }
+
+  Widget _dayTopNumberIndicators(
+    BuildContext context,
+    Map<String, double> dimensions,
+    pageNumberState,
+    PageController pageController,
+  ) {
+    final List<Widget> widgets = [];
+
+    for (int weekday = 1; weekday <= 6; weekday++) {
+      widgets.add(
+        Container(
+          width: dimensions['daysCircleOnTopWidth'],
+          decoration: BoxDecoration(
+            shape: BoxShape.circle,
+            color: (weekday == pageNumberState.value)
+                ? Theme.of(context).accentColor
+                : Theme.of(context).primaryColor,
+          ),
+          child: InkWell(
+            onTap: () {
+              pageNumberState.value = weekday;
+              pageController.jumpToPage(weekday - 1);
+            },
+            child: Center(
+              child: Text(
+                weekday.toString(),
+              ),
+            ),
+          ),
+        ),
+      );
+    }
+
+    return Padding(
+      padding: AppConstraints.safeAreaPadding,
+      child: Container(
+        height: dimensions['daysRowOnTopHeight'],
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: widgets,
+        ),
+      ),
+    );
+  }
+
+  Widget _orarioBody(
+    KtList<KtList<OrarioOra>> orario,
+    BuildContext context,
+    Map<String, double> dimensions,
+    pageNumberState,
+    PageController pageController,
+  ) {
+    final List<Widget> widgets = [];
+
+    for (final KtList<OrarioOra> orarioDay in orario.iter) {
+      widgets.add(
+        OrarioDayView(
+          orario: orarioDay,
+          containerHeight: dimensions['bodyHeight'],
+        ),
+      );
+    }
+
+    return SizedBox(
+      height: dimensions['bodyHeight'],
+      child: PageView(
+        controller: pageController,
+        onPageChanged: (index) {
+          pageNumberState.value = index + 1;
+          pageController.animateToPage(
+            index,
+            duration: AppConstraints.animationDuration,
+            curve: AppConstraints.animationCurve,
+          );
+        },
+        children: widgets,
+      ),
+    );
+  }
 }
- */

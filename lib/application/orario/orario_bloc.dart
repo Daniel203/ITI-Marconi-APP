@@ -34,7 +34,7 @@ class OrarioBloc extends Bloc<OrarioEvent, OrarioState> {
       },
       getFullWidget: (e) async* {
         yield const OrarioState.loadInProgress();
-        final orario = await _orarioRepository.getTodayOrario();
+        final orario = await _orarioRepository.getFullOrario();
         add(OrarioEvent.orarioReceived(orario));
       },
       orarioReceived: (e) async* {

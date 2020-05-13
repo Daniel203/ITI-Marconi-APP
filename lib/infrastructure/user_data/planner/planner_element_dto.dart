@@ -1,5 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:marconi_app/domain/user_data/planner/planner_element.dart';
+import 'package:marconi_app/infrastructure/orario/orario_repository.dart';
+
+import '../../../domain/user_data/planner/planner_element.dart';
 
 part 'planner_element_dto.freezed.dart';
 part 'planner_element_dto.g.dart';
@@ -22,6 +24,7 @@ extension PlannerElementDtoX on PlannerElementDto {
   PlannerElement toDomain() {
     return PlannerElement(
       authorName: authorName,
+      subject: OrarioRepository().getSubjectFromProf(authorName),
       beginDate: evtDatetimeBegin,
       endDate: evtDatetimeEnd,
       notes: notes,
