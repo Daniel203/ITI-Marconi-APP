@@ -149,6 +149,15 @@ class ClasseVivaApiRepository extends IClasseVivaApi {
   @override
   Future<Either<CVApiFailure, dynamic>> className() {
     final DateFormat dateFormat = DateFormat('yyyyMMdd');
-    return _request(['lessons', dateFormat.format(DateTime.now())]);
+    DateTime date;
+
+    int todayNumber = DateTime.now().weekday;
+
+    if (todayNumber == 7) {
+      date = DateTime.now().subtract(Duration(days: 1));
+    } else {
+      date = DateTime.now();
+    }
+    return _request(['lessons', dateFormat.format(date)]);
   }
 }

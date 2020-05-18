@@ -23,9 +23,12 @@ class OrarioFullWidget extends HookWidget {
       'daysCircleOnTopWidth': size.width * 0.13,
       'bodyHeight': size.height * 0.8,
     };
+    final int todayNumber = DateTime.now().weekday;
+    final int initialPage = (todayNumber == 7) ? 0 : todayNumber - 1;
+    final int initialPageState = (todayNumber == 7) ? 1 : todayNumber;
     final PageController pageController =
-        PageController(initialPage: DateTime.now().weekday - 1);
-    final pageNumberState = useState(DateTime.now().weekday);
+        PageController(initialPage: initialPage);
+    final pageNumberState = useState(initialPageState);
 
     return BlocBuilder<OrarioBloc, OrarioState>(
       builder: (context, state) {

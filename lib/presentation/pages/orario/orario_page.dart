@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:marconi_app/application/orario/orario_bloc.dart';
 import 'package:marconi_app/injection.dart';
 import 'package:marconi_app/presentation/pages/orario/widgets/orario_full_widget.dart';
-import 'package:marconi_app/presentation/theme/constraints.dart';
 import 'package:marconi_app/presentation/theme/responsive_safe_area.dart';
 
 class OrarioPage extends StatelessWidget {
@@ -28,7 +27,7 @@ class OrarioPage extends StatelessWidget {
         ),
         body: ResponsiveSafeArea(
           builder: (context, size) {
-            return OrarioFullWidget(size: size,);
+            return OrarioFullWidget(size: size);
           },
         ),
       ),
