@@ -18,20 +18,24 @@ class AuthFacade extends IAuthFacade {
   @override
   Future<Either<CVApiFailure, User>> getSignedUser() async {
     final user = await ClasseVivaApiRepository().user();
-    final className = await ClasseVivaApiRepository().className();
+    String className;
 
-    if (user.isRight() && className.isRight()) {
+    if (user.isRight()) {
       final userData = user.getOrElse(() => null);
-      final classNameData = className.getOrElse(() => null);
 
-      if (userData != null && classNameData != null) {
-        final Map<String, dynamic> valuesAsMap = userData['card'] as Map<String, dynamic>;
+      final _classNameSavedLocally = await _haveClassNameSavedLocally();
+      if (_classNameSavedLocally) {
+        className = await _readClassNameFromLocalStorage()
+            .then((value) => value['className']);
+      } else {
+        className = await _getClassNameFromApi();
+      }
+
+      if (userData != null) {
+        final Map<String, dynamic> valuesAsMap =
+            userData['card'] as Map<String, dynamic>;
         final Map<String, dynamic> valuesWithClassName = valuesAsMap
-          ..putIfAbsent(
-              'className',
-                  () =>
-                  (classNameData['lessons'][0]['classDesc'] as String)
-                      .substring(0, 4));
+          ..putIfAbsent('className', () => className);
         final valueObject = UserDto.fromJson(valuesWithClassName).toDomain();
         return right(valueObject);
       }
@@ -94,5 +98,31 @@ class AuthFacade extends IAuthFacade {
     const storage = FlutterSecureStorage();
     return await storage.read(key: 'id') != null &&
         await storage.read(key: 'password') != null;
+  }
+
+  Future<void> _saveClassNameToLocalStorage(String className) async {
+    const storage = FlutterSecureStorage();
+    await storage.write(key: 'className', value: className);
+  }
+
+  Future<Map<String, String>> _readClassNameFromLocalStorage() async {
+    const storage = FlutterSecureStorage();
+    final className = await storage.read(key: 'className');
+    return {'className': className};
+  }
+
+  Future<bool> _haveClassNameSavedLocally() async {
+    const storage = FlutterSecureStorage();
+    return await storage.read(key: 'className') != null;
+  }
+
+  Future<String> _getClassNameFromApi() async {
+    final classNameDataApi = await ClasseVivaApiRepository().className();
+    final className = classNameDataApi.fold(
+      (l) => '',
+      (r) => (r['lessons'][0]['classDesc'] as String).substring(0, 4),
+    );
+    _saveClassNameToLocalStorage(className);
+    return className;
   }
 }
