@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:marconi_app/application/user_data/planner/planner_bloc.dart';
-import 'package:marconi_app/injection.dart';
-import 'package:marconi_app/presentation/pages/planner/widgets/planner_full_widget.dart';
-import 'package:marconi_app/presentation/theme/responsive_safe_area.dart';
+
+import '../../../application/user_data/planner/planner_bloc.dart';
+import '../../../injection.dart';
+import '../../theme/responsive_safe_area.dart';
+import 'widgets/planner_full_widget.dart';
 
 class PlannerPage extends StatelessWidget {
   @override

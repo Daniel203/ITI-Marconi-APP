@@ -1,25 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:kt_dart/kt.dart';
-import 'package:marconi_app/application/user_data/planner/planner_bloc.dart';
-import 'package:marconi_app/domain/user_data/planner/planner_element.dart';
-import 'package:marconi_app/presentation/pages/planner/widgets/planner_day_view.dart';
 import 'package:table_calendar/table_calendar.dart';
 
-/*class PlannerFullWidget extends HookWidget {
+import '../../../../application/user_data/planner/planner_bloc.dart';
+import '../../../../domain/user_data/planner/planner_element.dart';
+import '../../../theme/constraints.dart';
+import 'planner_full_widget_view.dart';
+
+class PlannerFullWidget extends StatelessWidget {
   final Size size;
 
-  const PlannerFullWidget({
-    Key key,
-    @required this.size,
-  }) : super(key: key);
+  const PlannerFullWidget({Key key, @required this.size}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final Map<String, double> dimensions = {};
-    final calendarController = CalendarController();
-
     return BlocBuilder<PlannerBloc, PlannerState>(
       builder: (context, state) {
         return state.map(
@@ -27,11 +22,9 @@ import 'package:table_calendar/table_calendar.dart';
           loadInProgress: (_) => const Center(
             child: CircularProgressIndicator(),
           ),
-          loadSuccess: (state) => _plannerFullWidget(
-            state.planner,
-            context,
-            dimensions,
-            calendarController,
+          loadSuccess: (state) => PlannerFullWidgetBody(
+            planner: state.planner,
+            size: size,
           ),
           loadFailure: (_) => const Center(
             child: Text("Errore"),
@@ -40,28 +33,87 @@ import 'package:table_calendar/table_calendar.dart';
       },
     );
   }
+}
 
-  Widget _plannerFullWidget(
-    KtList<PlannerElement> planner,
-    BuildContext context,
-    Map<String, double> dimensions,
-    CalendarController calendarController,
-  ) {
+class PlannerFullWidgetBody extends StatefulWidget {
+  final KtList<PlannerElement> planner;
+  final Size size;
+
+  const PlannerFullWidgetBody({
+    Key key,
+    @required this.planner,
+    @required this.size,
+  }) : super(key: key);
+
+  @override
+  _PlannerFullWidgetBodyState createState() => _PlannerFullWidgetBodyState();
+}
+
+class _PlannerFullWidgetBodyState extends State<PlannerFullWidgetBody> {
+  CalendarController calendarController;
+  DateTime selectedDate;
+  List selectedEvents;
+  Map<DateTime, List<dynamic>> eventsPerDay;
+
+  @override
+  void initState() {
+    super.initState();
+    calendarController = CalendarController();
+    selectedDate =
+        DateTime(DateTime.now().year, DateTime.now().month, DateTime.now().day);
+    eventsPerDay = _eventsPerDay(widget.planner);
+    selectedEvents = eventsPerDay[selectedDate];
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    calendarController.dispose();
+  }
+
+  void _onDaySelected(DateTime day, List events) {
+    setState(() {
+      selectedDate = DateTime(
+        day.year,
+        day.month,
+        day.day,
+      );
+      selectedEvents = eventsPerDay[selectedDate];
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return SingleChildScrollView(
+      child: Column(
+        children: <Widget>[
+          _calendar(widget.planner),
+          AppConstraints.separatorXL,
+          _displayEvents(
+            selectedEvents,
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _calendar(KtList<PlannerElement> planner) {
+    final events = _eventsPerDay(planner);
     return TableCalendar(
-      //locale: 'it',
+      locale: 'it',
       calendarController: calendarController,
       weekendDays: const [7],
-      /*availableCalendarFormats: const {
+      availableCalendarFormats: const {
         CalendarFormat.week: 'settimana',
-        CalendarFormat.month: 'mese',
       },
-       */
-      calendarStyle:
-          CalendarStyle(selectedColor: Theme.of(context).accentColor),
+      calendarStyle: CalendarStyle(
+        selectedColor: Theme.of(context).accentColor,
+      ),
       daysOfWeekStyle: const DaysOfWeekStyle(),
       startingDayOfWeek: StartingDayOfWeek.monday,
-      //initialCalendarFormat: CalendarFormat.week,
-     // events: _eventsPerDay(planner),
+      initialCalendarFormat: CalendarFormat.week,
+      events: events,
+      onDaySelected: _onDaySelected,
     );
   }
 
@@ -71,127 +123,34 @@ import 'package:table_calendar/table_calendar.dart';
     final Map<DateTime, List<PlannerElement>> eventsPerDay = {};
 
     for (final PlannerElement event in events.iter) {
-      if (eventsPerDay.isNotEmpty && eventsPerDay.containsKey(event.beginDate)) {
-        eventsPerDay[event.beginDate].add(event);
+      final date = DateTime(
+        event.endDate.year,
+        event.endDate.month,
+        event.endDate.day,
+      );
+      if (eventsPerDay.isNotEmpty && eventsPerDay.containsKey(date)) {
+        eventsPerDay[date].add(event);
       } else {
-        eventsPerDay.putIfAbsent(event.beginDate, () => [event]);
+        eventsPerDay.putIfAbsent(date, () => [event]);
       }
     }
-
-    return eventsPerDay;
-  }
-} */
-
-class PlannerFullWidget extends StatefulWidget {
-  final Size size;
-
-  const PlannerFullWidget({
-    Key key,
-    @required this.size,
-  }) : super(key: key);
-
-  @override
-  _PlannerFullWidgetState createState() => _PlannerFullWidgetState();
-}
-
-class _PlannerFullWidgetState extends State<PlannerFullWidget> {
-  CalendarController calendarController;
-
-  @override
-  void initState() {
-    super.initState();
-    calendarController = CalendarController();
-  }
-
-  @override
-  void dispose() {
-    super.dispose();
-    calendarController.dispose();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    final Map<String, double> dimensions = {};
-
-    return BlocBuilder<PlannerBloc, PlannerState>(
-      builder: (context, state) {
-        return state.map(
-          initial: (_) => Container(),
-          loadInProgress: (_) =>
-          const Center(
-            child: CircularProgressIndicator(),
-          ),
-          loadSuccess: (state) =>
-              _plannerFullWidget(
-                state.planner,
-                context,
-                dimensions,
-                calendarController,
-              ),
-          loadFailure: (_) =>
-          const Center(
-            child: Text("Errore"),
-          ),
-        );
-      },
-    );
-  }
-
-  Widget _plannerFullWidget(KtList<PlannerElement> planner,
-      BuildContext context,
-      Map<String, double> dimensions,
-      CalendarController calendarController,) {
-    return SingleChildScrollView(
-      child: Column(children: <Widget>[
-        _calendar(planner),
-        _displayEvents(planner),
-      ],),
-    );
-  }
-
-  Widget _calendar(KtList<PlannerElement> planner) {
-    return TableCalendar(
-      locale: 'it',
-      calendarController: calendarController,
-      weekendDays: const [7],
-      availableCalendarFormats: const {
-        CalendarFormat.week: 'settimana',
-        CalendarFormat.month: 'mese',
-      },
-      calendarStyle:
-      CalendarStyle(selectedColor: Theme
-          .of(context)
-          .accentColor),
-      daysOfWeekStyle: const DaysOfWeekStyle(),
-      startingDayOfWeek: StartingDayOfWeek.monday,
-      initialCalendarFormat: CalendarFormat.week,
-      events: _eventsPerDay(planner),
-    );
-  }
-
-
-  Map<DateTime, List<PlannerElement>> _eventsPerDay(
-      KtList<PlannerElement> events,) {
-    final Map<DateTime, List<PlannerElement>> eventsPerDay = {};
-
-    for (final PlannerElement event in events.iter) {
-      if (eventsPerDay.isNotEmpty &&
-          eventsPerDay.containsKey(event.beginDate)) {
-        eventsPerDay[event.beginDate].add(event);
-      } else {
-        eventsPerDay.putIfAbsent(event.beginDate, () => [event]);
-      }
-    }
-
     return eventsPerDay;
   }
 
+  Widget _displayEvents(List planner) {
+    if (planner != null) {
+      final List<PlannerElement> plannerWithPlannerElements = [];
 
-// TODO: inserire in parametri correttamente
-  Widget _displayEvents(final KtList<PlannerElement> planner) {
-    final Map<DateTime, List<PlannerElement>> eventsPerDay = _eventsPerDay(planner);
-    final KtList<PlannerElement> dayElements = eventsPerDay[calendarController.focusedDay].toImmutableList();
-    return PlannerDayView(
-      containerHeight: 400, planner: planner, containerWidth: 400,);
+      for (final element in planner) {
+        plannerWithPlannerElements.add(element as PlannerElement);
+      }
+
+      return PlannerFullWidgetView(
+        planner: plannerWithPlannerElements.toImmutableList(),
+        containerWidth: widget.size.width,
+        containerHeight: widget.size.height * 0.7,
+      );
+    }
+    return Container();
   }
 }

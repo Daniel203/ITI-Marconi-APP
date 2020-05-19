@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:marconi_app/application/user_data/planner/planner_bloc.dart';
-import 'package:marconi_app/presentation/pages/planner/widgets/planner_day_view.dart';
-import 'package:marconi_app/presentation/theme/constraints.dart';
+
+import '../../../../application/user_data/planner/planner_bloc.dart';
+import '../../../theme/constraints.dart';
+import 'planner_small_widget_view.dart';
 
 class PlannerSmallWidget extends StatelessWidget {
   final Size size;
@@ -15,7 +16,7 @@ class PlannerSmallWidget extends StatelessWidget {
       return state.map(
         initial: (_) => Container(),
         loadInProgress: (_) => const Center(child: CircularProgressIndicator()),
-        loadSuccess: (state) => PlannerDayView(
+        loadSuccess: (state) => PlannerSmallWidgetView(
           planner: state.planner,
           containerHeight: size.height * AppConstraints.smallContainerHeightFactor,
           containerWidth: size.width,

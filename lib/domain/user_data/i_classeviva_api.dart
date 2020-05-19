@@ -13,7 +13,7 @@ abstract class IClasseVivaApi {
   Future<Either<CVApiFailure, dynamic>> user();
   Future<Either<CVApiFailure, dynamic>> grades();
   Future<Either<CVApiFailure, dynamic>> absences();
-  Future<Either<CVApiFailure, dynamic>> planner({int days = 14});
+  Future<Either<CVApiFailure, dynamic>> planner({int daysPrev = 7, int daysNext = 14});
   Future<Either<CVApiFailure, dynamic>> noticeboard();
   Future<Either<CVApiFailure, dynamic>> className();
 }

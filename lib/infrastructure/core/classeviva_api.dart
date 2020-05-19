@@ -4,7 +4,6 @@ import 'package:dartz/dartz.dart';
 import 'package:http/http.dart' as http;
 import 'package:injectable/injectable.dart';
 import 'package:intl/intl.dart';
-import 'package:marconi_app/domain/auth/value_objects.dart';
 
 import '../../domain/auth/auth_failure.dart';
 import '../../domain/user_data/cv_api_failures.dart';
@@ -99,9 +98,10 @@ class ClasseVivaApiRepository extends IClasseVivaApi {
   }
 
   @override
-  Future<Either<CVApiFailure, dynamic>> planner({int days = 14}) async {
+  Future<Either<CVApiFailure, dynamic>> planner({int daysPrev = 7, int daysNext = 14}) async {
     final DateTime now = DateTime.now();
-    final DateTime delta = now.add(Duration(days: days));
+    final DateTime deltaNext = now.add(Duration(days: daysPrev));
+    final DateTime deltaPrev = now.subtract(Duration(days: daysNext));
     final DateFormat formatter = DateFormat('yyyyMMdd');
 
     //* la prima data indica la data prima data del range, mentre la seconda indica quando finire di osservare, limite del range
@@ -109,8 +109,8 @@ class ClasseVivaApiRepository extends IClasseVivaApi {
     return _request([
       'agenda',
       'all',
-      '${formatter.format(now).toString()}',
-      '${formatter.format(delta).toString()}'
+      formatter.format(deltaPrev),
+      formatter.format(deltaNext),
     ]);
   }
 
@@ -124,11 +124,11 @@ class ClasseVivaApiRepository extends IClasseVivaApi {
         'absences',
         'details',
         '${now.year - 1}0910',
-        '${formatter.format(now)}'
+        formatter.format(now),
       ]);
     }
     return _request(
-        ['absences', 'details', '${now.year}0910', '${formatter.format(now)}']);
+        ['absences', 'details', '${now.year}0910', formatter.format(now)]);
   }
 
   @override
@@ -143,7 +143,7 @@ class ClasseVivaApiRepository extends IClasseVivaApi {
 
   @override
   Future<Either<CVApiFailure, dynamic>> user() async {
-    return  _request(['card']);
+    return _request(['card']);
   }
 
   @override
@@ -151,10 +151,10 @@ class ClasseVivaApiRepository extends IClasseVivaApi {
     final DateFormat dateFormat = DateFormat('yyyyMMdd');
     DateTime date;
 
-    int todayNumber = DateTime.now().weekday;
+    final int todayNumber = DateTime.now().weekday;
 
     if (todayNumber == 7) {
-      date = DateTime.now().subtract(Duration(days: 1));
+      date = DateTime.now().subtract(const Duration(days: 1));
     } else {
       date = DateTime.now();
     }
