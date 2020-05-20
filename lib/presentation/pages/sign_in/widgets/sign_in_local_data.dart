@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:marconi_app/application/auth/auth_bloc.dart';
-import 'package:marconi_app/application/auth/sign_in_form/sign_in_form_bloc.dart';
-import 'package:marconi_app/presentation/routes/router.gr.dart';
+import '../../../../application/auth/auth_bloc.dart';
+import '../../../../application/auth/sign_in_form/sign_in_form_bloc.dart';
+import '../../../routes/router.gr.dart';
+import '../../../theme/constraints.dart';
 
 class SingInLocalData extends StatelessWidget {
   const SingInLocalData({Key key}) : super(key: key);
@@ -50,7 +51,20 @@ Widget _loading(BuildContext context, SignInFormState stata) {
       .bloc<SignInFormBloc>()
       .add(const SignInFormEvent.signInWithLocalIdAndPassword());
 
-  return const Center(
-    child: CircularProgressIndicator(),
+  String pathToSplashImage;
+
+  if (Theme.of(context).brightness == Brightness.light) {
+    pathToSplashImage = 'assets/icon/logo.png';
+  } else {
+    pathToSplashImage = 'assets/icon/logo_dark.png';
+  }
+
+  return Column(
+    mainAxisAlignment: MainAxisAlignment.center,
+    children: <Widget>[
+      Image(image: AssetImage(pathToSplashImage)),
+      AppConstraints.separatorXL,
+      const CircularProgressIndicator(),
+    ],
   );
 }

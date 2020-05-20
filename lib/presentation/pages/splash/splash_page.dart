@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:marconi_app/presentation/theme/constraints.dart';
 
 import '../../../application/auth/auth_bloc.dart';
 import '../../routes/router.gr.dart';
+import '../../theme/responsive_safe_area.dart';
 
 class SplashPage extends StatelessWidget {
   @override
@@ -12,12 +14,12 @@ class SplashPage extends StatelessWidget {
         state.map(
           intial: (_) {},
           authenticated: (_) {
-              print("STATE: UNATHANTICATED");
-              Router.navigator.pushReplacementNamed(Router.homePage);
+            Router.navigator.pushReplacementNamed(Router.homePage);
           },
           unauthenticatedWithLocalData: (_) {
-              print("non autenticato ma con dati in locale");
-              Router.navigator.pushReplacementNamed(Router.signInLocalDataPage);
+            Router.navigator.pushReplacementNamed(
+              Router.signInLocalDataPage,
+            );
           },
           unauthenticated: (_) =>
               Router.navigator.pushReplacementNamed(Router.signInPage),
@@ -31,10 +33,33 @@ class SplashPage extends StatelessWidget {
 class _PageWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    String pathToSplashImage;
+
+    if (Theme.of(context).brightness == Brightness.light) {
+      pathToSplashImage = 'assets/icon/logo.png';
+    } else {
+      pathToSplashImage = 'assets/icon/logo_dark.png';
+    }
+
     return Scaffold(
       backgroundColor: Theme.of(context).backgroundColor,
-      body: const Center(
-        child: CircularProgressIndicator(),
+      body: ResponsiveSafeArea(
+        builder: (context, size) {
+          return Container(
+            height: size.height,
+            width: size.width,
+            child: Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Image(image: AssetImage(pathToSplashImage)),
+                  AppConstraints.separatorXL,
+                  const CircularProgressIndicator(),
+                ],
+              ),
+            ),
+          );
+        },
       ),
     );
   }

@@ -62,7 +62,8 @@ class PlannerRepository implements IPlannerRepository {
     int index = 0;
     while (plannerElementsNotAlreadyEnded.length < 3) {
       final PlannerElement plannerElement = _plannerData[index];
-      if (_isPlannerElementIsAlreadyEnded(plannerElement)) {
+      if (_isPlannerElementIsAlreadyEnded(plannerElement) &&
+          plannerElement.eventType == 'AGNT') {
         plannerElementsNotAlreadyEnded.add(plannerElement);
       }
       index++;

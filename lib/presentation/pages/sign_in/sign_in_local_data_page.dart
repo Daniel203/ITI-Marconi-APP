@@ -14,7 +14,11 @@ class SignInLocalDataPage extends StatelessWidget {
       body: ResponsiveSafeArea(builder: (context, size) {
         return BlocProvider(
           create: (context) => getIt<SignInFormBloc>(),
-          child: const SingInLocalData(),
+          child: Container(
+            height: size.height,
+            width: size.width,
+            child: const Center(child: SingInLocalData()),
+          ),
         );
       }),
     );

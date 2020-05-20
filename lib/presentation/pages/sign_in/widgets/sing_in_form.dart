@@ -106,7 +106,7 @@ Row _loginButton(BuildContext context, SignInFormState state) {
       ),
       if (state.isSubmitting) ...[
         AppConstraints.separator,
-        const CircularProgressIndicator(value: null),
+        const CircularProgressIndicator(),
       ]
     ],
   );

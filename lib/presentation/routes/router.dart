@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route_annotations.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:marconi_app/presentation/pages/home/home_page.dart';
 import 'package:marconi_app/presentation/pages/orario/orario_page.dart';
 import 'package:marconi_app/presentation/pages/planner/planner_page.dart';
@@ -11,8 +12,12 @@ import '../pages/splash/splash_page.dart';
 class $Router {
   @initial
   SplashPage splashPage;
+  
   SignInPage signInPage;
+
+  @CustomRoute(durationInMilliseconds: 0)
   SignInLocalDataPage signInLocalDataPage;
+  
   HomePage homePage;
   OrarioPage orarioPage;
   PlannerPage plannerPage;

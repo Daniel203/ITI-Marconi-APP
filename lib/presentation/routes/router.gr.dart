@@ -36,9 +36,11 @@ class Router {
           settings: settings,
         );
       case Router.signInLocalDataPage:
-        return CupertinoPageRoute<dynamic>(
-          builder: (_) => SignInLocalDataPage(),
+        return PageRouteBuilder<dynamic>(
+          pageBuilder: (ctx, animation, secondaryAnimation) =>
+              SignInLocalDataPage(),
           settings: settings,
+          transitionDuration: Duration(milliseconds: 0),
         );
       case Router.homePage:
         return CupertinoPageRoute<dynamic>(
