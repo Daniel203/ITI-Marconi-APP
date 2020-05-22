@@ -16,11 +16,10 @@ class SplashPage extends StatelessWidget {
           authenticated: (_) {
             Router.navigator.pushReplacementNamed(Router.homePage);
           },
-          unauthenticatedWithLocalData: (_) {
-            Router.navigator.pushReplacementNamed(
-              Router.signInLocalDataPage,
-            );
-          },
+          unauthenticatedWithLocalData: (_) =>
+              Router.navigator.pushReplacementNamed(
+            Router.signInLocalDataPage,
+          ),
           unauthenticated: (_) =>
               Router.navigator.pushReplacementNamed(Router.signInPage),
         );

@@ -46,8 +46,7 @@ class ClasseVivaApiRepository extends IClasseVivaApi {
     switch (response.statusCode) {
       case 200:
         final body = json.decode(response.body);
-        // TODO : prendi l'id dal json che ottieni dalle api
-        _id = userCVId.replaceAll(RegExp(r'[^0-9]+'), '');
+        _id = body['ident'].toString().replaceAll(RegExp(r'\D'), '');
         _token = body['token'].toString();
         return right(unit);
         break;
