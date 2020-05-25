@@ -1,6 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:marconi_app/domain/user_data/grades/grede_color.dart';
+import 'package:marconi_app/domain/user_data/grades/grade_color.dart';
 
 part 'grade.freezed.dart';
 

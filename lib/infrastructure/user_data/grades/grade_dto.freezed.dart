@@ -17,20 +17,20 @@ class _$GradeDtoTearOff {
 
   _GradeDto call(
       {@required double decimalValue,
-      @required String eventDate,
+      @required String evtDate,
       @required String subjectCode,
       @required String color,
-      @required String testType,
-      @required String notes,
-      @required bool isCancelled}) {
+      @required String evtCode,
+      @required String notesForFamily,
+      @required bool cancelled}) {
     return _GradeDto(
       decimalValue: decimalValue,
-      eventDate: eventDate,
+      evtDate: evtDate,
       subjectCode: subjectCode,
       color: color,
-      testType: testType,
-      notes: notes,
-      isCancelled: isCancelled,
+      evtCode: evtCode,
+      notesForFamily: notesForFamily,
+      cancelled: cancelled,
     );
   }
 }
@@ -40,12 +40,12 @@ const $GradeDto = _$GradeDtoTearOff();
 
 mixin _$GradeDto {
   double get decimalValue;
-  String get eventDate;
+  String get evtDate;
   String get subjectCode;
   String get color;
-  String get testType;
-  String get notes;
-  bool get isCancelled;
+  String get evtCode;
+  String get notesForFamily;
+  bool get cancelled;
 
   Map<String, dynamic> toJson();
   $GradeDtoCopyWith<GradeDto> get copyWith;
@@ -56,12 +56,12 @@ abstract class $GradeDtoCopyWith<$Res> {
       _$GradeDtoCopyWithImpl<$Res>;
   $Res call(
       {double decimalValue,
-      String eventDate,
+      String evtDate,
       String subjectCode,
       String color,
-      String testType,
-      String notes,
-      bool isCancelled});
+      String evtCode,
+      String notesForFamily,
+      bool cancelled});
 }
 
 class _$GradeDtoCopyWithImpl<$Res> implements $GradeDtoCopyWith<$Res> {
@@ -74,25 +74,26 @@ class _$GradeDtoCopyWithImpl<$Res> implements $GradeDtoCopyWith<$Res> {
   @override
   $Res call({
     Object decimalValue = freezed,
-    Object eventDate = freezed,
+    Object evtDate = freezed,
     Object subjectCode = freezed,
     Object color = freezed,
-    Object testType = freezed,
-    Object notes = freezed,
-    Object isCancelled = freezed,
+    Object evtCode = freezed,
+    Object notesForFamily = freezed,
+    Object cancelled = freezed,
   }) {
     return _then(_value.copyWith(
       decimalValue: decimalValue == freezed
           ? _value.decimalValue
           : decimalValue as double,
-      eventDate: eventDate == freezed ? _value.eventDate : eventDate as String,
+      evtDate: evtDate == freezed ? _value.evtDate : evtDate as String,
       subjectCode:
           subjectCode == freezed ? _value.subjectCode : subjectCode as String,
       color: color == freezed ? _value.color : color as String,
-      testType: testType == freezed ? _value.testType : testType as String,
-      notes: notes == freezed ? _value.notes : notes as String,
-      isCancelled:
-          isCancelled == freezed ? _value.isCancelled : isCancelled as bool,
+      evtCode: evtCode == freezed ? _value.evtCode : evtCode as String,
+      notesForFamily: notesForFamily == freezed
+          ? _value.notesForFamily
+          : notesForFamily as String,
+      cancelled: cancelled == freezed ? _value.cancelled : cancelled as bool,
     ));
   }
 }
@@ -103,12 +104,12 @@ abstract class _$GradeDtoCopyWith<$Res> implements $GradeDtoCopyWith<$Res> {
   @override
   $Res call(
       {double decimalValue,
-      String eventDate,
+      String evtDate,
       String subjectCode,
       String color,
-      String testType,
-      String notes,
-      bool isCancelled});
+      String evtCode,
+      String notesForFamily,
+      bool cancelled});
 }
 
 class __$GradeDtoCopyWithImpl<$Res> extends _$GradeDtoCopyWithImpl<$Res>
@@ -122,25 +123,26 @@ class __$GradeDtoCopyWithImpl<$Res> extends _$GradeDtoCopyWithImpl<$Res>
   @override
   $Res call({
     Object decimalValue = freezed,
-    Object eventDate = freezed,
+    Object evtDate = freezed,
     Object subjectCode = freezed,
     Object color = freezed,
-    Object testType = freezed,
-    Object notes = freezed,
-    Object isCancelled = freezed,
+    Object evtCode = freezed,
+    Object notesForFamily = freezed,
+    Object cancelled = freezed,
   }) {
     return _then(_GradeDto(
       decimalValue: decimalValue == freezed
           ? _value.decimalValue
           : decimalValue as double,
-      eventDate: eventDate == freezed ? _value.eventDate : eventDate as String,
+      evtDate: evtDate == freezed ? _value.evtDate : evtDate as String,
       subjectCode:
           subjectCode == freezed ? _value.subjectCode : subjectCode as String,
       color: color == freezed ? _value.color : color as String,
-      testType: testType == freezed ? _value.testType : testType as String,
-      notes: notes == freezed ? _value.notes : notes as String,
-      isCancelled:
-          isCancelled == freezed ? _value.isCancelled : isCancelled as bool,
+      evtCode: evtCode == freezed ? _value.evtCode : evtCode as String,
+      notesForFamily: notesForFamily == freezed
+          ? _value.notesForFamily
+          : notesForFamily as String,
+      cancelled: cancelled == freezed ? _value.cancelled : cancelled as bool,
     ));
   }
 }
@@ -149,19 +151,19 @@ class __$GradeDtoCopyWithImpl<$Res> extends _$GradeDtoCopyWithImpl<$Res>
 class _$_GradeDto implements _GradeDto {
   _$_GradeDto(
       {@required this.decimalValue,
-      @required this.eventDate,
+      @required this.evtDate,
       @required this.subjectCode,
       @required this.color,
-      @required this.testType,
-      @required this.notes,
-      @required this.isCancelled})
+      @required this.evtCode,
+      @required this.notesForFamily,
+      @required this.cancelled})
       : assert(decimalValue != null),
-        assert(eventDate != null),
+        assert(evtDate != null),
         assert(subjectCode != null),
         assert(color != null),
-        assert(testType != null),
-        assert(notes != null),
-        assert(isCancelled != null);
+        assert(evtCode != null),
+        assert(notesForFamily != null),
+        assert(cancelled != null);
 
   factory _$_GradeDto.fromJson(Map<String, dynamic> json) =>
       _$_$_GradeDtoFromJson(json);
@@ -169,21 +171,21 @@ class _$_GradeDto implements _GradeDto {
   @override
   final double decimalValue;
   @override
-  final String eventDate;
+  final String evtDate;
   @override
   final String subjectCode;
   @override
   final String color;
   @override
-  final String testType;
+  final String evtCode;
   @override
-  final String notes;
+  final String notesForFamily;
   @override
-  final bool isCancelled;
+  final bool cancelled;
 
   @override
   String toString() {
-    return 'GradeDto(decimalValue: $decimalValue, eventDate: $eventDate, subjectCode: $subjectCode, color: $color, testType: $testType, notes: $notes, isCancelled: $isCancelled)';
+    return 'GradeDto(decimalValue: $decimalValue, evtDate: $evtDate, subjectCode: $subjectCode, color: $color, evtCode: $evtCode, notesForFamily: $notesForFamily, cancelled: $cancelled)';
   }
 
   @override
@@ -193,34 +195,35 @@ class _$_GradeDto implements _GradeDto {
             (identical(other.decimalValue, decimalValue) ||
                 const DeepCollectionEquality()
                     .equals(other.decimalValue, decimalValue)) &&
-            (identical(other.eventDate, eventDate) ||
+            (identical(other.evtDate, evtDate) ||
                 const DeepCollectionEquality()
-                    .equals(other.eventDate, eventDate)) &&
+                    .equals(other.evtDate, evtDate)) &&
             (identical(other.subjectCode, subjectCode) ||
                 const DeepCollectionEquality()
                     .equals(other.subjectCode, subjectCode)) &&
             (identical(other.color, color) ||
                 const DeepCollectionEquality().equals(other.color, color)) &&
-            (identical(other.testType, testType) ||
+            (identical(other.evtCode, evtCode) ||
                 const DeepCollectionEquality()
-                    .equals(other.testType, testType)) &&
-            (identical(other.notes, notes) ||
-                const DeepCollectionEquality().equals(other.notes, notes)) &&
-            (identical(other.isCancelled, isCancelled) ||
+                    .equals(other.evtCode, evtCode)) &&
+            (identical(other.notesForFamily, notesForFamily) ||
                 const DeepCollectionEquality()
-                    .equals(other.isCancelled, isCancelled)));
+                    .equals(other.notesForFamily, notesForFamily)) &&
+            (identical(other.cancelled, cancelled) ||
+                const DeepCollectionEquality()
+                    .equals(other.cancelled, cancelled)));
   }
 
   @override
   int get hashCode =>
       runtimeType.hashCode ^
       const DeepCollectionEquality().hash(decimalValue) ^
-      const DeepCollectionEquality().hash(eventDate) ^
+      const DeepCollectionEquality().hash(evtDate) ^
       const DeepCollectionEquality().hash(subjectCode) ^
       const DeepCollectionEquality().hash(color) ^
-      const DeepCollectionEquality().hash(testType) ^
-      const DeepCollectionEquality().hash(notes) ^
-      const DeepCollectionEquality().hash(isCancelled);
+      const DeepCollectionEquality().hash(evtCode) ^
+      const DeepCollectionEquality().hash(notesForFamily) ^
+      const DeepCollectionEquality().hash(cancelled);
 
   @override
   _$GradeDtoCopyWith<_GradeDto> get copyWith =>
@@ -235,29 +238,29 @@ class _$_GradeDto implements _GradeDto {
 abstract class _GradeDto implements GradeDto {
   factory _GradeDto(
       {@required double decimalValue,
-      @required String eventDate,
+      @required String evtDate,
       @required String subjectCode,
       @required String color,
-      @required String testType,
-      @required String notes,
-      @required bool isCancelled}) = _$_GradeDto;
+      @required String evtCode,
+      @required String notesForFamily,
+      @required bool cancelled}) = _$_GradeDto;
 
   factory _GradeDto.fromJson(Map<String, dynamic> json) = _$_GradeDto.fromJson;
 
   @override
   double get decimalValue;
   @override
-  String get eventDate;
+  String get evtDate;
   @override
   String get subjectCode;
   @override
   String get color;
   @override
-  String get testType;
+  String get evtCode;
   @override
-  String get notes;
+  String get notesForFamily;
   @override
-  bool get isCancelled;
+  bool get cancelled;
   @override
   _$GradeDtoCopyWith<_GradeDto> get copyWith;
 }

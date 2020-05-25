@@ -56,13 +56,6 @@ class PlannerFullWidgetView extends HookWidget {
       ));
     }
 
-    if (plannerWidgets.length <= 3) {
-      plannerWidgets.add(Container(
-        height: 400,
-        color: Theme.of(context).backgroundColor,
-      ));
-    }
-
     return plannerWidgets;
   }
 

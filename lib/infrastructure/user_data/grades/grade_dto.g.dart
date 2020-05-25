@@ -9,22 +9,22 @@ part of 'grade_dto.dart';
 _$_GradeDto _$_$_GradeDtoFromJson(Map<String, dynamic> json) {
   return _$_GradeDto(
     decimalValue: (json['decimalValue'] as num)?.toDouble(),
-    eventDate: json['eventDate'] as String,
+    evtDate: json['evtDate'] as String,
     subjectCode: json['subjectCode'] as String,
     color: json['color'] as String,
-    testType: json['testType'] as String,
-    notes: json['notes'] as String,
-    isCancelled: json['isCancelled'] as bool,
+    evtCode: json['evtCode'] as String,
+    notesForFamily: json['notesForFamily'] as String,
+    cancelled: json['cancelled'] as bool,
   );
 }
 
 Map<String, dynamic> _$_$_GradeDtoToJson(_$_GradeDto instance) =>
     <String, dynamic>{
       'decimalValue': instance.decimalValue,
-      'eventDate': instance.eventDate,
+      'evtDate': instance.evtDate,
       'subjectCode': instance.subjectCode,
       'color': instance.color,
-      'testType': instance.testType,
-      'notes': instance.notes,
-      'isCancelled': instance.isCancelled,
+      'evtCode': instance.evtCode,
+      'notesForFamily': instance.notesForFamily,
+      'cancelled': instance.cancelled,
     };

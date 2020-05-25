@@ -12,20 +12,21 @@ import 'grade_dto.dart';
 @lazySingleton
 @RegisterAs(IGradesRepository)
 class GradesRepository implements IGradesRepository {
+  final List<Grade> _gradesData = [];
   Either<CVApiFailure, dynamic> _data;
-  List<Grade> _gradesData;
 
-  GradesRepository() {
-    _getAndConvertDataFromJson();
-  }
+  GradesRepository() {}
 
   Future<void> _getAndConvertDataFromJson() async {
     _data = await ClasseVivaApiRepository().grades();
     _data.fold(
       (f) => left(f),
       (data) {
-        for (final item in data) {
-          _gradesData.add(GradeDto.fromJson(item as Map<String, dynamic>).toDomain());
+        for (final item in data['grades']) {
+          print("_--------------------------");
+          print("grades_data : $_gradesData");
+          _gradesData
+              .add(GradeDto.fromJson(item as Map<String, dynamic>).toDomain());
         }
       },
     );
@@ -34,6 +35,7 @@ class GradesRepository implements IGradesRepository {
   @override
   Future<Either<CVApiFailure, KtList<Grade>>> getAllGrades() async {
     try {
+      await _getAndConvertDataFromJson();
       return right(_gradesData.toImmutableList());
     } on Exception {
       return left(const CVApiFailure.serverError());
@@ -44,6 +46,7 @@ class GradesRepository implements IGradesRepository {
   Future<Either<CVApiFailure, KtList<Grade>>> getGradesOfSubject(
       String subjectCode) async {
     try {
+      await _getAndConvertDataFromJson();
       final List<Grade> gradesForSpecificSubject = [];
       for (final Grade grade in _gradesData) {
         if (grade.subjectCode == '') {
@@ -59,6 +62,7 @@ class GradesRepository implements IGradesRepository {
   @override
   Future<Either<CVApiFailure, KtList<Grade>>> getLastThreeGrades() async {
     try {
+      await _getAndConvertDataFromJson();
       final int gradesDataLength = _gradesData.length;
       final List<Grade> lastThreeGrades =
           _gradesData.sublist(gradesDataLength - 4, gradesDataLength - 1);

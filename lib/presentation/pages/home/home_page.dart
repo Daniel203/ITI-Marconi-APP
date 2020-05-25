@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:marconi_app/presentation/pages/grades/widgets/grades_small_widget.dart';
 
 import '../../../application/auth/auth_bloc.dart';
 import '../../../application/orario/orario_bloc.dart';
@@ -101,7 +102,10 @@ Widget _smallWidgetsCarousel(BuildContext context, Size size) {
       widget: PlannerSmallWidget(size: size),
       pageLink: Router.plannerPage,
     ),
-    const SmallWidgetContainer(widget: Text(""), pageLink: null),
+    SmallWidgetContainer(
+      widget: GradesSmallWidget(size: size),
+      pageLink: null,
+    ),
   ];
 
   return SmallWidgetsCarousel(
