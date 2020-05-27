@@ -100,7 +100,7 @@ class ClasseVivaApiRepository extends IClasseVivaApi {
   @override
   Future<Either<CVApiFailure, dynamic>> planner({int daysPrev = 7, int daysNext = 14}) async {
     final DateTime now = DateTime.now();
-    final DateTime deltaNext = now.add(Duration(days: daysnext));
+    final DateTime deltaNext = now.add(Duration(days: daysNext));
     final DateTime deltaPrev = now.subtract(Duration(days: daysPrev));
     final DateFormat formatter = DateFormat('yyyyMMdd');
 
