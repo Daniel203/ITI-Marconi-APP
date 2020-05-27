@@ -35,9 +35,9 @@ class _PageWidget extends StatelessWidget {
     String pathToSplashImage;
 
     if (Theme.of(context).brightness == Brightness.light) {
-      pathToSplashImage = 'assets/icon/logo.png';
+      pathToSplashImage = 'assets/splash_screen_logo/logo.png';
     } else {
-      pathToSplashImage = 'assets/icon/logo_dark.png';
+      pathToSplashImage = 'assets/splash_screen_logo/logo_dark.png';
     }
 
     return Scaffold(

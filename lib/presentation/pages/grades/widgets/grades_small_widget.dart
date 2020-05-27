@@ -21,7 +21,7 @@ class GradesSmallWidget extends StatelessWidget {
           loadSuccess: (state) => GradesDayView(
             containerHeight:
                 size.height * AppConstraints.smallContainerHeightFactor,
-            grades: state.grades,
+            grades: state.grades[0],
           ),
           loadFailure: (_) => const Center(
             child: Text("Errore nel caricamento dei voti"),

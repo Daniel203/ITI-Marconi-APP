@@ -1,4 +1,3 @@
-import 'package:dartz/dartz_unsafe.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
@@ -21,6 +20,7 @@ class OrarioFullWidget extends HookWidget {
     final Map<String, double> dimensions = {
       'daysRowOnTopHeight': size.height * 0.1,
       'daysCircleOnTopWidth': size.width * 0.13,
+      'daysCircleOnTopSelectedWidth': size.width * 0.2,
       'bodyHeight': size.height * 0.8,
     };
     final int todayNumber = DateTime.now().weekday;
@@ -73,30 +73,66 @@ class OrarioFullWidget extends HookWidget {
     PageController pageController,
   ) {
     final List<Widget> widgets = [];
+    final Map<int, String> weekdayToDayname = {
+      1: 'Lunedì',
+      2: 'Martedì',
+      3: 'Mercoledì',
+      4: 'Giovedì',
+      5: 'Venerdì',
+      6: 'Sabato',
+    };
 
     for (int weekday = 1; weekday <= 6; weekday++) {
-      widgets.add(
-        Container(
-          width: dimensions['daysCircleOnTopWidth'],
-          decoration: BoxDecoration(
-            shape: BoxShape.circle,
-            color: (weekday == pageNumberState.value)
-                ? Theme.of(context).accentColor
-                : Theme.of(context).primaryColor,
-          ),
-          child: InkWell(
-            onTap: () {
-              pageNumberState.value = weekday;
-              pageController.jumpToPage(weekday - 1);
-            },
-            child: Center(
-              child: Text(
-                weekday.toString(),
+      final bool _isSelected = weekday == pageNumberState.value;
+
+      if (_isSelected) {
+        widgets.add(
+          Container(
+            width: dimensions['daysCircleOnTopSelectedWidth'],
+            height: dimensions['daysCircleOnTopWidth'],
+            decoration: BoxDecoration(
+              shape: BoxShape.rectangle,
+              color: Theme.of(context).accentColor,
+              borderRadius: BorderRadius.all(
+                  Radius.circular(dimensions['daysCircleOnTopWidth'])),
+            ),
+            child: InkWell(
+              onTap: () {
+                pageNumberState.value = weekday;
+                pageController.jumpToPage(weekday - 1);
+              },
+              child: Center(
+                child: Text(
+                  weekdayToDayname[weekday],
+                ),
               ),
             ),
           ),
-        ),
-      );
+        );
+      } else {
+        widgets.add(
+          Container(
+            width: dimensions['daysCircleOnTopWidth'],
+            height: dimensions['daysCircleOnTopWidth'],
+            decoration: BoxDecoration(
+              color: Theme.of(context).primaryColor,
+              borderRadius: BorderRadius.all(
+                  Radius.circular(dimensions['daysCircleOnTopWidth'])),
+            ),
+            child: InkWell(
+              onTap: () {
+                pageNumberState.value = weekday;
+                pageController.jumpToPage(weekday - 1);
+              },
+              child: Center(
+                child: Text(
+                  weekday.toString(),
+                ),
+              ),
+            ),
+          ),
+        );
+      }
     }
 
     return Padding(

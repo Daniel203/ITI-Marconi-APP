@@ -6,5 +6,5 @@ abstract class GradesEvent with _$GradesEvent {
   const factory GradesEvent.getFullWidget() = _getFullWidget;
   const factory GradesEvent.getGradesOfSubject(String subjectCode) = _getGradesOfSubject;
   const factory GradesEvent.gradesReceived(
-      Either<CVApiFailure, KtList<Grade>> failureOrGrades) = _GradesReceived;
+      Either<CVApiFailure, KtList<KtList<Grade>>> failureOrGrades) = _gradesReceived;
 }

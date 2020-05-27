@@ -141,11 +141,11 @@ Widget _hourProfAndClassroomInfoUI(
     mainAxisAlignment: MainAxisAlignment.center,
     children: <Widget>[
       Text(
-        "$aula",
+        aula,
         style: Theme.of(context).textTheme.bodyText2,
       ),
       Text(
-        "${_formatProfessorSurname(professore)}",
+        _formatProfessorSurname(professore),
         style: Theme.of(context).textTheme.bodyText2,
       ),
     ],

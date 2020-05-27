@@ -13,18 +13,22 @@ class _$GradeTearOff {
   const _$GradeTearOff();
 
   _Grade call(
-      {@required double decimalValue,
-      @required DateTime eventDate,
-      @required String subjectCode,
-      @required GradeColor color,
-      @required String testType,
-      @required String notes,
-      @required bool isCancelled}) {
+      {double decimalValue,
+      String displayValue,
+      DateTime eventDate,
+      String subjectCode,
+      GradeColor color,
+      int periodPos,
+      String testType,
+      String notes,
+      bool isCancelled}) {
     return _Grade(
       decimalValue: decimalValue,
+      displayValue: displayValue,
       eventDate: eventDate,
       subjectCode: subjectCode,
       color: color,
+      periodPos: periodPos,
       testType: testType,
       notes: notes,
       isCancelled: isCancelled,
@@ -37,9 +41,11 @@ const $Grade = _$GradeTearOff();
 
 mixin _$Grade {
   double get decimalValue;
+  String get displayValue;
   DateTime get eventDate;
   String get subjectCode;
   GradeColor get color;
+  int get periodPos;
   String get testType;
   String get notes;
   bool get isCancelled;
@@ -52,9 +58,11 @@ abstract class $GradeCopyWith<$Res> {
       _$GradeCopyWithImpl<$Res>;
   $Res call(
       {double decimalValue,
+      String displayValue,
       DateTime eventDate,
       String subjectCode,
       GradeColor color,
+      int periodPos,
       String testType,
       String notes,
       bool isCancelled});
@@ -70,9 +78,11 @@ class _$GradeCopyWithImpl<$Res> implements $GradeCopyWith<$Res> {
   @override
   $Res call({
     Object decimalValue = freezed,
+    Object displayValue = freezed,
     Object eventDate = freezed,
     Object subjectCode = freezed,
     Object color = freezed,
+    Object periodPos = freezed,
     Object testType = freezed,
     Object notes = freezed,
     Object isCancelled = freezed,
@@ -81,11 +91,15 @@ class _$GradeCopyWithImpl<$Res> implements $GradeCopyWith<$Res> {
       decimalValue: decimalValue == freezed
           ? _value.decimalValue
           : decimalValue as double,
+      displayValue: displayValue == freezed
+          ? _value.displayValue
+          : displayValue as String,
       eventDate:
           eventDate == freezed ? _value.eventDate : eventDate as DateTime,
       subjectCode:
           subjectCode == freezed ? _value.subjectCode : subjectCode as String,
       color: color == freezed ? _value.color : color as GradeColor,
+      periodPos: periodPos == freezed ? _value.periodPos : periodPos as int,
       testType: testType == freezed ? _value.testType : testType as String,
       notes: notes == freezed ? _value.notes : notes as String,
       isCancelled:
@@ -100,9 +114,11 @@ abstract class _$GradeCopyWith<$Res> implements $GradeCopyWith<$Res> {
   @override
   $Res call(
       {double decimalValue,
+      String displayValue,
       DateTime eventDate,
       String subjectCode,
       GradeColor color,
+      int periodPos,
       String testType,
       String notes,
       bool isCancelled});
@@ -119,9 +135,11 @@ class __$GradeCopyWithImpl<$Res> extends _$GradeCopyWithImpl<$Res>
   @override
   $Res call({
     Object decimalValue = freezed,
+    Object displayValue = freezed,
     Object eventDate = freezed,
     Object subjectCode = freezed,
     Object color = freezed,
+    Object periodPos = freezed,
     Object testType = freezed,
     Object notes = freezed,
     Object isCancelled = freezed,
@@ -130,11 +148,15 @@ class __$GradeCopyWithImpl<$Res> extends _$GradeCopyWithImpl<$Res>
       decimalValue: decimalValue == freezed
           ? _value.decimalValue
           : decimalValue as double,
+      displayValue: displayValue == freezed
+          ? _value.displayValue
+          : displayValue as String,
       eventDate:
           eventDate == freezed ? _value.eventDate : eventDate as DateTime,
       subjectCode:
           subjectCode == freezed ? _value.subjectCode : subjectCode as String,
       color: color == freezed ? _value.color : color as GradeColor,
+      periodPos: periodPos == freezed ? _value.periodPos : periodPos as int,
       testType: testType == freezed ? _value.testType : testType as String,
       notes: notes == freezed ? _value.notes : notes as String,
       isCancelled:
@@ -145,29 +167,28 @@ class __$GradeCopyWithImpl<$Res> extends _$GradeCopyWithImpl<$Res>
 
 class _$_Grade with DiagnosticableTreeMixin implements _Grade {
   const _$_Grade(
-      {@required this.decimalValue,
-      @required this.eventDate,
-      @required this.subjectCode,
-      @required this.color,
-      @required this.testType,
-      @required this.notes,
-      @required this.isCancelled})
-      : assert(decimalValue != null),
-        assert(eventDate != null),
-        assert(subjectCode != null),
-        assert(color != null),
-        assert(testType != null),
-        assert(notes != null),
-        assert(isCancelled != null);
+      {this.decimalValue,
+      this.displayValue,
+      this.eventDate,
+      this.subjectCode,
+      this.color,
+      this.periodPos,
+      this.testType,
+      this.notes,
+      this.isCancelled});
 
   @override
   final double decimalValue;
+  @override
+  final String displayValue;
   @override
   final DateTime eventDate;
   @override
   final String subjectCode;
   @override
   final GradeColor color;
+  @override
+  final int periodPos;
   @override
   final String testType;
   @override
@@ -177,7 +198,7 @@ class _$_Grade with DiagnosticableTreeMixin implements _Grade {
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'Grade(decimalValue: $decimalValue, eventDate: $eventDate, subjectCode: $subjectCode, color: $color, testType: $testType, notes: $notes, isCancelled: $isCancelled)';
+    return 'Grade(decimalValue: $decimalValue, displayValue: $displayValue, eventDate: $eventDate, subjectCode: $subjectCode, color: $color, periodPos: $periodPos, testType: $testType, notes: $notes, isCancelled: $isCancelled)';
   }
 
   @override
@@ -186,9 +207,11 @@ class _$_Grade with DiagnosticableTreeMixin implements _Grade {
     properties
       ..add(DiagnosticsProperty('type', 'Grade'))
       ..add(DiagnosticsProperty('decimalValue', decimalValue))
+      ..add(DiagnosticsProperty('displayValue', displayValue))
       ..add(DiagnosticsProperty('eventDate', eventDate))
       ..add(DiagnosticsProperty('subjectCode', subjectCode))
       ..add(DiagnosticsProperty('color', color))
+      ..add(DiagnosticsProperty('periodPos', periodPos))
       ..add(DiagnosticsProperty('testType', testType))
       ..add(DiagnosticsProperty('notes', notes))
       ..add(DiagnosticsProperty('isCancelled', isCancelled));
@@ -201,6 +224,9 @@ class _$_Grade with DiagnosticableTreeMixin implements _Grade {
             (identical(other.decimalValue, decimalValue) ||
                 const DeepCollectionEquality()
                     .equals(other.decimalValue, decimalValue)) &&
+            (identical(other.displayValue, displayValue) ||
+                const DeepCollectionEquality()
+                    .equals(other.displayValue, displayValue)) &&
             (identical(other.eventDate, eventDate) ||
                 const DeepCollectionEquality()
                     .equals(other.eventDate, eventDate)) &&
@@ -209,6 +235,9 @@ class _$_Grade with DiagnosticableTreeMixin implements _Grade {
                     .equals(other.subjectCode, subjectCode)) &&
             (identical(other.color, color) ||
                 const DeepCollectionEquality().equals(other.color, color)) &&
+            (identical(other.periodPos, periodPos) ||
+                const DeepCollectionEquality()
+                    .equals(other.periodPos, periodPos)) &&
             (identical(other.testType, testType) ||
                 const DeepCollectionEquality()
                     .equals(other.testType, testType)) &&
@@ -223,9 +252,11 @@ class _$_Grade with DiagnosticableTreeMixin implements _Grade {
   int get hashCode =>
       runtimeType.hashCode ^
       const DeepCollectionEquality().hash(decimalValue) ^
+      const DeepCollectionEquality().hash(displayValue) ^
       const DeepCollectionEquality().hash(eventDate) ^
       const DeepCollectionEquality().hash(subjectCode) ^
       const DeepCollectionEquality().hash(color) ^
+      const DeepCollectionEquality().hash(periodPos) ^
       const DeepCollectionEquality().hash(testType) ^
       const DeepCollectionEquality().hash(notes) ^
       const DeepCollectionEquality().hash(isCancelled);
@@ -237,22 +268,28 @@ class _$_Grade with DiagnosticableTreeMixin implements _Grade {
 
 abstract class _Grade implements Grade {
   const factory _Grade(
-      {@required double decimalValue,
-      @required DateTime eventDate,
-      @required String subjectCode,
-      @required GradeColor color,
-      @required String testType,
-      @required String notes,
-      @required bool isCancelled}) = _$_Grade;
+      {double decimalValue,
+      String displayValue,
+      DateTime eventDate,
+      String subjectCode,
+      GradeColor color,
+      int periodPos,
+      String testType,
+      String notes,
+      bool isCancelled}) = _$_Grade;
 
   @override
   double get decimalValue;
+  @override
+  String get displayValue;
   @override
   DateTime get eventDate;
   @override
   String get subjectCode;
   @override
   GradeColor get color;
+  @override
+  int get periodPos;
   @override
   String get testType;
   @override

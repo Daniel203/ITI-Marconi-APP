@@ -24,6 +24,7 @@ import 'package:marconi_app/application/user_data/planner/planner_bloc.dart';
 import 'package:marconi_app/application/auth/sign_in_form/sign_in_form_bloc.dart';
 import 'package:marconi_app/application/user_data/absences/absences_bloc.dart';
 import 'package:marconi_app/application/auth/auth_bloc.dart';
+import 'package:marconi_app/application/user_data/grades/average_rating/average_rating_bloc.dart';
 import 'package:marconi_app/application/user_data/noticeboard/favourite_circulars/favourite_circulars_bloc.dart';
 import 'package:marconi_app/application/user_data/grades/grades_bloc.dart';
 import 'package:get_it/get_it.dart';
@@ -36,6 +37,8 @@ void $initGetIt(GetIt g, {String environment}) {
   g.registerFactory<SignInFormBloc>(() => SignInFormBloc(g<IAuthFacade>()));
   g.registerFactory<AbsencesBloc>(() => AbsencesBloc(g<IAbsencesRepository>()));
   g.registerFactory<AuthBloc>(() => AuthBloc(g<IAuthFacade>()));
+  g.registerFactory<AverageRatingBloc>(
+      () => AverageRatingBloc(g<IGradesRepository>()));
   g.registerFactory<FavouriteCircularsBloc>(
       () => FavouriteCircularsBloc(g<INoticeBoardRepository>()));
   g.registerFactory<GradesBloc>(() => GradesBloc(g<IGradesRepository>()));

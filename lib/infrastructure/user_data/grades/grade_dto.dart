@@ -9,13 +9,15 @@ part 'grade_dto.g.dart';
 @freezed
 abstract class GradeDto with _$GradeDto {
   factory GradeDto({
-    @required double decimalValue,
-    @required String evtDate,
-    @required String subjectCode,
-    @required String color,
-    @required String evtCode,
-    @required String notesForFamily,
-    @required bool cancelled,
+    double decimalValue,
+    String displayValue,
+    String evtDate,
+    String subjectCode,
+    String color,
+    String periodDesc,
+    String evtCode,
+    String notesForFamily,
+    bool cancelled,
   }) = _GradeDto;
 
   factory GradeDto.fromJson(Map<String, dynamic> json) =>
@@ -26,9 +28,11 @@ extension GradeDtoX on GradeDto {
   Grade toDomain() {
     return Grade(
       decimalValue: decimalValue,
+      displayValue: displayValue,
       eventDate: DateTime.parse(evtDate),
       subjectCode: subjectCode,
       color: _selectColorFromString(color),
+      periodPos: _getPeriodPosFromPeriodName(periodDesc),
       testType: evtCode,
       notes: notesForFamily,
       isCancelled: cancelled,
@@ -48,6 +52,14 @@ extension GradeDtoX on GradeDto {
         break;
       default:
         return GradeColor.blue;
+    }
+  }
+
+  int _getPeriodPosFromPeriodName(String periodName) {
+    if (periodName == 'Primo periodo') {
+      return 0;
+    } else {
+      return 1;
     }
   }
 }

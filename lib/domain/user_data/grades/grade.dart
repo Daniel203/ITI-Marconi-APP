@@ -7,12 +7,14 @@ part 'grade.freezed.dart';
 @freezed
 abstract class Grade with _$Grade{
   const factory Grade({
-    @required double decimalValue,
-    @required DateTime eventDate,
-    @required String subjectCode,
-    @required GradeColor color,
-    @required String testType,
-    @required String notes,    
-    @required bool isCancelled,
+     double decimalValue,
+     String displayValue,
+     DateTime eventDate,
+     String subjectCode,
+     GradeColor color,
+     int periodPos,
+     String testType,
+     String notes,    
+     bool isCancelled,
   }) = _Grade;
 }

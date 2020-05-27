@@ -5,8 +5,9 @@ import '../cv_api_failures.dart';
 import 'grade.dart';
 
 abstract class IGradesRepository {
-  Future<Either<CVApiFailure, KtList<Grade>>> getLastThreeGrades();
-  Future<Either<CVApiFailure, KtList<Grade>>> getAllGrades();
-  Future<Either<CVApiFailure, KtList<Grade>>> getGradesOfSubject(
+  Future<Either<CVApiFailure, KtList<KtList<Grade>>>> getLastThreeGrades();
+  Future<Either<CVApiFailure, KtList<KtList<Grade>>>> getAllGrades();
+  Future<Either<CVApiFailure, KtList<KtList<Grade>>>> getGradesOfSubject(
       String subjectCode);
+  Future<Either<CVApiFailure, Map<String, double>>> getAverageRating();
 }

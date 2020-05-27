@@ -26,9 +26,9 @@ class _$GradesEventTearOff {
     );
   }
 
-  _GradesReceived gradesReceived(
-      Either<CVApiFailure, KtList<Grade>> failureOrGrades) {
-    return _GradesReceived(
+  _gradesReceived gradesReceived(
+      Either<CVApiFailure, KtList<KtList<Grade>>> failureOrGrades) {
+    return _gradesReceived(
       failureOrGrades,
     );
   }
@@ -45,14 +45,15 @@ mixin _$GradesEvent {
     @required Result getGradesOfSubject(String subjectCode),
     @required
         Result gradesReceived(
-            Either<CVApiFailure, KtList<Grade>> failureOrGrades),
+            Either<CVApiFailure, KtList<KtList<Grade>>> failureOrGrades),
   });
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
     Result getSmallWidget(),
     Result getFullWidget(),
     Result getGradesOfSubject(String subjectCode),
-    Result gradesReceived(Either<CVApiFailure, KtList<Grade>> failureOrGrades),
+    Result gradesReceived(
+        Either<CVApiFailure, KtList<KtList<Grade>>> failureOrGrades),
     @required Result orElse(),
   });
   @optionalTypeArgs
@@ -60,14 +61,14 @@ mixin _$GradesEvent {
     @required Result getSmallWidget(_getSmallWidget value),
     @required Result getFullWidget(_getFullWidget value),
     @required Result getGradesOfSubject(_getGradesOfSubject value),
-    @required Result gradesReceived(_GradesReceived value),
+    @required Result gradesReceived(_gradesReceived value),
   });
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
     Result getSmallWidget(_getSmallWidget value),
     Result getFullWidget(_getFullWidget value),
     Result getGradesOfSubject(_getGradesOfSubject value),
-    Result gradesReceived(_GradesReceived value),
+    Result gradesReceived(_gradesReceived value),
     @required Result orElse(),
   });
 }
@@ -127,7 +128,7 @@ class _$_getSmallWidget implements _getSmallWidget {
     @required Result getGradesOfSubject(String subjectCode),
     @required
         Result gradesReceived(
-            Either<CVApiFailure, KtList<Grade>> failureOrGrades),
+            Either<CVApiFailure, KtList<KtList<Grade>>> failureOrGrades),
   }) {
     assert(getSmallWidget != null);
     assert(getFullWidget != null);
@@ -142,7 +143,8 @@ class _$_getSmallWidget implements _getSmallWidget {
     Result getSmallWidget(),
     Result getFullWidget(),
     Result getGradesOfSubject(String subjectCode),
-    Result gradesReceived(Either<CVApiFailure, KtList<Grade>> failureOrGrades),
+    Result gradesReceived(
+        Either<CVApiFailure, KtList<KtList<Grade>>> failureOrGrades),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -158,7 +160,7 @@ class _$_getSmallWidget implements _getSmallWidget {
     @required Result getSmallWidget(_getSmallWidget value),
     @required Result getFullWidget(_getFullWidget value),
     @required Result getGradesOfSubject(_getGradesOfSubject value),
-    @required Result gradesReceived(_GradesReceived value),
+    @required Result gradesReceived(_gradesReceived value),
   }) {
     assert(getSmallWidget != null);
     assert(getFullWidget != null);
@@ -173,7 +175,7 @@ class _$_getSmallWidget implements _getSmallWidget {
     Result getSmallWidget(_getSmallWidget value),
     Result getFullWidget(_getFullWidget value),
     Result getGradesOfSubject(_getGradesOfSubject value),
-    Result gradesReceived(_GradesReceived value),
+    Result gradesReceived(_gradesReceived value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -228,7 +230,7 @@ class _$_getFullWidget implements _getFullWidget {
     @required Result getGradesOfSubject(String subjectCode),
     @required
         Result gradesReceived(
-            Either<CVApiFailure, KtList<Grade>> failureOrGrades),
+            Either<CVApiFailure, KtList<KtList<Grade>>> failureOrGrades),
   }) {
     assert(getSmallWidget != null);
     assert(getFullWidget != null);
@@ -243,7 +245,8 @@ class _$_getFullWidget implements _getFullWidget {
     Result getSmallWidget(),
     Result getFullWidget(),
     Result getGradesOfSubject(String subjectCode),
-    Result gradesReceived(Either<CVApiFailure, KtList<Grade>> failureOrGrades),
+    Result gradesReceived(
+        Either<CVApiFailure, KtList<KtList<Grade>>> failureOrGrades),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -259,7 +262,7 @@ class _$_getFullWidget implements _getFullWidget {
     @required Result getSmallWidget(_getSmallWidget value),
     @required Result getFullWidget(_getFullWidget value),
     @required Result getGradesOfSubject(_getGradesOfSubject value),
-    @required Result gradesReceived(_GradesReceived value),
+    @required Result gradesReceived(_gradesReceived value),
   }) {
     assert(getSmallWidget != null);
     assert(getFullWidget != null);
@@ -274,7 +277,7 @@ class _$_getFullWidget implements _getFullWidget {
     Result getSmallWidget(_getSmallWidget value),
     Result getFullWidget(_getFullWidget value),
     Result getGradesOfSubject(_getGradesOfSubject value),
-    Result gradesReceived(_GradesReceived value),
+    Result gradesReceived(_gradesReceived value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -352,7 +355,7 @@ class _$_getGradesOfSubject implements _getGradesOfSubject {
     @required Result getGradesOfSubject(String subjectCode),
     @required
         Result gradesReceived(
-            Either<CVApiFailure, KtList<Grade>> failureOrGrades),
+            Either<CVApiFailure, KtList<KtList<Grade>>> failureOrGrades),
   }) {
     assert(getSmallWidget != null);
     assert(getFullWidget != null);
@@ -367,7 +370,8 @@ class _$_getGradesOfSubject implements _getGradesOfSubject {
     Result getSmallWidget(),
     Result getFullWidget(),
     Result getGradesOfSubject(String subjectCode),
-    Result gradesReceived(Either<CVApiFailure, KtList<Grade>> failureOrGrades),
+    Result gradesReceived(
+        Either<CVApiFailure, KtList<KtList<Grade>>> failureOrGrades),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -383,7 +387,7 @@ class _$_getGradesOfSubject implements _getGradesOfSubject {
     @required Result getSmallWidget(_getSmallWidget value),
     @required Result getFullWidget(_getFullWidget value),
     @required Result getGradesOfSubject(_getGradesOfSubject value),
-    @required Result gradesReceived(_GradesReceived value),
+    @required Result gradesReceived(_gradesReceived value),
   }) {
     assert(getSmallWidget != null);
     assert(getFullWidget != null);
@@ -398,7 +402,7 @@ class _$_getGradesOfSubject implements _getGradesOfSubject {
     Result getSmallWidget(_getSmallWidget value),
     Result getFullWidget(_getFullWidget value),
     Result getGradesOfSubject(_getGradesOfSubject value),
-    Result gradesReceived(_GradesReceived value),
+    Result gradesReceived(_gradesReceived value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -416,41 +420,41 @@ abstract class _getGradesOfSubject implements GradesEvent {
   _$getGradesOfSubjectCopyWith<_getGradesOfSubject> get copyWith;
 }
 
-abstract class _$GradesReceivedCopyWith<$Res> {
-  factory _$GradesReceivedCopyWith(
-          _GradesReceived value, $Res Function(_GradesReceived) then) =
-      __$GradesReceivedCopyWithImpl<$Res>;
-  $Res call({Either<CVApiFailure, KtList<Grade>> failureOrGrades});
+abstract class _$gradesReceivedCopyWith<$Res> {
+  factory _$gradesReceivedCopyWith(
+          _gradesReceived value, $Res Function(_gradesReceived) then) =
+      __$gradesReceivedCopyWithImpl<$Res>;
+  $Res call({Either<CVApiFailure, KtList<KtList<Grade>>> failureOrGrades});
 }
 
-class __$GradesReceivedCopyWithImpl<$Res>
+class __$gradesReceivedCopyWithImpl<$Res>
     extends _$GradesEventCopyWithImpl<$Res>
-    implements _$GradesReceivedCopyWith<$Res> {
-  __$GradesReceivedCopyWithImpl(
-      _GradesReceived _value, $Res Function(_GradesReceived) _then)
-      : super(_value, (v) => _then(v as _GradesReceived));
+    implements _$gradesReceivedCopyWith<$Res> {
+  __$gradesReceivedCopyWithImpl(
+      _gradesReceived _value, $Res Function(_gradesReceived) _then)
+      : super(_value, (v) => _then(v as _gradesReceived));
 
   @override
-  _GradesReceived get _value => super._value as _GradesReceived;
+  _gradesReceived get _value => super._value as _gradesReceived;
 
   @override
   $Res call({
     Object failureOrGrades = freezed,
   }) {
-    return _then(_GradesReceived(
+    return _then(_gradesReceived(
       failureOrGrades == freezed
           ? _value.failureOrGrades
-          : failureOrGrades as Either<CVApiFailure, KtList<Grade>>,
+          : failureOrGrades as Either<CVApiFailure, KtList<KtList<Grade>>>,
     ));
   }
 }
 
-class _$_GradesReceived implements _GradesReceived {
-  const _$_GradesReceived(this.failureOrGrades)
+class _$_gradesReceived implements _gradesReceived {
+  const _$_gradesReceived(this.failureOrGrades)
       : assert(failureOrGrades != null);
 
   @override
-  final Either<CVApiFailure, KtList<Grade>> failureOrGrades;
+  final Either<CVApiFailure, KtList<KtList<Grade>>> failureOrGrades;
 
   @override
   String toString() {
@@ -460,7 +464,7 @@ class _$_GradesReceived implements _GradesReceived {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _GradesReceived &&
+        (other is _gradesReceived &&
             (identical(other.failureOrGrades, failureOrGrades) ||
                 const DeepCollectionEquality()
                     .equals(other.failureOrGrades, failureOrGrades)));
@@ -472,8 +476,8 @@ class _$_GradesReceived implements _GradesReceived {
       const DeepCollectionEquality().hash(failureOrGrades);
 
   @override
-  _$GradesReceivedCopyWith<_GradesReceived> get copyWith =>
-      __$GradesReceivedCopyWithImpl<_GradesReceived>(this, _$identity);
+  _$gradesReceivedCopyWith<_gradesReceived> get copyWith =>
+      __$gradesReceivedCopyWithImpl<_gradesReceived>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -483,7 +487,7 @@ class _$_GradesReceived implements _GradesReceived {
     @required Result getGradesOfSubject(String subjectCode),
     @required
         Result gradesReceived(
-            Either<CVApiFailure, KtList<Grade>> failureOrGrades),
+            Either<CVApiFailure, KtList<KtList<Grade>>> failureOrGrades),
   }) {
     assert(getSmallWidget != null);
     assert(getFullWidget != null);
@@ -498,7 +502,8 @@ class _$_GradesReceived implements _GradesReceived {
     Result getSmallWidget(),
     Result getFullWidget(),
     Result getGradesOfSubject(String subjectCode),
-    Result gradesReceived(Either<CVApiFailure, KtList<Grade>> failureOrGrades),
+    Result gradesReceived(
+        Either<CVApiFailure, KtList<KtList<Grade>>> failureOrGrades),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -514,7 +519,7 @@ class _$_GradesReceived implements _GradesReceived {
     @required Result getSmallWidget(_getSmallWidget value),
     @required Result getFullWidget(_getFullWidget value),
     @required Result getGradesOfSubject(_getGradesOfSubject value),
-    @required Result gradesReceived(_GradesReceived value),
+    @required Result gradesReceived(_gradesReceived value),
   }) {
     assert(getSmallWidget != null);
     assert(getFullWidget != null);
@@ -529,7 +534,7 @@ class _$_GradesReceived implements _GradesReceived {
     Result getSmallWidget(_getSmallWidget value),
     Result getFullWidget(_getFullWidget value),
     Result getGradesOfSubject(_getGradesOfSubject value),
-    Result gradesReceived(_GradesReceived value),
+    Result gradesReceived(_gradesReceived value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -540,12 +545,13 @@ class _$_GradesReceived implements _GradesReceived {
   }
 }
 
-abstract class _GradesReceived implements GradesEvent {
-  const factory _GradesReceived(
-      Either<CVApiFailure, KtList<Grade>> failureOrGrades) = _$_GradesReceived;
+abstract class _gradesReceived implements GradesEvent {
+  const factory _gradesReceived(
+          Either<CVApiFailure, KtList<KtList<Grade>>> failureOrGrades) =
+      _$_gradesReceived;
 
-  Either<CVApiFailure, KtList<Grade>> get failureOrGrades;
-  _$GradesReceivedCopyWith<_GradesReceived> get copyWith;
+  Either<CVApiFailure, KtList<KtList<Grade>>> get failureOrGrades;
+  _$gradesReceivedCopyWith<_gradesReceived> get copyWith;
 }
 
 class _$GradesStateTearOff {
@@ -559,7 +565,7 @@ class _$GradesStateTearOff {
     return const LoadInProgress();
   }
 
-  LoadSuccess loadSuccess(KtList<Grade> grades) {
+  LoadSuccess loadSuccess(KtList<KtList<Grade>> grades) {
     return LoadSuccess(
       grades,
     );
@@ -580,14 +586,14 @@ mixin _$GradesState {
   Result when<Result extends Object>({
     @required Result inital(),
     @required Result loadInProgress(),
-    @required Result loadSuccess(KtList<Grade> grades),
+    @required Result loadSuccess(KtList<KtList<Grade>> grades),
     @required Result loadFailure(CVApiFailure gradesOrFailure),
   });
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
     Result inital(),
     Result loadInProgress(),
-    Result loadSuccess(KtList<Grade> grades),
+    Result loadSuccess(KtList<KtList<Grade>> grades),
     Result loadFailure(CVApiFailure gradesOrFailure),
     @required Result orElse(),
   });
@@ -657,7 +663,7 @@ class _$Initial implements Initial {
   Result when<Result extends Object>({
     @required Result inital(),
     @required Result loadInProgress(),
-    @required Result loadSuccess(KtList<Grade> grades),
+    @required Result loadSuccess(KtList<KtList<Grade>> grades),
     @required Result loadFailure(CVApiFailure gradesOrFailure),
   }) {
     assert(inital != null);
@@ -672,7 +678,7 @@ class _$Initial implements Initial {
   Result maybeWhen<Result extends Object>({
     Result inital(),
     Result loadInProgress(),
-    Result loadSuccess(KtList<Grade> grades),
+    Result loadSuccess(KtList<KtList<Grade>> grades),
     Result loadFailure(CVApiFailure gradesOrFailure),
     @required Result orElse(),
   }) {
@@ -756,7 +762,7 @@ class _$LoadInProgress implements LoadInProgress {
   Result when<Result extends Object>({
     @required Result inital(),
     @required Result loadInProgress(),
-    @required Result loadSuccess(KtList<Grade> grades),
+    @required Result loadSuccess(KtList<KtList<Grade>> grades),
     @required Result loadFailure(CVApiFailure gradesOrFailure),
   }) {
     assert(inital != null);
@@ -771,7 +777,7 @@ class _$LoadInProgress implements LoadInProgress {
   Result maybeWhen<Result extends Object>({
     Result inital(),
     Result loadInProgress(),
-    Result loadSuccess(KtList<Grade> grades),
+    Result loadSuccess(KtList<KtList<Grade>> grades),
     Result loadFailure(CVApiFailure gradesOrFailure),
     @required Result orElse(),
   }) {
@@ -822,7 +828,7 @@ abstract class $LoadSuccessCopyWith<$Res> {
   factory $LoadSuccessCopyWith(
           LoadSuccess value, $Res Function(LoadSuccess) then) =
       _$LoadSuccessCopyWithImpl<$Res>;
-  $Res call({KtList<Grade> grades});
+  $Res call({KtList<KtList<Grade>> grades});
 }
 
 class _$LoadSuccessCopyWithImpl<$Res> extends _$GradesStateCopyWithImpl<$Res>
@@ -839,7 +845,7 @@ class _$LoadSuccessCopyWithImpl<$Res> extends _$GradesStateCopyWithImpl<$Res>
     Object grades = freezed,
   }) {
     return _then(LoadSuccess(
-      grades == freezed ? _value.grades : grades as KtList<Grade>,
+      grades == freezed ? _value.grades : grades as KtList<KtList<Grade>>,
     ));
   }
 }
@@ -848,7 +854,7 @@ class _$LoadSuccess implements LoadSuccess {
   const _$LoadSuccess(this.grades) : assert(grades != null);
 
   @override
-  final KtList<Grade> grades;
+  final KtList<KtList<Grade>> grades;
 
   @override
   String toString() {
@@ -876,7 +882,7 @@ class _$LoadSuccess implements LoadSuccess {
   Result when<Result extends Object>({
     @required Result inital(),
     @required Result loadInProgress(),
-    @required Result loadSuccess(KtList<Grade> grades),
+    @required Result loadSuccess(KtList<KtList<Grade>> grades),
     @required Result loadFailure(CVApiFailure gradesOrFailure),
   }) {
     assert(inital != null);
@@ -891,7 +897,7 @@ class _$LoadSuccess implements LoadSuccess {
   Result maybeWhen<Result extends Object>({
     Result inital(),
     Result loadInProgress(),
-    Result loadSuccess(KtList<Grade> grades),
+    Result loadSuccess(KtList<KtList<Grade>> grades),
     Result loadFailure(CVApiFailure gradesOrFailure),
     @required Result orElse(),
   }) {
@@ -935,9 +941,9 @@ class _$LoadSuccess implements LoadSuccess {
 }
 
 abstract class LoadSuccess implements GradesState {
-  const factory LoadSuccess(KtList<Grade> grades) = _$LoadSuccess;
+  const factory LoadSuccess(KtList<KtList<Grade>> grades) = _$LoadSuccess;
 
-  KtList<Grade> get grades;
+  KtList<KtList<Grade>> get grades;
   $LoadSuccessCopyWith<LoadSuccess> get copyWith;
 }
 
@@ -1015,7 +1021,7 @@ class _$LoadFailure implements LoadFailure {
   Result when<Result extends Object>({
     @required Result inital(),
     @required Result loadInProgress(),
-    @required Result loadSuccess(KtList<Grade> grades),
+    @required Result loadSuccess(KtList<KtList<Grade>> grades),
     @required Result loadFailure(CVApiFailure gradesOrFailure),
   }) {
     assert(inital != null);
@@ -1030,7 +1036,7 @@ class _$LoadFailure implements LoadFailure {
   Result maybeWhen<Result extends Object>({
     Result inital(),
     Result loadInProgress(),
-    Result loadSuccess(KtList<Grade> grades),
+    Result loadSuccess(KtList<KtList<Grade>> grades),
     Result loadFailure(CVApiFailure gradesOrFailure),
     @required Result orElse(),
   }) {

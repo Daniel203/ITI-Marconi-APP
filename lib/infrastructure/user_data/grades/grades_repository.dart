@@ -13,9 +13,8 @@ import 'grade_dto.dart';
 @RegisterAs(IGradesRepository)
 class GradesRepository implements IGradesRepository {
   final List<Grade> _gradesData = [];
+  KtList<KtList<Grade>> _gradesForPeriod;
   Either<CVApiFailure, dynamic> _data;
-
-  GradesRepository() {}
 
   Future<void> _getAndConvertDataFromJson() async {
     _data = await ClasseVivaApiRepository().grades();
@@ -23,27 +22,36 @@ class GradesRepository implements IGradesRepository {
       (f) => left(f),
       (data) {
         for (final item in data['grades']) {
-          print("_--------------------------");
-          print("grades_data : $_gradesData");
-          _gradesData
-              .add(GradeDto.fromJson(item as Map<String, dynamic>).toDomain());
+          final gradeObj =
+              GradeDto.fromJson(item as Map<String, dynamic>).toDomain();
+          if (gradeObj.isCancelled != true) {
+            _gradesData.add(gradeObj);
+          }
         }
+
+        _gradesData.sort((first, second) {
+          final firstDate = first.eventDate;
+          final secondDate = second.eventDate;
+          return secondDate.compareTo(firstDate);
+        });
+
+        _gradesForPeriod = _separateGradesPerPeriod();
       },
     );
   }
 
   @override
-  Future<Either<CVApiFailure, KtList<Grade>>> getAllGrades() async {
+  Future<Either<CVApiFailure, KtList<KtList<Grade>>>> getAllGrades() async {
     try {
       await _getAndConvertDataFromJson();
-      return right(_gradesData.toImmutableList());
+      return right(_gradesForPeriod);
     } on Exception {
       return left(const CVApiFailure.serverError());
     }
   }
 
   @override
-  Future<Either<CVApiFailure, KtList<Grade>>> getGradesOfSubject(
+  Future<Either<CVApiFailure, KtList<KtList<Grade>>>> getGradesOfSubject(
       String subjectCode) async {
     try {
       await _getAndConvertDataFromJson();
@@ -53,22 +61,73 @@ class GradesRepository implements IGradesRepository {
           gradesForSpecificSubject.add(grade);
         }
       }
-      return right(gradesForSpecificSubject.toImmutableList());
+      final List<KtList<Grade>> greadesOfSubject = [];
+      greadesOfSubject.add(gradesForSpecificSubject.toImmutableList());
+      return right(greadesOfSubject.toImmutableList());
     } on Exception {
       return left(const CVApiFailure.serverError());
     }
   }
 
   @override
-  Future<Either<CVApiFailure, KtList<Grade>>> getLastThreeGrades() async {
+  Future<Either<CVApiFailure, KtList<KtList<Grade>>>>
+      getLastThreeGrades() async {
     try {
       await _getAndConvertDataFromJson();
-      final int gradesDataLength = _gradesData.length;
-      final List<Grade> lastThreeGrades =
-          _gradesData.sublist(gradesDataLength - 4, gradesDataLength - 1);
-      return right(lastThreeGrades.toImmutableList());
+      final List<Grade> lastThreeGrades = _gradesData.sublist(0, 3);
+      final List<KtList<Grade>> lastThreeGradesImmutable = [];
+      lastThreeGradesImmutable.add(lastThreeGrades.toImmutableList());
+      return right(lastThreeGradesImmutable.toImmutableList());
     } on Exception {
       return left(const CVApiFailure.serverError());
     }
+  }
+
+  KtList<KtList<Grade>> _separateGradesPerPeriod() {
+    final List<Grade> firstPeriodGrades = [];
+    final List<Grade> secondPeriodGrades = [];
+    final List<KtList<Grade>> gradesWithFirstAndSecondPeriod = [];
+
+    for (final Grade grade in _gradesData) {
+      if (grade.periodPos == 0) {
+        firstPeriodGrades.add(grade);
+      } else {
+        secondPeriodGrades.add(grade);
+      }
+    }
+
+    gradesWithFirstAndSecondPeriod.add(firstPeriodGrades.toImmutableList());
+    gradesWithFirstAndSecondPeriod.add(secondPeriodGrades.toImmutableList());
+
+    return gradesWithFirstAndSecondPeriod.toImmutableList();
+  }
+
+  @override
+  Future<Either<CVApiFailure, Map<String, double>>> getAverageRating() async {
+    try {
+      await _getAndConvertDataFromJson();
+      final Map<String, double> averageRatingPerPeriod = {};
+
+      averageRatingPerPeriod.putIfAbsent('firstPeriod', () => calculateAverageRatingFromListOfGrades(_gradesForPeriod[0]));
+      averageRatingPerPeriod.putIfAbsent('secondPeriod', () => calculateAverageRatingFromListOfGrades(_gradesForPeriod[1]));
+
+      return right(averageRatingPerPeriod);
+    } on Exception {
+      return left(const CVApiFailure.invalidRequest());
+    }
+  }
+
+  double calculateAverageRatingFromListOfGrades(KtList<Grade> grades) {
+    double sumOfGrades = 0;
+    int numberOfGrades = 0;
+
+    for (final Grade grade in grades.iter) {
+      if (grade.decimalValue != null) {
+      sumOfGrades += grade.decimalValue;
+      numberOfGrades++;
+      }
+    }
+    
+    return sumOfGrades / numberOfGrades;
   }
 }

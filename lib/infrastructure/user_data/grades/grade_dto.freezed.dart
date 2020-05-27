@@ -16,18 +16,22 @@ class _$GradeDtoTearOff {
   const _$GradeDtoTearOff();
 
   _GradeDto call(
-      {@required double decimalValue,
-      @required String evtDate,
-      @required String subjectCode,
-      @required String color,
-      @required String evtCode,
-      @required String notesForFamily,
-      @required bool cancelled}) {
+      {double decimalValue,
+      String displayValue,
+      String evtDate,
+      String subjectCode,
+      String color,
+      String periodDesc,
+      String evtCode,
+      String notesForFamily,
+      bool cancelled}) {
     return _GradeDto(
       decimalValue: decimalValue,
+      displayValue: displayValue,
       evtDate: evtDate,
       subjectCode: subjectCode,
       color: color,
+      periodDesc: periodDesc,
       evtCode: evtCode,
       notesForFamily: notesForFamily,
       cancelled: cancelled,
@@ -40,9 +44,11 @@ const $GradeDto = _$GradeDtoTearOff();
 
 mixin _$GradeDto {
   double get decimalValue;
+  String get displayValue;
   String get evtDate;
   String get subjectCode;
   String get color;
+  String get periodDesc;
   String get evtCode;
   String get notesForFamily;
   bool get cancelled;
@@ -56,9 +62,11 @@ abstract class $GradeDtoCopyWith<$Res> {
       _$GradeDtoCopyWithImpl<$Res>;
   $Res call(
       {double decimalValue,
+      String displayValue,
       String evtDate,
       String subjectCode,
       String color,
+      String periodDesc,
       String evtCode,
       String notesForFamily,
       bool cancelled});
@@ -74,9 +82,11 @@ class _$GradeDtoCopyWithImpl<$Res> implements $GradeDtoCopyWith<$Res> {
   @override
   $Res call({
     Object decimalValue = freezed,
+    Object displayValue = freezed,
     Object evtDate = freezed,
     Object subjectCode = freezed,
     Object color = freezed,
+    Object periodDesc = freezed,
     Object evtCode = freezed,
     Object notesForFamily = freezed,
     Object cancelled = freezed,
@@ -85,10 +95,15 @@ class _$GradeDtoCopyWithImpl<$Res> implements $GradeDtoCopyWith<$Res> {
       decimalValue: decimalValue == freezed
           ? _value.decimalValue
           : decimalValue as double,
+      displayValue: displayValue == freezed
+          ? _value.displayValue
+          : displayValue as String,
       evtDate: evtDate == freezed ? _value.evtDate : evtDate as String,
       subjectCode:
           subjectCode == freezed ? _value.subjectCode : subjectCode as String,
       color: color == freezed ? _value.color : color as String,
+      periodDesc:
+          periodDesc == freezed ? _value.periodDesc : periodDesc as String,
       evtCode: evtCode == freezed ? _value.evtCode : evtCode as String,
       notesForFamily: notesForFamily == freezed
           ? _value.notesForFamily
@@ -104,9 +119,11 @@ abstract class _$GradeDtoCopyWith<$Res> implements $GradeDtoCopyWith<$Res> {
   @override
   $Res call(
       {double decimalValue,
+      String displayValue,
       String evtDate,
       String subjectCode,
       String color,
+      String periodDesc,
       String evtCode,
       String notesForFamily,
       bool cancelled});
@@ -123,9 +140,11 @@ class __$GradeDtoCopyWithImpl<$Res> extends _$GradeDtoCopyWithImpl<$Res>
   @override
   $Res call({
     Object decimalValue = freezed,
+    Object displayValue = freezed,
     Object evtDate = freezed,
     Object subjectCode = freezed,
     Object color = freezed,
+    Object periodDesc = freezed,
     Object evtCode = freezed,
     Object notesForFamily = freezed,
     Object cancelled = freezed,
@@ -134,10 +153,15 @@ class __$GradeDtoCopyWithImpl<$Res> extends _$GradeDtoCopyWithImpl<$Res>
       decimalValue: decimalValue == freezed
           ? _value.decimalValue
           : decimalValue as double,
+      displayValue: displayValue == freezed
+          ? _value.displayValue
+          : displayValue as String,
       evtDate: evtDate == freezed ? _value.evtDate : evtDate as String,
       subjectCode:
           subjectCode == freezed ? _value.subjectCode : subjectCode as String,
       color: color == freezed ? _value.color : color as String,
+      periodDesc:
+          periodDesc == freezed ? _value.periodDesc : periodDesc as String,
       evtCode: evtCode == freezed ? _value.evtCode : evtCode as String,
       notesForFamily: notesForFamily == freezed
           ? _value.notesForFamily
@@ -150,20 +174,15 @@ class __$GradeDtoCopyWithImpl<$Res> extends _$GradeDtoCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_GradeDto implements _GradeDto {
   _$_GradeDto(
-      {@required this.decimalValue,
-      @required this.evtDate,
-      @required this.subjectCode,
-      @required this.color,
-      @required this.evtCode,
-      @required this.notesForFamily,
-      @required this.cancelled})
-      : assert(decimalValue != null),
-        assert(evtDate != null),
-        assert(subjectCode != null),
-        assert(color != null),
-        assert(evtCode != null),
-        assert(notesForFamily != null),
-        assert(cancelled != null);
+      {this.decimalValue,
+      this.displayValue,
+      this.evtDate,
+      this.subjectCode,
+      this.color,
+      this.periodDesc,
+      this.evtCode,
+      this.notesForFamily,
+      this.cancelled});
 
   factory _$_GradeDto.fromJson(Map<String, dynamic> json) =>
       _$_$_GradeDtoFromJson(json);
@@ -171,11 +190,15 @@ class _$_GradeDto implements _GradeDto {
   @override
   final double decimalValue;
   @override
+  final String displayValue;
+  @override
   final String evtDate;
   @override
   final String subjectCode;
   @override
   final String color;
+  @override
+  final String periodDesc;
   @override
   final String evtCode;
   @override
@@ -185,7 +208,7 @@ class _$_GradeDto implements _GradeDto {
 
   @override
   String toString() {
-    return 'GradeDto(decimalValue: $decimalValue, evtDate: $evtDate, subjectCode: $subjectCode, color: $color, evtCode: $evtCode, notesForFamily: $notesForFamily, cancelled: $cancelled)';
+    return 'GradeDto(decimalValue: $decimalValue, displayValue: $displayValue, evtDate: $evtDate, subjectCode: $subjectCode, color: $color, periodDesc: $periodDesc, evtCode: $evtCode, notesForFamily: $notesForFamily, cancelled: $cancelled)';
   }
 
   @override
@@ -195,6 +218,9 @@ class _$_GradeDto implements _GradeDto {
             (identical(other.decimalValue, decimalValue) ||
                 const DeepCollectionEquality()
                     .equals(other.decimalValue, decimalValue)) &&
+            (identical(other.displayValue, displayValue) ||
+                const DeepCollectionEquality()
+                    .equals(other.displayValue, displayValue)) &&
             (identical(other.evtDate, evtDate) ||
                 const DeepCollectionEquality()
                     .equals(other.evtDate, evtDate)) &&
@@ -203,6 +229,9 @@ class _$_GradeDto implements _GradeDto {
                     .equals(other.subjectCode, subjectCode)) &&
             (identical(other.color, color) ||
                 const DeepCollectionEquality().equals(other.color, color)) &&
+            (identical(other.periodDesc, periodDesc) ||
+                const DeepCollectionEquality()
+                    .equals(other.periodDesc, periodDesc)) &&
             (identical(other.evtCode, evtCode) ||
                 const DeepCollectionEquality()
                     .equals(other.evtCode, evtCode)) &&
@@ -218,9 +247,11 @@ class _$_GradeDto implements _GradeDto {
   int get hashCode =>
       runtimeType.hashCode ^
       const DeepCollectionEquality().hash(decimalValue) ^
+      const DeepCollectionEquality().hash(displayValue) ^
       const DeepCollectionEquality().hash(evtDate) ^
       const DeepCollectionEquality().hash(subjectCode) ^
       const DeepCollectionEquality().hash(color) ^
+      const DeepCollectionEquality().hash(periodDesc) ^
       const DeepCollectionEquality().hash(evtCode) ^
       const DeepCollectionEquality().hash(notesForFamily) ^
       const DeepCollectionEquality().hash(cancelled);
@@ -237,24 +268,30 @@ class _$_GradeDto implements _GradeDto {
 
 abstract class _GradeDto implements GradeDto {
   factory _GradeDto(
-      {@required double decimalValue,
-      @required String evtDate,
-      @required String subjectCode,
-      @required String color,
-      @required String evtCode,
-      @required String notesForFamily,
-      @required bool cancelled}) = _$_GradeDto;
+      {double decimalValue,
+      String displayValue,
+      String evtDate,
+      String subjectCode,
+      String color,
+      String periodDesc,
+      String evtCode,
+      String notesForFamily,
+      bool cancelled}) = _$_GradeDto;
 
   factory _GradeDto.fromJson(Map<String, dynamic> json) = _$_GradeDto.fromJson;
 
   @override
   double get decimalValue;
   @override
+  String get displayValue;
+  @override
   String get evtDate;
   @override
   String get subjectCode;
   @override
   String get color;
+  @override
+  String get periodDesc;
   @override
   String get evtCode;
   @override
