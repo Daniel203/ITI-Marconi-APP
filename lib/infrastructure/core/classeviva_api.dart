@@ -100,8 +100,8 @@ class ClasseVivaApiRepository extends IClasseVivaApi {
   @override
   Future<Either<CVApiFailure, dynamic>> planner({int daysPrev = 7, int daysNext = 14}) async {
     final DateTime now = DateTime.now();
-    final DateTime deltaNext = now.add(Duration(days: daysPrev));
-    final DateTime deltaPrev = now.subtract(Duration(days: daysNext));
+    final DateTime deltaNext = now.add(Duration(days: daysnext));
+    final DateTime deltaPrev = now.subtract(Duration(days: daysPrev));
     final DateFormat formatter = DateFormat('yyyyMMdd');
 
     //* la prima data indica la data prima data del range, mentre la seconda indica quando finire di osservare, limite del range
