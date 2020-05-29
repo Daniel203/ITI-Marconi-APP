@@ -5,11 +5,11 @@ import 'package:marconi_app/presentation/pages/grades/grades_average_rating.dart
 import 'package:marconi_app/presentation/pages/grades/widgets/grade_informations.dart';
 import 'package:marconi_app/presentation/theme/constraints.dart';
 
-class GradesDayView extends StatelessWidget {
+class GradesThreeElementsView extends StatelessWidget {
   final KtList<Grade> grades;
   final double containerHeight;
 
-  const GradesDayView({
+  const GradesThreeElementsView({
     Key key,
     @required this.grades,
     @required this.containerHeight,
@@ -20,12 +20,11 @@ class GradesDayView extends StatelessWidget {
     final Map<String, double> dimensions = {
       'containerHeight': containerHeight,
       'containerWidth': MediaQuery.of(context).size.width,
-      'heightForGrades': containerHeight * 0.6,
-      'rowHeight': containerHeight / 6.5,
-      'headerHeight': containerHeight * 0.40,
+      'heightForGrades': containerHeight * 0.55,
+      'headerHeight': containerHeight * 0.45,
+      'rowHeight': containerHeight / 6.8,
     };
 
-    //  return _Body(containerHeight: dimensions['rowHeight']);
     return Column(
       children: <Widget>[
         Container(

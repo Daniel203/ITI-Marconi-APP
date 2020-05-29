@@ -41,8 +41,8 @@ class OrarioFullWidget extends HookWidget {
             return _orarioFullWidget(state.orario, context, dimensions,
                 pageNumberState, pageController);
           },
-          loadFailure: (state) => const Center(
-            child: Text("Errore"),
+          loadFailure: (_) => const Center(
+            child: Text("Errore nel caricamento dell'orario"),
           ),
         );
       },

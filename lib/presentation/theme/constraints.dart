@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 mixin AppConstraints {
   static const EdgeInsets safeAreaPadding = EdgeInsets.symmetric(horizontal: 8);
   static const EdgeInsets paddingAllDimensions = EdgeInsets.all(8.0);
+  static const EdgeInsets paddingVertical = EdgeInsets.symmetric(vertical: 8.0);
   static BorderRadius boxRadius = BorderRadius.circular(10);
 
   static const SizedBox separator = SizedBox(height: 8);

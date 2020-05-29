@@ -6,26 +6,23 @@ import 'package:marconi_app/presentation/theme/constraints.dart';
 class GradeValueWithSubjectIndicator extends StatelessWidget {
   final Grade grade;
   final double widgetWidth;
-  final double containerHeight;
 
   const GradeValueWithSubjectIndicator({
     Key key,
     @required this.grade,
     @required this.widgetWidth,
-    @required this.containerHeight,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: containerHeight,
       width: widgetWidth,
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
           GradeCircle(
             grade: grade,
-            containerHeight: containerHeight,
+            widgetWidth: widgetWidth,
           ),
           Expanded(
             child: Center(
@@ -43,20 +40,21 @@ class GradeValueWithSubjectIndicator extends StatelessWidget {
 
 class GradeCircle extends StatelessWidget {
   final Grade grade;
-  final double containerHeight;
+  final double widgetWidth;
 
   const GradeCircle({
     Key key,
     @required this.grade,
-    @required this.containerHeight,
+    @required this.widgetWidth,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Expanded(
       child: Padding(
-        padding: EdgeInsets.all(containerHeight * 0.05),
+        padding: EdgeInsets.all(MediaQuery.of(context).size.width * 0.005),
         child: Container(
+            height: widgetWidth / 2,
           decoration: BoxDecoration(
             shape: BoxShape.circle,
             color: _gradeColorToMaterialColor(grade.color),

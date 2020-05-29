@@ -33,12 +33,48 @@ class GradeInformations extends StatelessWidget {
             GradeValueWithSubjectIndicator(
               grade: grade,
               widgetWidth: allWidgetWidth * 0.25,
-              containerHeight: widgetHeight,
             ),
             GradeNotes(
               grade: grade,
               widgetWidth: allWidgetWidth * 0.65,
-              containerHeight: widgetHeight,
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class GradeInformationsFullWidget extends StatelessWidget {
+  final Grade grade;
+
+  const GradeInformationsFullWidget({
+    Key key,
+    @required this.grade,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    final double allWidgetWidth = MediaQuery.of(context).size.width;
+
+    return Padding(
+      padding: AppConstraints.paddingAllDimensions,
+      child: Container(
+        padding: AppConstraints.paddingVertical,
+        decoration: BoxDecoration(
+          borderRadius: AppConstraints.boxRadius,
+          color: Theme.of(context).primaryColorLight,
+        ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: <Widget>[
+            GradeValueWithSubjectIndicator(
+              grade: grade,
+              widgetWidth: allWidgetWidth * 0.25,
+            ),
+            GradeNotesFull(
+              grade: grade,
+              widgetWidth: allWidgetWidth * 0.65,
             ),
           ],
         ),

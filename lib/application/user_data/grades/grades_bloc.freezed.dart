@@ -557,7 +557,7 @@ abstract class _gradesReceived implements GradesEvent {
 class _$GradesStateTearOff {
   const _$GradesStateTearOff();
 
-  Initial inital() {
+  Initial initial() {
     return const Initial();
   }
 
@@ -584,14 +584,14 @@ const $GradesState = _$GradesStateTearOff();
 mixin _$GradesState {
   @optionalTypeArgs
   Result when<Result extends Object>({
-    @required Result inital(),
+    @required Result initial(),
     @required Result loadInProgress(),
     @required Result loadSuccess(KtList<KtList<Grade>> grades),
     @required Result loadFailure(CVApiFailure gradesOrFailure),
   });
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
-    Result inital(),
+    Result initial(),
     Result loadInProgress(),
     Result loadSuccess(KtList<KtList<Grade>> grades),
     Result loadFailure(CVApiFailure gradesOrFailure),
@@ -599,14 +599,14 @@ mixin _$GradesState {
   });
   @optionalTypeArgs
   Result map<Result extends Object>({
-    @required Result inital(Initial value),
+    @required Result initial(Initial value),
     @required Result loadInProgress(LoadInProgress value),
     @required Result loadSuccess(LoadSuccess value),
     @required Result loadFailure(LoadFailure value),
   });
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
-    Result inital(Initial value),
+    Result initial(Initial value),
     Result loadInProgress(LoadInProgress value),
     Result loadSuccess(LoadSuccess value),
     Result loadFailure(LoadFailure value),
@@ -647,7 +647,7 @@ class _$Initial implements Initial {
 
   @override
   String toString() {
-    return 'GradesState.inital()';
+    return 'GradesState.initial()';
   }
 
   @override
@@ -661,30 +661,30 @@ class _$Initial implements Initial {
   @override
   @optionalTypeArgs
   Result when<Result extends Object>({
-    @required Result inital(),
+    @required Result initial(),
     @required Result loadInProgress(),
     @required Result loadSuccess(KtList<KtList<Grade>> grades),
     @required Result loadFailure(CVApiFailure gradesOrFailure),
   }) {
-    assert(inital != null);
+    assert(initial != null);
     assert(loadInProgress != null);
     assert(loadSuccess != null);
     assert(loadFailure != null);
-    return inital();
+    return initial();
   }
 
   @override
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
-    Result inital(),
+    Result initial(),
     Result loadInProgress(),
     Result loadSuccess(KtList<KtList<Grade>> grades),
     Result loadFailure(CVApiFailure gradesOrFailure),
     @required Result orElse(),
   }) {
     assert(orElse != null);
-    if (inital != null) {
-      return inital();
+    if (initial != null) {
+      return initial();
     }
     return orElse();
   }
@@ -692,30 +692,30 @@ class _$Initial implements Initial {
   @override
   @optionalTypeArgs
   Result map<Result extends Object>({
-    @required Result inital(Initial value),
+    @required Result initial(Initial value),
     @required Result loadInProgress(LoadInProgress value),
     @required Result loadSuccess(LoadSuccess value),
     @required Result loadFailure(LoadFailure value),
   }) {
-    assert(inital != null);
+    assert(initial != null);
     assert(loadInProgress != null);
     assert(loadSuccess != null);
     assert(loadFailure != null);
-    return inital(this);
+    return initial(this);
   }
 
   @override
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
-    Result inital(Initial value),
+    Result initial(Initial value),
     Result loadInProgress(LoadInProgress value),
     Result loadSuccess(LoadSuccess value),
     Result loadFailure(LoadFailure value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
-    if (inital != null) {
-      return inital(this);
+    if (initial != null) {
+      return initial(this);
     }
     return orElse();
   }
@@ -760,12 +760,12 @@ class _$LoadInProgress implements LoadInProgress {
   @override
   @optionalTypeArgs
   Result when<Result extends Object>({
-    @required Result inital(),
+    @required Result initial(),
     @required Result loadInProgress(),
     @required Result loadSuccess(KtList<KtList<Grade>> grades),
     @required Result loadFailure(CVApiFailure gradesOrFailure),
   }) {
-    assert(inital != null);
+    assert(initial != null);
     assert(loadInProgress != null);
     assert(loadSuccess != null);
     assert(loadFailure != null);
@@ -775,7 +775,7 @@ class _$LoadInProgress implements LoadInProgress {
   @override
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
-    Result inital(),
+    Result initial(),
     Result loadInProgress(),
     Result loadSuccess(KtList<KtList<Grade>> grades),
     Result loadFailure(CVApiFailure gradesOrFailure),
@@ -791,12 +791,12 @@ class _$LoadInProgress implements LoadInProgress {
   @override
   @optionalTypeArgs
   Result map<Result extends Object>({
-    @required Result inital(Initial value),
+    @required Result initial(Initial value),
     @required Result loadInProgress(LoadInProgress value),
     @required Result loadSuccess(LoadSuccess value),
     @required Result loadFailure(LoadFailure value),
   }) {
-    assert(inital != null);
+    assert(initial != null);
     assert(loadInProgress != null);
     assert(loadSuccess != null);
     assert(loadFailure != null);
@@ -806,7 +806,7 @@ class _$LoadInProgress implements LoadInProgress {
   @override
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
-    Result inital(Initial value),
+    Result initial(Initial value),
     Result loadInProgress(LoadInProgress value),
     Result loadSuccess(LoadSuccess value),
     Result loadFailure(LoadFailure value),
@@ -880,12 +880,12 @@ class _$LoadSuccess implements LoadSuccess {
   @override
   @optionalTypeArgs
   Result when<Result extends Object>({
-    @required Result inital(),
+    @required Result initial(),
     @required Result loadInProgress(),
     @required Result loadSuccess(KtList<KtList<Grade>> grades),
     @required Result loadFailure(CVApiFailure gradesOrFailure),
   }) {
-    assert(inital != null);
+    assert(initial != null);
     assert(loadInProgress != null);
     assert(loadSuccess != null);
     assert(loadFailure != null);
@@ -895,7 +895,7 @@ class _$LoadSuccess implements LoadSuccess {
   @override
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
-    Result inital(),
+    Result initial(),
     Result loadInProgress(),
     Result loadSuccess(KtList<KtList<Grade>> grades),
     Result loadFailure(CVApiFailure gradesOrFailure),
@@ -911,12 +911,12 @@ class _$LoadSuccess implements LoadSuccess {
   @override
   @optionalTypeArgs
   Result map<Result extends Object>({
-    @required Result inital(Initial value),
+    @required Result initial(Initial value),
     @required Result loadInProgress(LoadInProgress value),
     @required Result loadSuccess(LoadSuccess value),
     @required Result loadFailure(LoadFailure value),
   }) {
-    assert(inital != null);
+    assert(initial != null);
     assert(loadInProgress != null);
     assert(loadSuccess != null);
     assert(loadFailure != null);
@@ -926,7 +926,7 @@ class _$LoadSuccess implements LoadSuccess {
   @override
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
-    Result inital(Initial value),
+    Result initial(Initial value),
     Result loadInProgress(LoadInProgress value),
     Result loadSuccess(LoadSuccess value),
     Result loadFailure(LoadFailure value),
@@ -1019,12 +1019,12 @@ class _$LoadFailure implements LoadFailure {
   @override
   @optionalTypeArgs
   Result when<Result extends Object>({
-    @required Result inital(),
+    @required Result initial(),
     @required Result loadInProgress(),
     @required Result loadSuccess(KtList<KtList<Grade>> grades),
     @required Result loadFailure(CVApiFailure gradesOrFailure),
   }) {
-    assert(inital != null);
+    assert(initial != null);
     assert(loadInProgress != null);
     assert(loadSuccess != null);
     assert(loadFailure != null);
@@ -1034,7 +1034,7 @@ class _$LoadFailure implements LoadFailure {
   @override
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
-    Result inital(),
+    Result initial(),
     Result loadInProgress(),
     Result loadSuccess(KtList<KtList<Grade>> grades),
     Result loadFailure(CVApiFailure gradesOrFailure),
@@ -1050,12 +1050,12 @@ class _$LoadFailure implements LoadFailure {
   @override
   @optionalTypeArgs
   Result map<Result extends Object>({
-    @required Result inital(Initial value),
+    @required Result initial(Initial value),
     @required Result loadInProgress(LoadInProgress value),
     @required Result loadSuccess(LoadSuccess value),
     @required Result loadFailure(LoadFailure value),
   }) {
-    assert(inital != null);
+    assert(initial != null);
     assert(loadInProgress != null);
     assert(loadSuccess != null);
     assert(loadFailure != null);
@@ -1065,7 +1065,7 @@ class _$LoadFailure implements LoadFailure {
   @override
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
-    Result inital(Initial value),
+    Result initial(Initial value),
     Result loadInProgress(LoadInProgress value),
     Result loadSuccess(LoadSuccess value),
     Result loadFailure(LoadFailure value),

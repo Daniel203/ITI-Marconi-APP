@@ -6,16 +6,20 @@ import 'widgets/grades_average_score_indicator.dart';
 
 class GradesAverageRating extends StatelessWidget {
   final double widgetHeight;
+  final int periodPos;
 
-  const GradesAverageRating({Key key, @required this.widgetHeight})
-      : super(key: key);
+  const GradesAverageRating({
+    Key key,
+    @required this.widgetHeight,
+    this.periodPos,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => getIt<AverageRatingBloc>()
         ..add(const AverageRatingEvent.getAverageRating()),
-      child: GradesAverageRatingIndicator(widgetHeight: widgetHeight),
+      child: GradesAverageRatingIndicator(widgetHeight: widgetHeight, periodPos: periodPos,),
     );
   }
 }

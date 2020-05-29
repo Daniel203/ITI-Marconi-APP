@@ -12,9 +12,17 @@ import 'grade_dto.dart';
 @lazySingleton
 @RegisterAs(IGradesRepository)
 class GradesRepository implements IGradesRepository {
-  final List<Grade> _gradesData = [];
+  List<Grade> _gradesData = [];
   KtList<KtList<Grade>> _gradesForPeriod;
   Either<CVApiFailure, dynamic> _data;
+
+  static final GradesRepository _singleton = GradesRepository._internal();
+
+  factory GradesRepository() {
+    return _singleton;
+  }
+
+  GradesRepository._internal();
 
   Future<void> _getAndConvertDataFromJson() async {
     _data = await ClasseVivaApiRepository().grades();
@@ -29,11 +37,13 @@ class GradesRepository implements IGradesRepository {
           }
         }
 
+        // sort by date
         _gradesData.sort((first, second) {
-          final firstDate = first.eventDate;
-          final secondDate = second.eventDate;
-          return secondDate.compareTo(firstDate);
+          return second.eventDate.compareTo(first.eventDate);
         });
+
+        // remove duplicated
+        _gradesData = Set.of(_gradesData).toList();
 
         _gradesForPeriod = _separateGradesPerPeriod();
       },
@@ -108,8 +118,10 @@ class GradesRepository implements IGradesRepository {
       await _getAndConvertDataFromJson();
       final Map<String, double> averageRatingPerPeriod = {};
 
-      averageRatingPerPeriod.putIfAbsent('firstPeriod', () => calculateAverageRatingFromListOfGrades(_gradesForPeriod[0]));
-      averageRatingPerPeriod.putIfAbsent('secondPeriod', () => calculateAverageRatingFromListOfGrades(_gradesForPeriod[1]));
+      averageRatingPerPeriod.putIfAbsent('firstPeriod',
+          () => calculateAverageRatingFromListOfGrades(_gradesForPeriod[0]));
+      averageRatingPerPeriod.putIfAbsent('secondPeriod',
+          () => calculateAverageRatingFromListOfGrades(_gradesForPeriod[1]));
 
       return right(averageRatingPerPeriod);
     } on Exception {
@@ -123,11 +135,11 @@ class GradesRepository implements IGradesRepository {
 
     for (final Grade grade in grades.iter) {
       if (grade.decimalValue != null) {
-      sumOfGrades += grade.decimalValue;
-      numberOfGrades++;
+        sumOfGrades += grade.decimalValue;
+        numberOfGrades++;
       }
     }
-    
+
     return sumOfGrades / numberOfGrades;
   }
 }

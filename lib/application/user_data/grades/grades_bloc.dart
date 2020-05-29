@@ -21,7 +21,7 @@ class GradesBloc extends Bloc<GradesEvent, GradesState> {
   GradesBloc(this._gradesRepository);
 
   @override
-  GradesState get initialState => const GradesState.inital();
+  GradesState get initialState => const GradesState.initial();
 
   @override
   Stream<GradesState> mapEventToState(GradesEvent event) async* {

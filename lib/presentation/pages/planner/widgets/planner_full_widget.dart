@@ -27,7 +27,7 @@ class PlannerFullWidget extends StatelessWidget {
             size: size,
           ),
           loadFailure: (_) => const Center(
-            child: Text("Errore"),
+            child: Text("Errore nel caricamento dell'agenda"),
           ),
         );
       },

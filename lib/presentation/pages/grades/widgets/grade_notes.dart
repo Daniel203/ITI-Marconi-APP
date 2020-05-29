@@ -5,13 +5,11 @@ import 'package:marconi_app/domain/user_data/grades/grade.dart';
 class GradeNotes extends StatelessWidget {
   final Grade grade;
   final double widgetWidth;
-  final double containerHeight;
 
   const GradeNotes({
     Key key,
     @required this.grade,
     @required this.widgetWidth,
-    @required this.containerHeight,
   }) : super(key: key);
 
   @override
@@ -20,7 +18,6 @@ class GradeNotes extends StatelessWidget {
 
     return Container(
       width: widgetWidth,
-      height: containerHeight,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -44,13 +41,11 @@ class GradeNotes extends StatelessWidget {
 class GradeNotesFull extends StatelessWidget {
   final Grade grade;
   final double widgetWidth;
-  final double containerHeight;
 
   const GradeNotesFull({
     Key key,
     @required this.grade,
     @required this.widgetWidth,
-    @required this.containerHeight,
   }) : super(key: key);
 
   @override
@@ -59,14 +54,13 @@ class GradeNotesFull extends StatelessWidget {
 
     return Container(
       width: widgetWidth,
-      height: containerHeight,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           Text(
             grade.notes,
-            style: Theme.of(context).textTheme.bodyText1,
+            style: Theme.of(context).textTheme.bodyText2,
           ),
           Text(
             dateFormat.format(grade.eventDate),

@@ -13,6 +13,7 @@ import 'package:marconi_app/presentation/pages/sign_in/sign_in_local_data_page.d
 import 'package:marconi_app/presentation/pages/home/home_page.dart';
 import 'package:marconi_app/presentation/pages/orario/orario_page.dart';
 import 'package:marconi_app/presentation/pages/planner/planner_page.dart';
+import 'package:marconi_app/presentation/pages/grades/grades_page.dart';
 
 class Router {
   static const splashPage = '/';
@@ -21,6 +22,7 @@ class Router {
   static const homePage = '/home-page';
   static const orarioPage = '/orario-page';
   static const plannerPage = '/planner-page';
+  static const gradesPage = '/grades-page';
   static final navigator = ExtendedNavigator();
   static Route<dynamic> onGenerateRoute(RouteSettings settings) {
     final args = settings.arguments;
@@ -55,6 +57,11 @@ class Router {
       case Router.plannerPage:
         return CupertinoPageRoute<dynamic>(
           builder: (_) => PlannerPage(),
+          settings: settings,
+        );
+      case Router.gradesPage:
+        return CupertinoPageRoute<dynamic>(
+          builder: (_) => GradesPage(),
           settings: settings,
         );
       default:

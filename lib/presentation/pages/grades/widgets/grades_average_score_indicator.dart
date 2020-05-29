@@ -5,9 +5,13 @@ import 'package:percent_indicator/percent_indicator.dart';
 
 class GradesAverageRatingIndicator extends StatelessWidget {
   final double widgetHeight;
+  final int periodPos;
 
-  const GradesAverageRatingIndicator({Key key, @required this.widgetHeight})
-      : super(key: key);
+  const GradesAverageRatingIndicator({
+    Key key,
+    @required this.widgetHeight,
+    this.periodPos,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -19,6 +23,7 @@ class GradesAverageRatingIndicator extends StatelessWidget {
           loadSuccess: (state) => GradesAverageRatingCircleIndicator(
             averageratingPerPeriod: state.averagesPerPeriod,
             widgetHeight: widgetHeight,
+            periodPos: periodPos,
           ),
           loadFailure: (_) => const Center(
             child: Text("Errore nel caricamento della media dei voti"),
@@ -32,11 +37,13 @@ class GradesAverageRatingIndicator extends StatelessWidget {
 class GradesAverageRatingCircleIndicator extends StatelessWidget {
   final Map<String, double> averageratingPerPeriod;
   final double widgetHeight;
+  final int periodPos;
 
   const GradesAverageRatingCircleIndicator({
     Key key,
     @required this.averageratingPerPeriod,
     @required this.widgetHeight,
+    this.periodPos,
   }) : super(key: key);
 
   @override
@@ -69,18 +76,27 @@ class GradesAverageRatingCircleIndicator extends StatelessWidget {
   }
 
   double _getAverageForLastPeriod(Map<String, double> averageRatingPerPeriod) {
-    if (averageRatingPerPeriod['secondPeriod'] != 0.0) {
-      return averageRatingPerPeriod['secondPeriod'];
+    if (periodPos != null) {
+      return averageratingPerPeriod[
+          (periodPos == 1) ? 'secondPeriod' : 'firstPeriod'];
     } else {
-      return averageRatingPerPeriod['firstPeriod'];
+      if (averageRatingPerPeriod['secondPeriod'] != 0.0) {
+        return averageRatingPerPeriod['secondPeriod'];
+      } else {
+        return averageRatingPerPeriod['firstPeriod'];
+      }
     }
   }
 
   String _getPeriodString(Map<String, double> averageRatingPerPeriod) {
-    if (averageRatingPerPeriod['secondPeriod'] != 0.0) {
-      return 'Secondo Periodo';
+    if (periodPos != null) {
+      return (periodPos == 1) ? 'Secondo Periodo' : 'Primo Periodo';
     } else {
-      return 'Primo Periodo';
+      if (averageRatingPerPeriod['secondPeriod'] != 0.0) {
+        return 'Secondo Periodo';
+      } else {
+        return 'Primo Periodo';
+      }
     }
   }
 

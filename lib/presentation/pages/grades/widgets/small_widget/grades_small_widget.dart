@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:marconi_app/application/user_data/grades/grades_bloc.dart';
-import 'package:marconi_app/presentation/pages/grades/widgets/grades_day_view.dart';
+import 'package:marconi_app/presentation/pages/grades/widgets/small_widget/grades_three_elements_view.dart';
 import 'package:marconi_app/presentation/theme/constraints.dart';
 
 class GradesSmallWidget extends StatelessWidget {
@@ -14,11 +14,11 @@ class GradesSmallWidget extends StatelessWidget {
     return BlocBuilder<GradesBloc, GradesState>(
       builder: (context, state) {
         return state.map(
-          inital: (_) => Container(),
+          initial: (_) => Container(),
           loadInProgress: (_) => const Center(
             child: CircularProgressIndicator(),
           ),
-          loadSuccess: (state) => GradesDayView(
+          loadSuccess: (state) => GradesThreeElementsView(
             containerHeight:
                 size.height * AppConstraints.smallContainerHeightFactor,
             grades: state.grades[0],
