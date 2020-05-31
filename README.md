@@ -7,7 +7,7 @@ The school's services (such as class schedule, grades list, agenda, ...) are onl
 So we have decided to create an app that allows access to school data in an easy, **fast** and **intuitive** way.
 
 ## Development
-### Ambiente di sviluppo
+### Development environment
 We chose to use **Flutter** for various reasons.
 - the possibility to create **multiplatform apps** with only one code. This has allowed us to build the app in less time and using fewer resources.
 - the desire to **learn** how to use this framework, given the appreciation it is experiencing.
