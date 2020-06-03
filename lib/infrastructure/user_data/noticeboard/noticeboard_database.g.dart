@@ -66,6 +66,26 @@ class Circular extends DataClass implements Insertable<Circular> {
     return map;
   }
 
+  CircularsCompanion toCompanion(bool nullToAbsent) {
+    return CircularsCompanion(
+      id: id == null && nullToAbsent ? const Value.absent() : Value(id),
+      filename: filename == null && nullToAbsent
+          ? const Value.absent()
+          : Value(filename),
+      title:
+          title == null && nullToAbsent ? const Value.absent() : Value(title),
+      publicationDate: publicationDate == null && nullToAbsent
+          ? const Value.absent()
+          : Value(publicationDate),
+      isActive: isActive == null && nullToAbsent
+          ? const Value.absent()
+          : Value(isActive),
+      isFavourite: isFavourite == null && nullToAbsent
+          ? const Value.absent()
+          : Value(isFavourite),
+    );
+  }
+
   factory Circular.fromJson(Map<String, dynamic> json,
       {ValueSerializer serializer}) {
     serializer ??= moorRuntimeOptions.defaultSerializer;

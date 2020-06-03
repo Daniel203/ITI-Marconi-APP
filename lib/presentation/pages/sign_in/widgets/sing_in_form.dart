@@ -31,7 +31,7 @@ class SignInForm extends StatelessWidget {
                 );
               },
               (_) {
-                Router.navigator.pushReplacementNamed(Router.homePage);
+                Router.navigator.pushReplacementNamed(Router.splashPage);
                 context
                     .bloc<AuthBloc>()
                     .add(const AuthEvent.authCheckRequest());

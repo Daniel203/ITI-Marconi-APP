@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:marconi_app/domain/auth/user.dart';
 import 'package:marconi_app/presentation/pages/grades/widgets/small_widget/grades_small_widget.dart';
 
 import '../../../application/auth/auth_bloc.dart';
@@ -21,6 +22,10 @@ import 'widgets/small_widget_container.dart';
 import 'widgets/small_widgets_carousel.dart';
 
 class HomePage extends HookWidget implements AutoRouteWrapper {
+  final User user;
+  
+  const HomePage({Key key, this.user}) : super(key: key);
+
   @override
   Widget get wrappedRoute => MultiBlocProvider(
         providers: [
@@ -71,13 +76,13 @@ class HomePage extends HookWidget implements AutoRouteWrapper {
           centerTitle: true,
           backgroundColor: Theme.of(context).backgroundColor,
         ),
-        body: _body(context),
+        body: _body(context, user),
       ),
     );
   }
 }
 
-Widget _body(BuildContext context) {
+Widget _body(BuildContext context, User user) {
   return ResponsiveSafeArea(
     builder: (context, size) {
       return Column(
@@ -85,7 +90,7 @@ Widget _body(BuildContext context) {
           AppConstraints.separator,
           _smallWidgetsCarousel(context, size),
           AppConstraints.separator,
-          _bottomGridWithLinkToPages(size),
+          _bottomGridWithLinkToPages(size, user),
         ],
       );
     },
@@ -114,28 +119,29 @@ Widget _smallWidgetsCarousel(BuildContext context, Size size) {
   );
 }
 
-Widget _bottomGridWithLinkToPages(Size size) {
-  final List<BoxWithPageIconAndLink> pageBoxes = [
-    BoxWithPageIconAndLink(
-        pageName: "Circolari",
-        pageIcon: Icons.trip_origin,
-        iconColor: Colors.red,
-        pageLink: null),
-    BoxWithPageIconAndLink(
-        pageName: "Orari",
-        pageIcon: Icons.tune,
-        iconColor: Colors.blue,
-        pageLink: Router.orarioPage),
-    BoxWithPageIconAndLink(
-        pageName: "Registro",
-        pageIcon: Icons.unarchive,
-        iconColor: Colors.green,
-        pageLink: null),
+Widget _bottomGridWithLinkToPages(Size size, User user) {
+  final List<Widget> pageBoxes = [
     BoxWithPageIconAndLink(
         pageName: "Bar Poldo",
-        pageIcon: Icons.vibration,
-        iconColor: Colors.yellow,
+        pageIcon: Icons.free_breakfast,
+        iconColor: Colors.orange,
+        pageLink: Router.barPoldoPage),
+    BoxWithPageIconAndLinkUser(
+        pageName: "Utente",
+        pageIcon: Icons.person,
+        iconColor: Colors.red,
+        user: user,
+        pageLink: Router.userPage),
+    BoxWithPageIconAndLink(
+        pageName: "Impostazioni",
+        pageIcon: Icons.settings,
+        iconColor: Colors.blue,
         pageLink: null),
+    BoxWithPageIconAndLink(
+        pageName: "Info",
+        pageIcon: Icons.info,
+        iconColor: Colors.green,
+        pageLink: Router.infoPage),
   ];
 
   return Expanded(
@@ -145,7 +151,7 @@ Widget _bottomGridWithLinkToPages(Size size) {
         crossAxisCount: 2,
         crossAxisSpacing: 4,
         mainAxisSpacing: 4,
-        childAspectRatio: 5.5 / 3,
+        childAspectRatio: 6 / 3,
         physics: const NeverScrollableScrollPhysics(),
         children: pageBoxes,
       ),

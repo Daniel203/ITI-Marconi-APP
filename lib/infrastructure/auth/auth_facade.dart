@@ -67,6 +67,7 @@ class AuthFacade extends IAuthFacade {
 
   @override
   Future<void> signOut() {
+    _saveSignInDataToLocalStorage('', '');
     return ClasseVivaApiRepository().signOut();
   }
 
@@ -96,8 +97,9 @@ class AuthFacade extends IAuthFacade {
   @override
   Future<bool> haveSignInDataSavedLocally() async {
     const storage = FlutterSecureStorage();
-    return await storage.read(key: 'id') != null &&
-        await storage.read(key: 'password') != null;
+    final id = await storage.read(key: 'id'); 
+    final password = await storage.read(key: 'password');
+    return (id != null && id.isNotEmpty) && (password != null && password.isNotEmpty);
   }
 
   Future<void> _saveClassNameToLocalStorage(String className) async {
