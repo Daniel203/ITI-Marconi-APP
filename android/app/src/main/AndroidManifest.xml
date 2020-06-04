@@ -12,6 +12,7 @@
         android:name="io.flutter.app.FlutterApplication"
         android:label="marconi_app"
         android:icon="@mipmap/ic_launcher"
+        android:usesCleartextTraffic="true"
         android:fullBackupContent="@xml/my_backup_rules">
         <activity
             android:name=".MainActivity"
